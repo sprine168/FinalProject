@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:controller="Program.ControllerPackage.MainController" id="AnchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-6.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
+            <fill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
+                    <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#3374b598" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="263.0" layoutY="73.0" prefHeight="40.0" prefWidth="498.0" text="Welcome to The Not Wells Fargo Bank (Wells Fargo Sucks)" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+            <font>
+                <Font name="Constantia Bold" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+                    <stops>
+                        <Stop color="#184c80" />
+                        <Stop color="#0099ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="419.0" layoutY="639.0" prefHeight="19.0" prefWidth="189.0" text="Banking System Incorporated by " textAlignment="LEFT" textFill="#184c80" wrapText="false">
+            <font>
+                <Font name="Constantia" size="13.0" fx:id="x1" />
+            </font>
+        </Label>
+        <Label font="$x1" layoutX="479.0" layoutY="670.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
+        <Button fx:id="cusPageButton" contentDisplay="CENTER" layoutX="263.0" layoutY="562.0" mnemonicParsing="false" onAction="#toCusPage" text="Customer Page" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect></Button>
+        <Label layoutX="475.0" layoutY="168.0" prefHeight="18.0" prefWidth="75.0" text="Login Page" textFill="#184c80">
+            <font>
+                <Font name="Constantia Bold" size="14.0" />
+            </font>
+        </Label>
+        <Pane layoutX="334.0" layoutY="230.0" prefHeight="120.0" prefWidth="356.0">
+            <children>
+                <Label layoutX="14.0" layoutY="11.0" prefWidth="88.0" text="Username">
+                    <font>
+                        <Font name="Bodoni MT" size="19.0" fx:id="x2" />
+                    </font>
+                </Label>
+                <Label font="$x2" layoutX="14.0" layoutY="63.0" prefWidth="88.0" text="Password" />
+                <Label layoutX="81.0" layoutY="34.0" text="">
+                    <font>
+                        <Font name="System Italic" size="12.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="userLoginText" blendMode="SRC_OVER" layoutX="114.0" prefHeight="47.0" prefWidth="227.0" promptText="Please Enter Username" >
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" />
+                    </effect>
+                    <font>
+                        <Font name="Calisto MT" size="13.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="userPassText" blendMode="SRC_OVER" layoutX="114.0" layoutY="52.0" prefHeight="47.0" prefWidth="227.0" promptText="Please Enter Password">
+                    <cursor>
+                        <Cursor fx:constant="TEXT" />
+                    </cursor>
+                    <effect>
+                        <InnerShadow blurType="ONE_PASS_BOX" />
+                    </effect>
+                    <font>
+                        <Font name="Calisto MT" size="13.0" />
+                    </font>
+                </PasswordField>
+            </children>
+        </Pane>
+        <Button fx:id="loginButton" contentDisplay="CENTER" layoutX="462.0" layoutY="395.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="104.0" text="Login" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Button>
+        <Button fx:id="telPageBtton" contentDisplay="CENTER" layoutX="476.0" layoutY="562.0" mnemonicParsing="false" onAction="#toTellerPage" text="Teller Page" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+        </Button>
+        <Button fx:id="manPageButton" contentDisplay="CENTER" layoutX="690.0" layoutY="562.0" mnemonicParsing="false" onAction="#returnMan" text="Manager Page" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+        </Button>
+        <Label layoutX="310.0" layoutY="510.0" prefHeight="40.0" prefWidth="407.0" text="Buttons are for testing purposes for each page." textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+            <font>
+                <Font name="Constantia Bold" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+                    <stops>
+                        <Stop color="#184c80" />
+                        <Stop color="#0099ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+    </children>
+</AnchorPane>
