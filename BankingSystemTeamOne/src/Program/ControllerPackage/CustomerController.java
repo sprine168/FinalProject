@@ -33,6 +33,36 @@ public class CustomerController implements Initializable{
 	@FXML
 	public Button logoutButton;
 
+	@FXML
+	public TextArea customerIDText;
+
+	@FXML
+	public TextArea cusCheckingBalance;
+
+	@FXML
+	public TextArea cusSavingBalance;
+
+	@FXML
+	public TextArea cusLoanBalance;
+
+	@FXML
+	public TextArea cusAccountStatus;
+
+	@FXML
+	public TextArea monthlyChecking;
+
+	@FXML
+	public TextArea monthlyCC;
+
+	@FXML
+	public TextField depositAmount;
+
+	@FXML
+	public TextField transferAmount;
+
+	@FXML
+	public TextField paymentAmount;
+
 	private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
