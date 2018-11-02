@@ -71,8 +71,6 @@ public class TellerSubController implements Initializable {
     @FXML
     public TextArea cusAccountStatement;
 
-    @FXML
-    public TextArea savingsBalanceText;
 
 
     private void function(Parent parent, ActionEvent event){

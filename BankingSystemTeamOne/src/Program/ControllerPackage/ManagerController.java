@@ -9,6 +9,7 @@ package Program.ControllerPackage;
 
 */
 
+import Program.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,8 +45,6 @@ public class ManagerController implements Initializable {
     public TextField cusIDSearch;
 
 
-
-
     private void function(Parent parent, ActionEvent event){
         Scene homePageScene = new Scene(parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -67,7 +66,12 @@ public class ManagerController implements Initializable {
     @FXML
     void manSearch(ActionEvent event) throws IOException
     {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
+        String ssn = !cusIDSearch.getText().isEmpty() ? cusIDSearch.getText().toString() : "";
+        if (Main.findCustomer(ssn)) {
+            Main.currentCustomer = Main.getCustomer(ssn);
+            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
+        }
+
     }
 
 

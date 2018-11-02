@@ -81,11 +81,19 @@ public class MainController implements Initializable {
 	    if (user.equals("teller") && pass.equals("1234"))
 	        toTellerPage(event);
 	    else if(user.equals("manager") && pass.equals("4321"))
-	        toManagerPage(event);
+			toManagerPage(event);
 	    else if(pass.equals("1") && user != null && user != "" && Main.findCustomer(user)){
 	    	Customer customer = Main.getCustomer(user);
 	    	Main.currentCustomer = customer;
 	    	function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);
+		} else {
+			try {
+				userLoginText.setPromptText("Invalid Username/Password");
+				userLoginText.setText("");
+				userPassText.setText("");
+				Thread.sleep(4000);
+				userLoginText.setPromptText("Please Enter Username");
+			} catch (InterruptedException e) {}
 		}
     }
 
@@ -99,6 +107,23 @@ public class MainController implements Initializable {
 	void toTellerPage(ActionEvent event) throws IOException
 	{
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml")), event);
+	}
+
+	@FXML
+	void telSearch(ActionEvent event) throws IOException
+	{
+		if (cusIDSearch.getText() == null || cusIDSearch.getText() == "") return;
+		String customerToFind = cusIDSearch.getText();
+		if (Main.findCustomer(customerToFind)) {
+			Main.currentCustomer = Main.getCustomer(customerToFind);
+			function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);
+		}
+	}
+
+	@FXML
+	void manSearch(ActionEvent event) throws IOException
+	{
+		function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
 	}
 
 	@FXML

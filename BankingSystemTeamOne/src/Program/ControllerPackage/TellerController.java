@@ -76,13 +76,6 @@ public class TellerController implements Initializable {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/CreateAccount.fxml")), event);
     }
 
-    @FXML
-    void toTellerPage(ActionEvent event) throws IOException
-    {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml")), event);
-    }
-
-
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
