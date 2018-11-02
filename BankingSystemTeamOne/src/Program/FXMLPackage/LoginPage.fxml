@@ -113,7 +113,7 @@
                 <Reflection />
             </effect>
         </Button>
-        <Button fx:id="manPageButton" contentDisplay="CENTER" layoutX="690.0" layoutY="562.0" mnemonicParsing="false" onAction="#returnMan" text="Manager Page" textAlignment="CENTER">
+        <Button fx:id="manPageButton" contentDisplay="CENTER" layoutX="690.0" layoutY="562.0" mnemonicParsing="false" onAction="#toManagerPage" text="Manager Page" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

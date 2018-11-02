@@ -37,6 +37,4 @@ public class ManagerSubController {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml")), event);
     }
 
-
-
 }
