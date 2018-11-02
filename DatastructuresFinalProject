@@ -1,0 +1,47 @@
+Class Customer
+	String customerId
+	String address
+	String city
+	String state
+	String zipCode
+	String firstName
+	String lastName
+	ArrayList accounts
+	Function getAccounts() // will return accounts, you will be able to check .class of account 	//to look for an individual account.
+	Function getDetails() // will return details of the account.
+
+Abstract Class Account // Will be the Parent Class
+	String customerID
+	double balance
+	Date openedOn // Will be using SimpleDateFormat to wrap the date, for easier use.
+	Function deposit() // Will have a default Deposit function, will be inherited but overrided for loans.
+
+Class SavingsAccount extends Account 
+`	double interest
+	Date CDDue
+	Function updateInterest() // Will update the Interest rate.
+	Function changeAccountType()
+	
+Class CheckingAccount extends Account 
+	String accountType
+	String backupId
+	Boolean overdraftProtection passed in as 
+	int numberOfOverdrafts
+	Double minimumBalance
+	double[] transactionFees //based on AccountType these will vary. Standard {.5, .75}
+	Function applyOverdraft()
+	Function stopPayment()
+	ArrayList backUp
+
+// LoanAccount also handles credit cards
+Class LoanAccount extends Account
+	String description
+	double currentInterestRate
+	Date paymentDueDate
+	Date notifiedOfPayment
+	Double paymentAmountDue
+	Date sinceLastPayment
+	boolean missedPayment
+	String accountType
+	Function Deposit() // will override the Standard Deposit function, allowing to make a Payment.
+	Function ApplyLateFee() 
