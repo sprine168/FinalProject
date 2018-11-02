@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.shape.Rectangle?>
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane fx:controller="Program.ControllerPackage.TellerController" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
             xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -65,7 +65,7 @@
             </font>
         </Label>
         <Button fx:id="logoutButton" contentDisplay="CENTER" layoutX="446.0" layoutY="666.0" mnemonicParsing="false" prefHeight="25.0"
-                prefWidth="127.0" text="Logout" textAlignment="CENTER">
+                prefWidth="127.0" onAction="#logout" text="Logout" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND"/>
             </cursor>
@@ -289,7 +289,7 @@
             </font>
         </Button>
         <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="20.0" layoutY="681.0" mnemonicParsing="false" prefHeight="30.0"
-                prefWidth="134.0" text="Teller Program.Main Menu" textAlignment="CENTER">
+                prefWidth="134.0" onAction="#toTellerPage" text="Teller Program.Main Menu" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND"/>
             </cursor>
