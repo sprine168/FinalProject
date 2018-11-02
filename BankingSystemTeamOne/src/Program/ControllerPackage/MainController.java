@@ -62,6 +62,8 @@ public class MainController implements Initializable {
 	@FXML
 	public TextField userPassText;
 
+	public TextField cusIDSearch;
+
 	private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -72,25 +74,26 @@ public class MainController implements Initializable {
 
     @FXML
     void login(ActionEvent event) throws IOException{
+		if (userLoginText.getText() == null || userPassText.getText() == null ||
+				userLoginText.getText() == "" || userPassText.getText() == "") return;
+		String user = userLoginText.getText().toLowerCase();
 	    String pass = userPassText.getText().toLowerCase();
-	    if (pass.equals("1234"))
+	    if (user.equals("teller") && pass.equals("1234"))
 	        toTellerPage(event);
-	    else if(pass.equals("4321"))
+	    else if(user.equals("manager") && pass.equals("4321"))
 	        returnMan(event);
-	    else if(pass.equals("1") && userLoginText.getText() != null){
-	    	Customer customer = Main.getCustomer(userLoginText.getText());
-	    	if (customer == null) {
-				userLoginText.setText("User not found");
-				try {
-					Thread.sleep(1500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				userLoginText.setText("Please Enter Username");
-			}else{
-	    		Main.currentCustomer = customer;
-				function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);
-			}
+	    else if(pass.equals("1") && user != null && user != "" && Main.findCustomer(user)){
+	    	Customer customer = Main.getCustomer(user);
+	    	Main.currentCustomer = customer;
+	    	function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);
+		} else {
+			try {
+				userLoginText.setPromptText("Invalid Username/Password");
+				userLoginText.setText("");
+				userPassText.setText("");
+				Thread.sleep(4000);
+				userLoginText.setPromptText("Please Enter Username");
+			} catch (InterruptedException e) {}
 		}
     }
 
@@ -109,7 +112,12 @@ public class MainController implements Initializable {
 	@FXML
 	void telSearch(ActionEvent event) throws IOException
 	{
-		function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);
+		if (cusIDSearch.getText() == null || cusIDSearch.getText() == "") return;
+		String customerToFind = cusIDSearch.getText();
+		if (Main.findCustomer(customerToFind)) {
+			Main.currentCustomer = Main.getCustomer(customerToFind);
+			function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);
+		}
 	}
 
 	@FXML

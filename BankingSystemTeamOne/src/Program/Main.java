@@ -36,7 +36,7 @@ public class Main extends Application {
     static class ClosingThread extends Thread {
         public void run(){
             try {
-                PrintWriter writer = new PrintWriter(new File("BankingSystemTeamOne/src/Program/Data/BankingDatabase1.txt"));
+                PrintWriter writer = new PrintWriter(new File("BankingSystemTeamOne/src/Program/Data/BankingDatabase.txt"));
                 writer.println("Customer Account");
                 for (Customer customer: customers){
                     writer.println(customer);
@@ -65,7 +65,6 @@ public class Main extends Application {
         }
     }
 
-    public static Stage primaryStage;
     public static ArrayList<Customer> customers = new ArrayList();
     public static ArrayList<Account> accounts = new ArrayList();
     public static Customer currentCustomer = null;
@@ -103,16 +102,27 @@ public class Main extends Application {
             }
         }
     }
-    public static void addCustomer(Customer customer){
-        if (!customers.contains(customer))
+
+    public static boolean addCustomer(Customer customer){
+        boolean available = true;
+        for (Customer customer1: customers){
+            if (customer1.getCustomerId().equals(customer.getCustomerId()))
+                available = false;
+        }
+        if (available && !customers.contains(customer))
             customers.add(customer);
+        return available;
     }
 
     public static void addAccount(Account account){
-        if (!accounts.contains(account)) {
+        if (account != null && !accounts.contains(account)) {
             accounts.add(account);
             linkAccounts();
         }
+    }
+
+    public static Boolean findCustomer(String string){
+        return getCustomer(string) != null;
     }
 
     public static void readDatabase(){
@@ -124,22 +134,22 @@ public class Main extends Application {
                 if (str.startsWith("//") || str.length() <= 0) continue;
                 if (str.length() > 0 && str.toLowerCase().contains("account") && str.contains(" ")) {
                     accountType = str.substring(0, str.indexOf(" "));
-                    System.out.println(accountType);
                 }
                 if (str.contains(",")) {
                     String[] args = str.split(",", - 1);
                     try {
                         switch (accountType.trim()) {
                             case "Customer":
-                                customers.add(new Customer(args[0], args[1], args[2], args[3], args[4], args[5], args[6], Integer.parseInt(args[7])));
+                                customers.add(new Customer(args[0], args[1], args[2], args[3], args[4], args[5],
+                                        args[6], Integer.parseInt(args[7])));
                                 break;
                             case "Checking":
-                                accounts.add(new CheckingAccount(args[0], Double.parseDouble(args[1]),
-                                        args[2], args[3], Integer.parseInt(args[4]), getDate(args[5])));
+                                accounts.add(new CheckingAccount(args[0], Double.parseDouble(args[1]), args[2],
+                                        args[3], Integer.parseInt(args[4]), getDate(args[5])));
                                 break;
                             case "Savings":
-                                accounts.add(new SavingsAccount(args[0], Double.parseDouble(args[1]),
-                                        Double.parseDouble(args[2]), getDate(args[3]), getDate(args[4])));
+                                accounts.add(new SavingsAccount(args[0], Double.parseDouble(args[1]), Double.parseDouble(args[2]),
+                                        getDate(args[3]), getDate(args[4])));
                                 break;
                             case "Loan":
                                 accounts.add(new Loan(args[0], args[1], Double.parseDouble(args[2]),
@@ -161,10 +171,6 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
-    //public static Stage getPrimaryStage() {
-    //    return Main.primaryStage;
-    //}
 
     public static Customer getCustomer(String SSN){
         Customer customer = null;

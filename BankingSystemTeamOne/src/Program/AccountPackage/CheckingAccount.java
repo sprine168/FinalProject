@@ -1,5 +1,7 @@
 package Program.AccountPackage;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // CheckingAccount is an extension of Account, and allows for customer to have a Checking Account.
@@ -26,6 +28,7 @@ public class CheckingAccount extends Account {
 	}
 	@Override
 	public String toString(){
-		return String.format("%s,%2.2f,%s,%s,%d,%s",customerId,balance,accountType,backupId,numberOfOverdrafts,dateOpened);
+		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+		return String.format("%s,%2.2f,%s,%s,%d,%s",customerId,balance,accountType,backupId,numberOfOverdrafts,df.format(dateOpened));
 	}
 }

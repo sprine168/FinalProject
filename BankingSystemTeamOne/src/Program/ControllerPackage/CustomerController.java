@@ -89,22 +89,26 @@ public class CustomerController implements Initializable{
 		if (customer != null){
 			boolean foundChecking = false;
 			boolean foundSavings = false;
+			int numberOfCheckings = 0;
+			int numberOfSavings = 0;
 			customerIDText.setText(customer.getCustomerId());
 			for(Account account : customer.getAccounts()){
 				if (account.getClass() == CheckingAccount.class){
 					foundChecking = true;
+					numberOfCheckings += 1;
 					cusCheckingBalance.setText(String.format("%2.2f", account.getBalance()));
 				} else if(account.getClass() == SavingsAccount.class){
 					foundSavings = true;
+					numberOfSavings += 1;
 					cusSavingBalance.setText(String.format("%2.2f", account.getBalance()));
 				}
 			}
+			System.out.println(String.format("Found %d Checking Account(s), Found %d Savings Account(s) for Customer: %s", numberOfCheckings, numberOfSavings, customer.getFirstName()));
 			if (!foundChecking){
 				cusCheckingBalance.setText("N/A");
 			}
 			if (!foundSavings){
 				cusSavingBalance.setText("N/A");
-				cusAccountStatus.setText("N/A");
 			}
 		}
 	}

@@ -27,6 +27,7 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.atmCard = atmCard;
+		//System.out.println(this.atmCard);
 		accounts = new ArrayList();
 	}
 	
@@ -86,14 +87,14 @@ public class Customer {
 	// Method for adding an account
 	public void addAccount(Account account) {
 		if (account.customerId.equals(this.customerId)) { // Just double check to make sure the account is owned by this person
-			System.out.println("Adding: " + account.getClass().getName() + " To: " + customerId);
+			//System.out.println("Adding: " + account.getClass().getName() + " To: " + customerId);
 			accounts.add(account);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return customerId + "," + address + "," + city + "," + state + "," + zipCode + "," + firstName + "," + lastName;
+		return String.format("%s,%s,%s,%s,%s,%s,%s,%d", customerId, address, city, state, zipCode, firstName, lastName, atmCard);
 		//return "Customer [customerId=" + customerId + ", address=" + address + ", city=" + city + ", state=" + state
 				//+ ", zipCode=" + zipCode + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}

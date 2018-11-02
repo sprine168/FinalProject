@@ -72,7 +72,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-		<ComboBox layoutX="750.0" layoutY="89.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account Type">
+		<ComboBox fx:id="accountTypeBox" layoutX="750.0" layoutY="89.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account Type">
 
 		    <items>
 		        <FXCollections fx:factory="observableArrayList">
@@ -266,7 +266,7 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x32" />
          </font>
       </Label>
-      <TextArea layoutX="750.0" layoutY="475.0" prefHeight="21.0" prefWidth="227.0" promptText="Yes or no answer">
+      <TextArea fx:id="atmCard" layoutX="750.0" layoutY="475.0" prefHeight="21.0" prefWidth="227.0" promptText="Yes or no answer">
          <font>
             <Font size="14.0" />
          </font>
