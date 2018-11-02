@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +39,9 @@ public class ManagerController implements Initializable {
 
     @FXML
     public Button createLoanButton;
+
+    @FXML
+    public TextField cusIDSearch;
 
 
 
@@ -66,11 +70,6 @@ public class ManagerController implements Initializable {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
     }
 
-    @FXML
-    void returnMan(ActionEvent event) throws IOException
-    {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml")), event);
-    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

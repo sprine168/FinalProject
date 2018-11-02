@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,8 +42,7 @@ public class TellerController implements Initializable {
     public Button createLoanButton;
 
     @FXML
-    public Button returnMenu;
-
+    public TextField cusIDSearch;
 
 
     private void function(Parent parent, ActionEvent event){
@@ -68,13 +68,6 @@ public class TellerController implements Initializable {
     {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/CreateAccount.fxml")), event);
     }
-
-    @FXML
-    void toTellerPage(ActionEvent event) throws IOException
-    {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml")), event);
-    }
-
 
 
     @Override
