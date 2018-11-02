@@ -39,5 +39,13 @@ public class Loan extends Account {
 	public static void setCurrentInterestRate(double currentInterest) {
 		currentInterestRate = currentInterest;
 	}
+	
+	    @Override
+    public String toString() {
+
+        return customerId  + "," + description + "," + balance + "," + currentInterestRate + "," + datePaymentDue
+                + "," + dateNotifiedOfPayment + "," + currentPaymentDue + "," + dateSinceLastPayment + ","
+                + missedPaymentFlag + "," + accountType;
+    }
 
 }
