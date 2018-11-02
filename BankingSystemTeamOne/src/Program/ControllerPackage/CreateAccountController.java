@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Program.AccountPackage.Customer;
+import Program.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,8 +75,6 @@ public class CreateAccountController implements Initializable {
 	@FXML
 	public TextArea atmCard;
 	
-	Customer nCustomer;
-	
 	ArrayList<Object> accounts = new ArrayList<Object>();
 	
 	Stage dialogStage;
@@ -107,19 +106,15 @@ public class CreateAccountController implements Initializable {
 		String zip = createCusZip.getText();
 		int atm = Integer.parseInt(atmCard.getText());
 		
-		nCustomer = new Customer(ssn, address, city, state, zip, fName, lName, atm);
+		Customer nCustomer = new Customer(ssn, address, city, state, zip, fName, lName, atm);
+		Main.addCustomer(nCustomer);
 		System.out.println(nCustomer.toString());
-		
 	}
-
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
 	}
-
-
-
 
 }

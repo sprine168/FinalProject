@@ -22,6 +22,13 @@ public abstract class Account {
 		balance += amountToDeposit;
 	}
 
+	public String getCustomerId(){
+		return customerId;
+	}
+
+	public double getBalance(){
+		return balance;
+	}
 	// Method that will allow the closing of an Account
 	public double CloseAccount() {
 		double amountToReturn = 0;

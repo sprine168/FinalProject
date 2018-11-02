@@ -1,5 +1,7 @@
 package Program.AccountPackage;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /* SavingsAccount is an extension of accounts and holds the saving account information for customers */
@@ -18,6 +20,7 @@ public class SavingsAccount extends Account {
 
 	@Override
 	public String toString(){
-		return String.format("%s,%f,%f,%s,%s", customerId, balance, currentInterestRate, dateOpened.toString(),CDDue.toString());
+		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+		return String.format("%s,%2.2f,%2.2f,%s,%s", customerId, balance, currentInterestRate, dateOpened != null ? df.format(dateOpened) : "",CDDue != null ? df.format(CDDue) : "");
 	}
 }

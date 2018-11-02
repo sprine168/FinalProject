@@ -1,5 +1,7 @@
 package Program.AccountPackage;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // The loan class is an extension of accounts, that shows the loan information for customers.
@@ -42,10 +44,10 @@ public class Loan extends Account {
 	
 	    @Override
     public String toString() {
-
-        return customerId  + "," + description + "," + balance + "," + currentInterestRate + "," + datePaymentDue
-                + "," + dateNotifiedOfPayment + "," + currentPaymentDue + "," + dateSinceLastPayment + ","
-                + missedPaymentFlag + "," + accountType;
+		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+		return String.format("%s,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, description, balance, currentInterestRate,
+				df.format(datePaymentDue), df.format(dateNotifiedOfPayment), currentPaymentDue, df.format(dateSinceLastPayment),
+				missedPaymentFlag ? "1" : "0", accountType);
     }
 
 }

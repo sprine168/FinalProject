@@ -35,8 +35,6 @@ import java.util.ResourceBundle;
 */
 public class MainController implements Initializable {
 
-	public ArrayList<Customer> customerArrayList;
-	public ArrayList<Account> accountArrayList;
 	@FXML
 	public Button cusPageButton;
 
@@ -111,13 +109,13 @@ public class MainController implements Initializable {
 	@FXML
 	void telSearch(ActionEvent event) throws IOException
 	{
-		function(FXMLLoader.load(getClass().getResource("/FXMLPackage/TellerSubMenu.fxml")), event);
+		function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);
 	}
 
 	@FXML
 	void manSearch(ActionEvent event) throws IOException
 	{
-		function(FXMLLoader.load(getClass().getResource("/FXMLPackage/ManagerSubMenu.fxml")), event);
+		function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
 	}
 
 	@FXML

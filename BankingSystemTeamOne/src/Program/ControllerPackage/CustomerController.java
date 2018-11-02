@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Program.AccountPackage.Account;
+import Program.AccountPackage.CheckingAccount;
+import Program.AccountPackage.Customer;
+import Program.AccountPackage.SavingsAccount;
+import Program.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,13 +79,34 @@ public class CustomerController implements Initializable{
 	@FXML 
 	void logout(ActionEvent event) throws IOException
 	{
-		function((FXMLLoader.load(getClass().getResource("/FXMLPackage/LoginPage.fxml"))), event);
+		function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoginPage.fxml"))), event);
 	} 
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+		Customer customer = Main.currentCustomer;
+		if (customer != null){
+			boolean foundChecking = false;
+			boolean foundSavings = false;
+			customerIDText.setText(customer.getCustomerId());
+			for(Account account : customer.getAccounts()){
+				if (account.getClass() == CheckingAccount.class){
+					foundChecking = true;
+					cusCheckingBalance.setText(String.format("%2.2f", account.getBalance()));
+				} else if(account.getClass() == SavingsAccount.class){
+					foundSavings = true;
+					cusSavingBalance.setText(String.format("%2.2f", account.getBalance()));
+				}
+			}
+			if (!foundChecking){
+				cusCheckingBalance.setText("N/A");
+			}
+			if (!foundSavings){
+				cusSavingBalance.setText("N/A");
+				cusAccountStatus.setText("N/A");
+			}
+		}
 	}
 
 }

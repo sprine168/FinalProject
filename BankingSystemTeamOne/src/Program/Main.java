@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Program.AccountPackage.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,7 +31,40 @@ import java.util.ArrayList;
     and more.
 */
 
+
 public class Main extends Application {
+    static class ClosingThread extends Thread {
+        public void run(){
+            try {
+                PrintWriter writer = new PrintWriter(new File("BankingSystemTeamOne/src/Program/Data/BankingDatabase1.txt"));
+                writer.println("Customer Account");
+                for (Customer customer: customers){
+                    writer.println(customer);
+                }
+                writer.println();
+                String AccountType = "";
+                for (int i = 0; i < 3; i++){
+                    if (i == 0)
+                        AccountType = "Savings Account";
+                    if (i == 1)
+                        AccountType = "Checking Account";
+                    if (i == 2)
+                        AccountType = "Loan Account";
+                    writer.println(AccountType);
+                    for(Account account : accounts){
+                        if (account.getClass().getName().contains(AccountType.substring(0, AccountType.indexOf(" ")))){
+                            writer.println(account);
+                        }
+                    }
+                    writer.println();
+                }
+                writer.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public static Stage primaryStage;
     public static ArrayList<Customer> customers = new ArrayList();
     public static ArrayList<Account> accounts = new ArrayList();
@@ -44,7 +78,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-
     public static java.util.Date getDate(String arg) {
         DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
         java.util.Date date = null;
@@ -57,8 +90,29 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new ClosingThread());
         readDatabase();
+        linkAccounts();
         launch(args);
+    }
+
+    public static void linkAccounts(){
+        for (Account account : accounts){
+            for (Customer customer : customers){
+                customer.addAccount(account);
+            }
+        }
+    }
+    public static void addCustomer(Customer customer){
+        if (!customers.contains(customer))
+            customers.add(customer);
+    }
+
+    public static void addAccount(Account account){
+        if (!accounts.contains(account)) {
+            accounts.add(account);
+            linkAccounts();
+        }
     }
 
     public static void readDatabase(){
@@ -108,9 +162,9 @@ public class Main extends Application {
         }
     }
 
-    public static Stage getPrimaryStage() {
-        return Main.primaryStage;
-    }
+    //public static Stage getPrimaryStage() {
+    //    return Main.primaryStage;
+    //}
 
     public static Customer getCustomer(String SSN){
         Customer customer = null;

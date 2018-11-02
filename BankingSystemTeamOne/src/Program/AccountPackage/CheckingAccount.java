@@ -21,8 +21,11 @@ public class CheckingAccount extends Account {
 		this.numberOfOverdrafts = numberOfOverdrafts;
 	}
 
+	public String getAccountType(){
+		return accountType;
+	}
 	@Override
 	public String toString(){
-		return customerId + "," + balance + ","	+ accountType + "," + backupId + "," + numberOfOverdrafts + "," + dateOpened;
+		return String.format("%s,%2.2f,%s,%s,%d,%s",customerId,balance,accountType,backupId,numberOfOverdrafts,dateOpened);
 	}
 }

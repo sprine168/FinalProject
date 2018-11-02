@@ -85,8 +85,10 @@ public class Customer {
 
 	// Method for adding an account
 	public void addAccount(Account account) {
-		if (account.customerId == this.customerId) // Just double check to make sure the account is owned by this person
+		if (account.customerId.equals(this.customerId)) { // Just double check to make sure the account is owned by this person
+			System.out.println("Adding: " + account.getClass().getName() + " To: " + customerId);
 			accounts.add(account);
+		}
 	}
 
 	@Override
