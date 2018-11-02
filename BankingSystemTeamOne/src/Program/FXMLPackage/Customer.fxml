@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="Program.ControllerPackage.CustomerController" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CustomerController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
@@ -52,12 +52,12 @@
             </font>
         </Label>
         <Label font="$x1" layoutX="479.0" layoutY="745.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
-        <Label layoutX="41.0" layoutY="331.0" prefHeight="21.0" prefWidth="120.0" text="Account Status">
+        <Label layoutX="383.0" layoutY="67.0" prefHeight="21.0" prefWidth="120.0" text="Account Status">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x3" />
             </font>
         </Label>
-        <Button fx:id="logoutButton" contentDisplay="CENTER" layoutX="446.0" layoutY="666.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0"  onAction="#logout" text="Logout" textAlignment="CENTER">
+        <Button fx:id="logoutButton" contentDisplay="CENTER" layoutX="446.0" layoutY="674.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="127.0" text="Logout" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -68,12 +68,12 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Label layoutX="155.0" layoutY="434.0" prefHeight="21.0" prefWidth="227.0" text="Monthly Statement for Checking">
+        <Label layoutX="155.0" layoutY="447.0" prefHeight="25.0" prefWidth="235.0" text="Monthly Statement for Checking">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x22" />
             </font>
         </Label>
-        <Label layoutX="650.0" layoutY="434.0" prefHeight="21.0" prefWidth="243.0" text="Monthly Statement for Credit Card">
+        <Label layoutX="651.0" layoutY="447.0" prefHeight="25.0" prefWidth="251.0" text="Monthly Statement for Credit Card">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x221" />
             </font>
@@ -98,7 +98,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <TextArea fx:id="customerIDText" editable="false" layoutX="41.0" layoutY="128.0" prefHeight="38.0" prefWidth="227.0" >
+        <TextArea fx:id="customerIDText" editable="false" layoutX="41.0" layoutY="128.0" prefHeight="38.0" prefWidth="227.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -109,7 +109,7 @@
                 <InnerShadow />
             </effect>
         </TextArea>
-        <TextArea fx:id="cusCheckingBalance" editable="false" layoutX="41.0" layoutY="273.0" prefHeight="37.0" prefWidth="227.0" >
+        <TextArea fx:id="cusCheckingBalance" editable="false" layoutX="41.0" layoutY="273.0" prefHeight="37.0" prefWidth="227.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -120,7 +120,7 @@
                 <InnerShadow />
             </effect>
         </TextArea>
-        <TextArea fx:id="cusAccountStatus" editable="false" layoutX="41.0" layoutY="352.0" prefHeight="21.0" prefWidth="227.0">
+        <TextArea fx:id="cusAccountStatus" editable="false" layoutX="383.0" layoutY="88.0" prefHeight="21.0" prefWidth="227.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -136,7 +136,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-        <ComboBox layoutX="718.0" layoutY="192.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account Type">
+        <ComboBox fx:id="accountType1" layoutX="718.0" layoutY="192.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account Type">
 
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -152,17 +152,17 @@
                 <InnerShadow blurType="ONE_PASS_BOX" />
             </effect>
         </ComboBox>
-        <Label layoutX="397.0" layoutY="182.0" prefHeight="21.0" prefWidth="127.0" text="Payment Amount">
+        <Label layoutX="384.0" layoutY="217.0" prefHeight="21.0" prefWidth="127.0" text="Payment Amount">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x212" />
             </font>
         </Label>
-        <Label layoutX="460.0" layoutY="70.0" prefHeight="18.0" prefWidth="86.0" text="Pay On Loan" textFill="#184c80" underline="true">
+        <Label layoutX="453.0" layoutY="40.0" prefHeight="18.0" prefWidth="86.0" text="Pay On Loan" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="depositAmount" blendMode="SRC_OVER" layoutX="396.0" layoutY="341.0" prefHeight="47.0" prefWidth="227.0" promptText="Please Enter Amount To Deposit">
+        <TextField fx:id="depositAmount" blendMode="SRC_OVER" layoutX="41.0" layoutY="351.0" prefHeight="47.0" prefWidth="227.0" promptText="Enter Amount To Deposit">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -184,12 +184,12 @@
                 <Font name="Calisto MT" size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="396.0" layoutY="107.0" prefHeight="21.0" prefWidth="120.0" text="Loan Balance">
+        <Label layoutX="383.0" layoutY="138.0" prefHeight="21.0" prefWidth="120.0" text="Loan Balance">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x32" />
             </font>
         </Label>
-        <TextArea fx:id="cusLoanBalance" editable="false" layoutX="396.0" layoutY="128.0" prefHeight="21.0" prefWidth="227.0"  >
+        <TextArea fx:id="cusLoanBalance" editable="false" layoutX="383.0" layoutY="159.0" prefHeight="21.0" prefWidth="227.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -200,7 +200,7 @@
                 <InnerShadow />
             </effect>
         </TextArea>
-        <TextField fx:id="paymentAmount" blendMode="SRC_OVER" layoutX="396.0" layoutY="203.0" prefHeight="47.0" prefWidth="227.0" promptText="Enter Amount of Funds To Pay">
+        <TextField fx:id="paymentAmount" blendMode="SRC_OVER" layoutX="383.0" layoutY="238.0" prefHeight="47.0" prefWidth="227.0" promptText="Enter Amount of Funds To Pay">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -211,20 +211,20 @@
                 <Font name="Calisto MT" size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="453.0" layoutY="320.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
+        <Label layoutX="98.0" layoutY="330.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <TextArea fx:id="monthlyChecking" editable="false" layoutX="20.0" layoutY="455.0" prefHeight="200.0" prefWidth="476.0" >
+        <TextArea fx:id="monthlyChecking" editable="false" layoutX="14.0" layoutY="467.0" prefHeight="200.0" prefWidth="487.0">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font></TextArea>
-        <TextArea fx:id="monthlyCC" editable="false" layoutX="529.0" layoutY="455.0" prefHeight="200.0" prefWidth="476.0">
+        <TextArea fx:id="monthlyCC" editable="false" layoutX="513.0" layoutY="467.0" prefHeight="200.0" prefWidth="504.0">
          <font>
             <Font name="Bodoni MT" size="14.0" />
          </font></TextArea>
-        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="776.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Initiate Transfer" textAlignment="CENTER">
+        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="776.0" layoutY="252.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Initiate Transfer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -232,7 +232,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="paymentButton" contentDisplay="CENTER" layoutX="446.0" layoutY="258.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Submit Payment" textAlignment="CENTER">
+        <Button fx:id="paymentButton" contentDisplay="CENTER" layoutX="433.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Submit Payment" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -240,7 +240,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="441.0" layoutY="395.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Submit Deposit" textAlignment="CENTER">
+        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="86.0" layoutY="405.0" mnemonicParsing="false" onAction="#deposit" prefHeight="25.0" prefWidth="127.0" text="Submit Deposit" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -248,12 +248,12 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <Label layoutX="41.0" layoutY="183.0" prefHeight="21.0" prefWidth="127.0" text="Saving Balance">
+      <Label layoutX="42.0" layoutY="182.0" prefHeight="21.0" prefWidth="127.0" text="Saving Balance">
          <font>
             <Font name="Bodoni MT" size="16.0" fx:id="x31" />
          </font>
       </Label>
-      <TextArea fx:id="cusSavingBalance" editable="false" layoutX="41.0" layoutY="204.0" prefHeight="37.0" prefWidth="227.0" >
+      <TextArea fx:id="cusSavingBalance" editable="false" layoutX="42.0" layoutY="203.0" prefHeight="37.0" prefWidth="227.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -264,5 +264,29 @@
             <InnerShadow />
          </effect>
       </TextArea>
+      <TextField fx:id="withdrawAmount1" blendMode="SRC_OVER" layoutX="383.0" layoutY="353.0" prefHeight="47.0" prefWidth="227.0" promptText="Enter Amount To Withdrawl">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <effect>
+            <InnerShadow blurType="ONE_PASS_BOX" />
+         </effect>
+         <font>
+            <Font name="Calisto MT" size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="440.0" layoutY="332.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
+         <font>
+            <Font name="Constantia Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="428.0" layoutY="407.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
