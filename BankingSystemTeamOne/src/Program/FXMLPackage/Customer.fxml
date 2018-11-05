@@ -17,7 +17,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CustomerController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-2.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-7.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
                 <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
                     <stops>
@@ -77,37 +77,21 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x221" />
             </font>
         </Label>
-        <Label layoutX="440.0" layoutY="123.0" prefHeight="18.0" prefWidth="103.0" text="Transfer Funds" textFill="#184c80" underline="true">
+        <Label layoutX="458.0" layoutY="125.0" prefHeight="18.0" prefWidth="103.0" text="Transfer Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="370.0" layoutY="143.0" prefHeight="21.0" prefWidth="243.0" text="Amount of Funds To Transfer">
+        <Label alignment="CENTER" layoutX="389.0" layoutY="146.0" prefHeight="21.0" prefWidth="243.0" text="Amount of Funds To Transfer">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x211" />
             </font>
         </Label>
-        <Label layoutX="42.0" layoutY="267.0" prefHeight="21.0" prefWidth="127.0" text="Checking Balance">
+        <Label layoutX="42.0" layoutY="222.0" prefHeight="21.0" prefWidth="127.0" text="Select Checking">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x31" />
             </font>
         </Label>
-        <TextArea fx:id="customerIDText" editable="false" layoutX="42.0" layoutY="141.0" prefHeight="38.0" prefWidth="227.0">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
-        <TextArea fx:id="cusCheckingBalance" editable="false" layoutX="42.0" layoutY="286.0" prefHeight="37.0" prefWidth="227.0">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <TextArea fx:id="cusAccountStatus" editable="false" layoutX="777.0" layoutY="197.0" prefHeight="21.0" prefWidth="227.0">
             <font>
                 <Font size="14.0" />
@@ -116,12 +100,12 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextArea>
-        <Label layoutX="370.0" layoutY="214.0" prefHeight="21.0" prefWidth="243.0" text="Account Type">
+        <Label alignment="CENTER" layoutX="388.0" layoutY="216.0" prefHeight="21.0" prefWidth="243.0" text="Account Type">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-        <ComboBox fx:id="accountType1" layoutX="370.0" layoutY="234.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account Type">
+        <ComboBox fx:id="accountType1" layoutX="388.0" layoutY="236.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account">
 
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -152,7 +136,7 @@
                 <Font name="Calisto MT" size="13.0" />
             </font>
         </TextField>
-        <TextField fx:id="transferAmount" blendMode="SRC_OVER" layoutX="370.0" layoutY="164.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Amount of Funds To Transfer">
+        <TextField fx:id="transferAmount" blendMode="SRC_OVER" layoutX="388.0" layoutY="166.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Amount of Funds To Transfer">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -194,7 +178,7 @@
             <font>
                 <Font name="Bodoni MT" size="14.0" />
             </font></TextArea>
-        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="428.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Initiate Transfer" textAlignment="CENTER">
+        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="446.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Initiate Transfer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -218,20 +202,12 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Label layoutX="43.0" layoutY="195.0" prefHeight="21.0" prefWidth="127.0" text="Saving Balance">
+        <Label layoutX="42.0" layoutY="176.0" prefHeight="21.0" prefWidth="127.0" text="Select Savings">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x31" />
             </font>
         </Label>
-        <TextArea fx:id="cusSavingBalance" editable="false" layoutX="43.0" layoutY="216.0" prefHeight="37.0" prefWidth="227.0">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
-        <TextField fx:id="withdrawAmount1" blendMode="SRC_OVER" layoutX="367.0" layoutY="353.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Amount To Withdrawl">
+        <TextField fx:id="withdrawAmount1" blendMode="SRC_OVER" layoutX="385.0" layoutY="355.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Amount To Withdrawl">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -239,12 +215,12 @@
                 <Font name="Calisto MT" size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="440.0" layoutY="332.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
+        <Label layoutX="458.0" layoutY="334.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="428.0" layoutY="407.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
+        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="446.0" layoutY="409.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -252,7 +228,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <TextField editable="false" layoutX="37.0" layoutY="62.0" prefHeight="31.0" prefWidth="243.0">
+      <TextField id="CustomerNameID" editable="false" layoutX="37.0" layoutY="62.0" prefHeight="31.0" prefWidth="243.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -262,7 +238,7 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x21" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="285.0" layoutY="62.0" prefHeight="31.0" prefWidth="275.0">
+      <TextField id="CustomerAddressID" editable="false" layoutX="285.0" layoutY="62.0" prefHeight="31.0" prefWidth="275.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -272,7 +248,7 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x2131" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="565.0" layoutY="62.0" prefHeight="31.0" prefWidth="58.0">
+      <TextField id="CustomerStateID" editable="false" layoutX="565.0" layoutY="62.0" prefHeight="31.0" prefWidth="58.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -282,7 +258,7 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x21311" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="628.0" layoutY="62.0" prefHeight="31.0" prefWidth="112.0">
+      <TextField id="CustomerZipCodeID" editable="false" layoutX="628.0" layoutY="62.0" prefHeight="31.0" prefWidth="112.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -292,7 +268,7 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x213111" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="747.0" layoutY="62.0" prefHeight="31.0" prefWidth="120.0">
+      <TextField id="CusatomerATMID" editable="false" layoutX="747.0" layoutY="62.0" prefHeight="31.0" prefWidth="120.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -310,5 +286,22 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <ComboBox id="selectSavingsCombo" layoutX="41.0" layoutY="199.0" prefHeight="25.0" prefWidth="227.0" />
+      <ComboBox id="selectCheckingCombo" layoutX="41.0" layoutY="243.0" prefHeight="19.0" prefWidth="227.0" />
+      <TextField id="CustomerNameID" fx:id="customerIIDText" editable="false" layoutX="42.0" layoutY="145.0" prefHeight="31.0" prefWidth="227.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Label layoutX="42.0" layoutY="269.0" prefHeight="21.0" prefWidth="127.0" text="Balance">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x311" />
+         </font>
+      </Label>
+      <TextField id="CustomerNameID" fx:id="BalanceID" editable="false" layoutX="42.0" layoutY="292.0" prefHeight="31.0" prefWidth="227.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
     </children>
 </AnchorPane>

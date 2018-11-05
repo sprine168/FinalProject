@@ -39,7 +39,7 @@ public class CustomerController implements Initializable{
 	public Button logoutButton;
 
 	@FXML
-	public TextArea customerIDText;
+	public TextField customerIDText;
 
 	@FXML
 	public TextArea cusCheckingBalance;
