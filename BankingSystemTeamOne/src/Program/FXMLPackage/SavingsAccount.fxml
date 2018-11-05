@@ -5,6 +5,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Reflection?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CreateAccountController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CreateAccountController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-7.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
          <fill>
@@ -26,7 +27,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-        <Label layoutX="377.0" layoutY="-6.0" prefHeight="40.0" prefWidth="270.0" text="Create New Customer Account" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+        <Label layoutX="415.0" layoutY="-6.0" prefHeight="40.0" prefWidth="261.0" text="Create New Savings Acocunt" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
             <font>
                 <Font name="Constantia Bold" size="18.0" />
             </font>
@@ -55,7 +56,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <TextArea fx:id="createCusSSN" layoutX="26.0" layoutY="89.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customers SSN Number">
+        <TextArea fx:id="createCusSSN" editable="false" layoutX="26.0" layoutY="89.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customers SSN Number">
             <font>
                 <Font size="14.0" />
             </font>
@@ -63,7 +64,7 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextArea>
-        <TextArea fx:id="cusInitBalance" layoutX="750.0" layoutY="166.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Starting Account Balance">
+        <TextArea fx:id="cusInitBalance" layoutX="742.0" layoutY="166.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Starting Account Balance">
             <font>
                 <Font size="14.0" />
             </font>
@@ -71,17 +72,17 @@
                 <Cursor fx:constant="TEXT" />
             </cursor>
         </TextArea>
-        <Label layoutX="758.0" layoutY="68.0" prefHeight="25.0" prefWidth="235.0" text="Account Type">
+        <Label layoutX="757.0" layoutY="68.0" prefHeight="25.0" prefWidth="235.0" text="Account Type">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-		<ComboBox fx:id="accountTypeBox" layoutX="750.0" layoutY="89.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account Type">
+		<ComboBox fx:id="accountTypeBox" layoutX="744.0" layoutY="89.0" prefHeight="47.0" prefWidth="235.0" promptText="Select Account Type">
 
 		    <items>
 		        <FXCollections fx:factory="observableArrayList">
-		            <String fx:value="Checking Account" />
-		            <String fx:value="Saving Account" />
+		            <String fx:value="Gold/Diamond" />
+		            <String fx:value="TMB" />
 		        </FXCollections>
 		    </items>
 
@@ -100,12 +101,12 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Label layoutX="757.0" layoutY="231.0" prefHeight="18.0" prefWidth="220.0" text="Today's Date">
+        <Label layoutX="750.0" layoutY="311.0" prefHeight="25.0" prefWidth="227.0" text="Today's Date">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x32" />
             </font>
         </Label>
-        <TextArea fx:id="date" layoutX="750.0" layoutY="255.0" prefHeight="47.0" prefWidth="243.0" promptText="mm-dd-yyyy">
+        <TextArea fx:id="date" layoutX="489.0" layoutY="332.0" prefHeight="47.0" prefWidth="235.0" promptText="mm-dd-yyyy">
             <font>
                 <Font size="14.0" />
             </font>
@@ -118,7 +119,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x21" />
             </font>
         </Label>
-        <TextArea fx:id="createCusFName" layoutX="26.0" layoutY="164.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customer's First Name">
+        <TextArea fx:id="createCusFName" editable="false" layoutX="26.0" layoutY="164.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customer's First Name">
             <font>
                 <Font size="14.0" />
             </font>
@@ -131,7 +132,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x211" />
             </font>
         </Label>
-        <TextArea fx:id="createCusLName" layoutX="26.0" layoutY="236.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customer's Last Name">
+        <TextArea fx:id="createCusLName" editable="false" layoutX="26.0" layoutY="236.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customer's Last Name">
             <font>
                 <Font size="14.0" />
             </font>
@@ -144,7 +145,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2112" />
             </font>
         </Label>
-        <TextArea fx:id="createCusAddress" layoutX="26.0" layoutY="311.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Street Address">
+        <TextArea fx:id="createCusAddress" editable="false" layoutX="26.0" layoutY="311.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Street Address">
             <font>
                 <Font size="14.0" />
             </font>
@@ -157,7 +158,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x21121" />
             </font>
         </Label>
-        <TextArea fx:id="createCusCity" layoutX="26.0" layoutY="390.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter City">
+        <TextArea fx:id="createCusCity" editable="false" layoutX="26.0" layoutY="390.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter City">
             <font>
                 <Font size="14.0" />
             </font>
@@ -170,7 +171,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x211211" />
             </font>
         </Label>
-        <TextArea fx:id="createCusState" layoutX="26.0" layoutY="466.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter State">
+        <TextArea fx:id="createCusState" editable="false" layoutX="26.0" layoutY="466.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter State">
             <font>
                 <Font size="14.0" />
             </font>
@@ -183,7 +184,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2112111" />
             </font>
         </Label>
-        <TextArea fx:id="createCusZip" layoutX="28.0" layoutY="549.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Zip Code">
+        <TextArea fx:id="createCusZip" editable="false" layoutX="28.0" layoutY="549.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Zip Code">
             <font>
                 <Font size="14.0" />
             </font>
@@ -201,7 +202,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x22" />
             </font>
         </Label>
-        <Button fx:id="createCus" contentDisplay="CENTER" layoutX="764.0" layoutY="446.0" mnemonicParsing="false" onAction="#createCustomer" prefHeight="40.0" prefWidth="199.0" text="Create New Saving Account" textAlignment="CENTER">
+        <Button fx:id="createCus" contentDisplay="CENTER" layoutX="783.0" layoutY="470.0" mnemonicParsing="false" onAction="#createCustomer" prefHeight="40.0" prefWidth="161.0" text="Create New Customer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -209,12 +210,12 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <Label fx:id="atm" layoutX="757.0" layoutY="322.0" prefHeight="25.0" prefWidth="220.0" text="ATM Accessible">
+      <Label fx:id="atm" layoutX="749.0" layoutY="395.0" prefHeight="25.0" prefWidth="227.0" text="ATM Accessible">
          <font>
             <Font name="Bodoni MT" size="16.0" fx:id="x32" />
          </font>
       </Label>
-      <TextArea fx:id="atmCard" layoutX="751.0" layoutY="346.0" prefHeight="47.0" prefWidth="243.0" promptText="1 for yes 0 for no">
+      <TextArea fx:id="atmCard" layoutX="742.0" layoutY="418.0" prefHeight="47.0" prefWidth="235.0" promptText="1 for yes 0 for no">
          <font>
             <Font size="14.0" />
          </font>
@@ -222,5 +223,27 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextArea>
+      <DatePicker layoutX="742.0" layoutY="332.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Date" />
+      <Label layoutX="757.0" layoutY="226.0" prefHeight="25.0" prefWidth="220.0" text="Is This An Account Backup?">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x221" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountTypeBox1" layoutX="742.0" layoutY="251.0" prefHeight="47.0" prefWidth="235.0" promptText="Select Account Type">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Gold/Diamond" />
+               <String fx:value="TMB" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Label layoutX="497.0" layoutY="311.0" prefHeight="25.0" prefWidth="227.0" text="This is the old date box.">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x2211" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

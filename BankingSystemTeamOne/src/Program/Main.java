@@ -24,13 +24,12 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 /*
-    TODO Come up with a better description for what the program is designed to do...
     This program is for a banking system to maintain information about customers. The customers can interact with their
     accounts. The bank tellers can interact with customer accounts, and bank managers can do everything a teller can do
-    and more.
+    and also manipulate credit/loan accounts.
 */
-
 
 public class Main extends Application {
     static class ClosingThread extends Thread {

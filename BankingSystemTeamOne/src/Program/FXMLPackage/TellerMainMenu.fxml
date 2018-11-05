@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="Program.ControllerPackage.TellerController" id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.TellerController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
@@ -24,7 +24,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="426.0" prefHeight="40.0" prefWidth="173.0" text="Teller Program.Main Domain" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+        <Label layoutX="426.0" prefHeight="40.0" prefWidth="156.0" text="Teller Main Menu" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
             <font>
                 <Font name="Constantia Bold" size="18.0" />
             </font>
@@ -70,7 +70,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="searchButton" contentDisplay="CENTER" layoutX="98.0" layoutY="258.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" onAction="#telSearch" text="Search Customers" textAlignment="CENTER">
+        <Button fx:id="searchButton" contentDisplay="CENTER" layoutX="98.0" layoutY="258.0" mnemonicParsing="false" onAction="#telSearch" prefHeight="30.0" prefWidth="145.0" text="Search Customers" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -83,34 +83,12 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x21111" />
             </font>
         </Label>
-        <Button fx:id="createSavingsButton" contentDisplay="CENTER" layoutX="728.0" layoutY="192.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" onAction="#createAccount" text="Create New Saving Account" textAlignment="CENTER">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-                <Reflection />
-            </effect>
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Button>
         <Label layoutX="765.0" layoutY="131.0" prefHeight="18.0" prefWidth="136.0" text="Create New Account" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="createCheckingButton" contentDisplay="CENTER" layoutX="728.0" layoutY="264.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" onAction="#createAccount" text="Create New Checking Account" textAlignment="CENTER">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <effect>
-                <Reflection />
-            </effect>
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Button>
-        <Button fx:id="createLoanButton" contentDisplay="CENTER" layoutX="728.0" layoutY="342.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="210.0" onAction="#createAccount" text="Create New Loan Account" textAlignment="CENTER">
+        <Button fx:id="createCheckingButton" contentDisplay="CENTER" layoutX="728.0" layoutY="192.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="30.0" prefWidth="210.0" text="Create Initial Account" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
