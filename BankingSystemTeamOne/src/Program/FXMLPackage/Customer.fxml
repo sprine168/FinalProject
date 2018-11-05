@@ -67,7 +67,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Label layoutX="155.0" layoutY="447.0" prefHeight="25.0" prefWidth="235.0" text="Monthly Statement for Checking">
+        <Label layoutX="143.0" layoutY="447.0" prefHeight="25.0" prefWidth="235.0" text="Monthly Statement for Checking">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x22" />
             </font>
@@ -77,7 +77,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x221" />
             </font>
         </Label>
-        <Label layoutX="458.0" layoutY="125.0" prefHeight="18.0" prefWidth="103.0" text="Transfer Funds" textFill="#184c80" underline="true">
+        <Label layoutX="461.0" layoutY="111.0" prefHeight="18.0" prefWidth="103.0" text="Transfer Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
@@ -105,7 +105,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-        <ComboBox fx:id="accountType1" layoutX="388.0" layoutY="236.0" prefHeight="47.0" prefWidth="243.0" promptText="Please Select Account">
+        <ComboBox fx:id="accountType1" layoutX="388.0" layoutY="236.0" prefHeight="31.0" prefWidth="243.0" promptText="Please Select Account">
 
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -170,7 +170,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <TextArea fx:id="monthlyChecking" editable="false" layoutX="14.0" layoutY="467.0" prefHeight="200.0" prefWidth="487.0">
+        <TextArea fx:id="monthlyChecking" editable="false" layoutX="7.0" layoutY="467.0" prefHeight="200.0" prefWidth="487.0">
             <font>
                 <Font name="Bodoni MT" size="14.0" />
             </font></TextArea>
@@ -178,7 +178,7 @@
             <font>
                 <Font name="Bodoni MT" size="14.0" />
             </font></TextArea>
-        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="446.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Initiate Transfer" textAlignment="CENTER">
+        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="449.0" layoutY="277.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Initiate Transfer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -207,7 +207,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x31" />
             </font>
         </Label>
-        <TextField fx:id="withdrawAmount1" blendMode="SRC_OVER" layoutX="385.0" layoutY="355.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Amount To Withdrawl">
+        <TextField fx:id="withdrawAmount1" blendMode="SRC_OVER" layoutX="391.0" layoutY="339.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Amount To Withdrawl">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -215,12 +215,12 @@
                 <Font name="Calisto MT" size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="458.0" layoutY="334.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
+        <Label layoutX="462.0" layoutY="314.0" prefHeight="18.0" prefWidth="103.0" text="Deposit Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="446.0" layoutY="409.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
+        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="450.0" layoutY="392.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
