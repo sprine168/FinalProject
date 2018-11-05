@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CreateAccountController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.LoanAccountController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" layoutX="-3.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
@@ -81,8 +81,8 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x321" />
          </font>
       </Label>
-      <TextField layoutX="32.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Customer ID for Loan" />
-        <ComboBox layoutX="731.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Select Account Type">
+      <TextField fx:id="cusID" layoutX="32.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Customer ID for Loan" />
+        <ComboBox fx:id="loanType" layoutX="731.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Select Account Type">
 
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -96,18 +96,18 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-      <TextField layoutX="731.0" layoutY="183.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
-      <TextField layoutX="731.0" layoutY="263.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
-        <DatePicker layoutX="731.0" layoutY="345.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Payment Due Date">
+      <TextField fx:id="cusLoanAmount" layoutX="731.0" layoutY="183.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
+      <TextField fx:id="cusInterestRate" layoutX="731.0" layoutY="263.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
+        <DatePicker fx:id="dueDate" layoutX="731.0" layoutY="345.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Payment Due Date">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></DatePicker>
-      <DatePicker layoutX="731.0" layoutY="420.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
+      <DatePicker fx:id="notificationDate" layoutX="731.0" layoutY="420.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </DatePicker>
-        <Button contentDisplay="CENTER" layoutX="782.0" layoutY="497.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Create New Loan" textAlignment="CENTER">
+        <Button fx:id="createLoan" contentDisplay="CENTER" layoutX="782.0" layoutY="497.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Create New Loan" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -115,7 +115,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="461.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnTeller" prefHeight="30.0" prefWidth="95.0" text="Main Menu" textAlignment="CENTER">
+        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="461.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnMan" prefHeight="30.0" prefWidth="95.0" text="Main Menu" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

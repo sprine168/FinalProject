@@ -64,6 +64,13 @@ public class ManagerController implements Initializable {
     }
 
     @FXML
+    void createLoan(ActionEvent event) throws IOException
+    {
+        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoanAccounts.fxml")), event);
+
+    }
+
+    @FXML
     void manSearch(ActionEvent event) throws IOException
     {
         String ssn = !cusIDSearch.getText().isEmpty() ? cusIDSearch.getText().toString() : "";

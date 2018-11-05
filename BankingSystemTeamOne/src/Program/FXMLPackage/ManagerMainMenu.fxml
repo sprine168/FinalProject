@@ -24,7 +24,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="410.0" prefHeight="40.0" prefWidth="199.0" text="Manager Program.Main Domain" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+        <Label layoutX="410.0" prefHeight="40.0" prefWidth="300.0" text="Manager Program Main Page" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
             <font>
                 <Font name="Constantia Bold" size="18.0" />
             </font>
@@ -110,7 +110,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="createLoanButton" contentDisplay="CENTER" layoutX="728.0" layoutY="342.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="30.0" prefWidth="210.0" text="Create New Loan Account" textAlignment="CENTER">
+        <Button fx:id="createLoanButton" contentDisplay="CENTER" layoutX="728.0" layoutY="342.0" mnemonicParsing="false" onAction="#createLoan" prefHeight="30.0" prefWidth="210.0" text="Create New Loan Account" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
