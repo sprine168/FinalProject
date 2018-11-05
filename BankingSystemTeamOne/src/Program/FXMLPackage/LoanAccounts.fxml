@@ -56,7 +56,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-        <Label layoutX="739.0" layoutY="320.0" prefHeight="25.0" prefWidth="227.0" text="Payment Due Date">
+        <Label layoutX="737.0" layoutY="395.0" prefHeight="25.0" prefWidth="227.0" text="Payment Due Date">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x32" />
             </font>
@@ -66,17 +66,17 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="739.0" layoutY="158.0" prefHeight="25.0" prefWidth="227.0" text="Initial Loan Balance">
+        <Label layoutX="738.0" layoutY="236.0" prefHeight="25.0" prefWidth="227.0" text="Initial Loan Balance">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x22" />
             </font>
         </Label>
-      <Label layoutX="739.0" layoutY="238.0" prefHeight="25.0" prefWidth="227.0" text="Interest Rate">
+      <Label layoutX="737.0" layoutY="313.0" prefHeight="25.0" prefWidth="227.0" text="Interest Rate">
          <font>
             <Font name="Bodoni MT" size="16.0" fx:id="x221" />
          </font>
       </Label>
-      <Label layoutX="738.0" layoutY="397.0" prefHeight="25.0" prefWidth="227.0" text="Date to Notify of Payment">
+      <Label layoutX="736.0" layoutY="472.0" prefHeight="25.0" prefWidth="227.0" text="Date to Notify of Payment">
          <font>
             <Font name="Bodoni MT" size="16.0" fx:id="x321" />
          </font>
@@ -96,18 +96,18 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-      <TextField fx:id="cusLoanAmount" layoutX="731.0" layoutY="183.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
-      <TextField fx:id="cusInterestRate" layoutX="731.0" layoutY="263.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
-        <DatePicker fx:id="dueDate" layoutX="731.0" layoutY="345.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Payment Due Date">
+      <TextField fx:id="cusLoanAmount" layoutX="730.0" layoutY="261.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
+      <TextField fx:id="cusInterestRate" layoutX="729.0" layoutY="338.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
+        <DatePicker fx:id="dueDate" layoutX="729.0" layoutY="420.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Payment Due Date">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></DatePicker>
-      <DatePicker fx:id="notificationDate" layoutX="731.0" layoutY="420.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
+      <DatePicker fx:id="notificationDate" layoutX="729.0" layoutY="495.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </DatePicker>
-        <Button fx:id="createLoan" contentDisplay="CENTER" layoutX="782.0" layoutY="497.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Create New Loan" textAlignment="CENTER">
+        <Button fx:id="createLoan" contentDisplay="CENTER" layoutX="780.0" layoutY="572.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="134.0" text="Create New Loan" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -131,5 +131,11 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x21111" />
          </font>
       </Label>
+      <Label layoutX="740.0" layoutY="158.0" prefHeight="25.0" prefWidth="227.0" text="Description of Loan">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x222" />
+         </font>
+      </Label>
+      <TextField fx:id="cusLoanDesc" layoutX="732.0" layoutY="183.0" prefHeight="46.0" prefWidth="235.0" promptText="What is the loan used for." />
     </children>
 </AnchorPane>
