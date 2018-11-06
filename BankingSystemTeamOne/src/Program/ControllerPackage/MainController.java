@@ -82,7 +82,7 @@ public class MainController implements Initializable {
 	        toTellerPage(event);
 	    else if(user.equals("manager") && pass.equals("4321"))
 			toManagerPage(event);
-	    else if(pass.equals("1") && user != null && user != "" && Main.findCustomer(user)){
+	    else if(pass.equals("1") && !user.equals("") && Main.findCustomer(user)){
 	    	Customer customer = Main.getCustomer(user);
 	    	Main.currentCustomer = customer;
 	    	function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);

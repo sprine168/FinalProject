@@ -42,16 +42,16 @@ public class CustomerController implements Initializable{
 	public TextField customerIDText;
 
 	@FXML
-	public TextArea cusCheckingBalance;
+	public TextField cusCheckingBalance;
 
 	@FXML
-	public TextArea cusSavingBalance;
+	public TextField cusSavingBalance;
 
 	@FXML
-	public TextArea cusLoanBalance;
+	public TextField cusLoanBalance;
 
 	@FXML
-	public TextArea cusAccountStatus;
+	public TextField cusAccountStatus;
 
 	@FXML
 	public TextArea monthlyChecking;
@@ -67,6 +67,33 @@ public class CustomerController implements Initializable{
 
 	@FXML
 	public TextField paymentAmount;
+
+	@FXML
+	public Button transferButton1;
+
+	@FXML
+	public Button withdrawButton1;
+
+	@FXML
+	public TextField withdrawAmount1;
+
+	@FXML
+	public Button transferButton;
+
+	@FXML
+	public Button paymentButton;
+
+	@FXML
+	public Button depositButton;
+
+	@FXML
+	public ComboBox cusSelectCheckings;
+
+	@FXML
+	public ComboBox cusSelectSavings;
+
+	@FXML
+	public ComboBox accountType1;
 
 	private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
@@ -92,6 +119,7 @@ public class CustomerController implements Initializable{
 			int numberOfCheckings = 0;
 			int numberOfSavings = 0;
 			customerIDText.setText(customer.getCustomerId());
+
 			for(Account account : customer.getAccounts()){
 				if (account.getClass() == CheckingAccount.class){
 					foundChecking = true;
