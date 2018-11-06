@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -56,36 +57,79 @@ public class ManagerSubController implements Initializable {
     public TextField payment;
 
     @FXML
-    public TextArea customerIDText;
+    public TextField customerIDText;
 
     @FXML
-    public TextArea checkingBalanceText;
+    public TextField checkingBalanceText;
 
     @FXML
-    public TextArea cusAccountStatus;
+    public TextField cusAccountStatus;
 
     @FXML
-    public TextArea cusLoanBalance;
+    public TextField cusLoanBalance;
+
+    @FXML
+    public Button depositButton1;
+
+    @FXML
+    public String tellerChecking;       // This is for the comboBox. Note: For selecting account type.
+
+    @FXML
+    public String tellerSaving;         // This is for the comboBox. Note: For selecting account type.
+
+    @FXML
+    public TextField setInterestRate;
+
+    @FXML
+    public Button advanceInterestRate;
 
     @FXML
     public TextArea cusAccountStatement;
 
+    @FXML
+    public Button advanceMonth;
 
-    private void function(Parent parent, ActionEvent event){
+    @FXML
+    public TextField currentLoanRate;
+
+    @FXML
+    public DatePicker datePaymentDue;
+
+    @FXML
+    public DatePicker lastPaymentMade;
+
+    @FXML
+    public TextField currentLoanBalance;
+
+    @FXML
+    public DatePicker notifiedOfPayment;
+
+    @FXML
+    public DatePicker currentLoanPaymentDue;
+
+    @FXML
+    public TextField missedPayment;
+
+    @FXML
+    public TextArea cusAccountStatement1;
+
+    @FXML
+    public TextArea cusCheckingStatement;
+
+
+    private void function(Parent parent, ActionEvent event) {
         Scene homePageScene = new Scene(parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         app_stage.setScene(homePageScene);
     }
 
     @FXML
-    void logout(ActionEvent event) throws IOException
-    {
+    void logout(ActionEvent event) throws IOException {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoginPage.fxml")), event);
     }
 
     @FXML
-    void returnMan(ActionEvent event) throws IOException
-    {
+    void returnMan(ActionEvent event) throws IOException {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml")), event);
     }
 

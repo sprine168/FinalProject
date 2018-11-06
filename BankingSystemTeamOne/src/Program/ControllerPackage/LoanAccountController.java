@@ -41,7 +41,10 @@ public class LoanAccountController implements Initializable{
     public ComboBox loanType;
 
     @FXML
-    public TextField cusID;
+    public ComboBox cusID;
+
+    @FXML
+    public TextField cusLoanDesc;
 
     private void function(Parent parent, ActionEvent event){
         Scene homePageScene = new Scene(parent);

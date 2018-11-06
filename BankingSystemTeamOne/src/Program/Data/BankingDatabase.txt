@@ -15,7 +15,6 @@ Customer Account
 563432913,1532 Lovers Ln,St. Joseph,MO,64502,Martin ,Williams,1
 345679898,703 Park Ln,St. Joseph,MO,64501,Broderick,Jones,0
 123456789,509 fake st.,st. joseph,mo,64504,Steven,prine,1
-,,,,,,,0
 
 Savings Account
 423453245,68541.00,1.90,06-18-2017,04-19-2019
@@ -61,7 +60,6 @@ Checking Account
 345879912,1567.32,gold,1,1,02-12-2016
 345599870,0.01,regular,0,0,04-04-2018
 123456789,150.00,,,0,10-11-2018
-,0.00,,,0,56-04-2018
 
 Loan Account
 423453245,ShortLoan,550.00,0.056,10-01-2018,09-25-2018,5.50,09-01-2018,0,ST

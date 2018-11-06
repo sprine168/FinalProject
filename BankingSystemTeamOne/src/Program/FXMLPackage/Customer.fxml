@@ -51,7 +51,7 @@
             </font>
         </Label>
         <Label font="$x1" layoutX="479.0" layoutY="745.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
-        <Label layoutX="778.0" layoutY="149.0" prefHeight="21.0" prefWidth="120.0" text="Account Status">
+        <Label layoutX="778.0" layoutY="199.0" prefHeight="21.0" prefWidth="120.0" text="Account Status">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x3" />
             </font>
@@ -110,7 +110,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-        <Label layoutX="779.0" layoutY="275.0" prefHeight="21.0" prefWidth="127.0" text="Payment Amount">
+        <Label layoutX="779.0" layoutY="325.0" prefHeight="21.0" prefWidth="127.0" text="Payment Amount">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x212" />
             </font>
@@ -120,7 +120,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="778.0" layoutY="208.0" prefHeight="21.0" prefWidth="120.0" text="Loan Balance">
+        <Label layoutX="778.0" layoutY="258.0" prefHeight="21.0" prefWidth="120.0" text="Loan Balance">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x32" />
             </font>
@@ -146,7 +146,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="paymentButton" contentDisplay="CENTER" layoutX="828.0" layoutY="327.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Submit Payment" textAlignment="CENTER">
+        <Button fx:id="paymentButton" contentDisplay="CENTER" layoutX="828.0" layoutY="377.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Submit Payment" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -303,20 +303,31 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="cusAccountStatus" editable="false" layoutX="778.0" layoutY="170.0" prefHeight="31.0" prefWidth="227.0">
+      <TextField fx:id="cusAccountStatus" editable="false" layoutX="778.0" layoutY="220.0" prefHeight="31.0" prefWidth="227.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="cusLoanBalance" editable="false" layoutX="778.0" layoutY="234.0" prefHeight="31.0" prefWidth="227.0">
+      <TextField fx:id="cusLoanBalance" editable="false" layoutX="778.0" layoutY="284.0" prefHeight="31.0" prefWidth="227.0">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="paymentAmount" layoutX="778.0" layoutY="297.0" prefHeight="31.0" prefWidth="227.0" promptText="Enter Amount of Funds To Pay">
+      <TextField fx:id="paymentAmount" layoutX="778.0" layoutY="347.0" prefHeight="31.0" prefWidth="227.0" promptText="Enter Amount of Funds To Pay">
          <font>
             <Font size="13.0" />
          </font>
       </TextField>
+      <ComboBox fx:id="cusLoanSelect" layoutX="778.0" layoutY="158.0" prefHeight="31.0" prefWidth="227.0" promptText="Please Select Loan Account">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Checking Account" />
+               <String fx:value="Saving Account" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
     </children>
 </AnchorPane>

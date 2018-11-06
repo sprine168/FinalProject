@@ -81,7 +81,6 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x321" />
          </font>
       </Label>
-      <TextField fx:id="cusID" layoutX="32.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Customer ID for Loan" />
         <ComboBox fx:id="loanType" layoutX="731.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Select Account Type">
 
             <items>
@@ -96,13 +95,13 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-      <TextField fx:id="cusLoanAmount" layoutX="730.0" layoutY="261.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
-      <TextField fx:id="cusInterestRate" layoutX="729.0" layoutY="338.0" prefHeight="46.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
-        <DatePicker fx:id="dueDate" layoutX="729.0" layoutY="420.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Payment Due Date">
+      <TextField fx:id="cusLoanAmount" layoutX="729.0" layoutY="261.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
+      <TextField fx:id="cusInterestRate" layoutX="729.0" layoutY="338.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
+        <DatePicker fx:id="dueDate" layoutX="729.0" layoutY="420.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Payment Due Date">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></DatePicker>
-      <DatePicker fx:id="notificationDate" layoutX="729.0" layoutY="495.0" prefHeight="47.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
+      <DatePicker fx:id="notificationDate" layoutX="729.0" layoutY="495.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -136,6 +135,7 @@
             <Font name="Bodoni MT" size="16.0" fx:id="x222" />
          </font>
       </Label>
-      <TextField fx:id="cusLoanDesc" layoutX="732.0" layoutY="183.0" prefHeight="46.0" prefWidth="235.0" promptText="What is the loan used for." />
+      <TextField fx:id="cusLoanDesc" layoutX="732.0" layoutY="183.0" prefHeight="40.0" prefWidth="235.0" promptText="What is the loan used for." />
+      <ComboBox fx:id="cusID" layoutX="32.0" layoutY="106.0" prefHeight="46.0" prefWidth="227.0" promptText="Select Customer ID" />
     </children>
 </AnchorPane>
