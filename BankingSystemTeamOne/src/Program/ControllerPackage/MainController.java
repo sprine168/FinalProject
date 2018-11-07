@@ -111,7 +111,7 @@ public class MainController implements Initializable {
 
     @FXML
     void telSearch(ActionEvent event) throws IOException {
-        if (cusIDSearch.getText() == null || cusIDSearch.getText() == "") return;
+        if (cusIDSearch.getText().equals(null) || cusIDSearch.getText().equals("")) return;
         String customerToFind = cusIDSearch.getText();
         if (Main.findCustomer(customerToFind)) {
             Main.currentCustomer = Main.getCustomer(customerToFind);

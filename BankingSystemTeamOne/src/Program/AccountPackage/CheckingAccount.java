@@ -26,6 +26,7 @@ public class CheckingAccount extends Account {
 	public String getAccountType(){
 		return accountType;
 	}
+
 	@Override
 	public String toString(){
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");

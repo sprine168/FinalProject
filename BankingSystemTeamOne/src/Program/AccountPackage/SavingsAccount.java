@@ -18,6 +18,10 @@ public class SavingsAccount extends Account {
 		this.CDDue = CDDue;
 	}
 
+	public boolean isCD(){
+		return this.CDDue != null;
+	}
+
 	@Override
 	public String toString(){
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");

@@ -60,6 +60,6 @@ public class LoanAccountController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        cusID.setItems((new CollectionController(Main.customers).getCollections()));
     }
 }
