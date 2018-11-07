@@ -180,7 +180,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <TextField id="CustomerNameID" editable="false" layoutX="14.0" layoutY="61.0" prefHeight="31.0" prefWidth="243.0">
+        <TextField id="CustomerNameID" fx:id="customerNameText" editable="false" layoutX="14.0" layoutY="61.0" prefHeight="31.0" prefWidth="243.0">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -193,7 +193,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x21" />
             </font>
         </Label>
-        <TextField id="CustomerAddressID" editable="false" layoutX="262.0" layoutY="61.0" prefHeight="31.0" prefWidth="275.0">
+        <TextField id="CustomerAddressID" fx:id="customerAddressText" editable="false" layoutX="262.0" layoutY="61.0" prefHeight="31.0" prefWidth="275.0">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -206,7 +206,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2131" />
             </font>
         </Label>
-        <TextField id="CustomerStateID" editable="false" layoutX="542.0" layoutY="61.0" prefHeight="31.0" prefWidth="58.0">
+        <TextField id="CustomerStateID" fx:id="customerStateText" editable="false" layoutX="542.0" layoutY="61.0" prefHeight="31.0" prefWidth="58.0">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -219,7 +219,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x21311" />
             </font>
         </Label>
-        <TextField id="CustomerZipCodeID" editable="false" layoutX="605.0" layoutY="61.0" prefHeight="31.0" prefWidth="112.0">
+        <TextField id="CustomerZipCodeID" fx:id="customerZipText" editable="false" layoutX="605.0" layoutY="61.0" prefHeight="31.0" prefWidth="112.0">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -232,7 +232,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x213111" />
             </font>
         </Label>
-        <TextField id="CusatomerATMID" editable="false" layoutX="724.0" layoutY="61.0" prefHeight="31.0" prefWidth="120.0">
+        <TextField id="CusatomerATMID" fx:id="customerATMText" editable="false" layoutX="724.0" layoutY="61.0" prefHeight="31.0" prefWidth="120.0">
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>
@@ -254,7 +254,7 @@
             </font>
         </Button>
         <ComboBox id="selectCheckingCombo" fx:id="cusSelectCheckings" layoutX="18.0" layoutY="246.0" prefHeight="19.0" prefWidth="227.0" />
-        <TextField id="CustomerNameID" fx:id="customerIDText" editable="false" layoutX="19.0" layoutY="139.0" prefHeight="31.0" prefWidth="227.0">
+        <TextField id="CustomerNameID" fx:id="customerIDText" editable="false" layoutX="19.0" layoutY="139.0" prefHeight="31.0" prefWidth="227.0" >
             <cursor>
                 <Cursor fx:constant="TEXT" />
             </cursor>

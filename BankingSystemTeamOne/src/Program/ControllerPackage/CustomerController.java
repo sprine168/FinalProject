@@ -50,6 +50,21 @@ public class CustomerController implements Initializable {
 	public TextField customerIDText;
 
 	@FXML
+	public TextField customerNameText;
+
+	@FXML
+	public TextField customerStateText;
+
+	@FXML
+	public TextField customerAddressText;
+
+	@FXML
+	public TextField customerZipText;
+
+	@FXML
+	public TextField customerATMText;
+
+	@FXML
 	public TextField cusCheckingBalance;
 
 	@FXML
@@ -124,9 +139,10 @@ public class CustomerController implements Initializable {
 		customer = Main.currentCustomer;
 		if (customer != null){
             customerIDText.setText(customer.getCustomerId());
-            /*
-                Add customer information here.
-             */
+            customerNameText.setText(customer.getFirstName()+" "+ customer.getLastName());
+			customerAddressText.setText(customer.getAddress()+", "+customer.getCity());
+			customerStateText.setText(customer.getState());
+			customerZipText.setText(customer.getZipCode());
             boolean foundChecking = false;
 			boolean foundSavings = false;
 			int numberOfCheckings = 0;
