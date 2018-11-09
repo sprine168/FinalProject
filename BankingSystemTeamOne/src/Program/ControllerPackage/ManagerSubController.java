@@ -93,16 +93,16 @@ public class ManagerSubController implements Initializable {
     public TextField currentLoanRate;
 
     @FXML
-    public DatePicker datePaymentDue;
+    public TextField datePaymentDue;
 
     @FXML
-    public DatePicker lastPaymentMade;
+    public TextField lastPaymentMade;
 
     @FXML
     public TextField currentLoanBalance;
 
     @FXML
-    public DatePicker notifiedOfPayment;
+    public TextField notifiedOfPayment;
 
     @FXML
     public TextField missedPayment;
