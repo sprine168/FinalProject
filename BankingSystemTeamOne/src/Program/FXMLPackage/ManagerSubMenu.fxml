@@ -95,7 +95,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-      <Label layoutX="725.0" layoutY="148.0" prefHeight="18.0" prefWidth="67.0" text="Loan Area" textFill="#184c80" underline="true">
+      <Label layoutX="723.0" layoutY="110.0" prefHeight="18.0" prefWidth="67.0" text="Loan Area" textFill="#184c80" underline="true">
          <font>
             <Font name="Constantia Bold" size="14.0" />
          </font>
@@ -190,7 +190,7 @@
                 </RadialGradient>
             </textFill>
         </Button>
-      <Button fx:id="depositButton1" contentDisplay="CENTER" layoutX="880.0" layoutY="381.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Set Interest Rate" textAlignment="CENTER">
+      <Button fx:id="depositButton1" contentDisplay="CENTER" layoutX="866.0" layoutY="380.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Set Interest Rate" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -209,7 +209,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <TextField editable="false" layoutX="10.0" layoutY="57.0" prefHeight="31.0" prefWidth="227.0">
+      <TextField fx:id="manCusName" editable="false" layoutX="10.0" layoutY="57.0" prefHeight="31.0" prefWidth="227.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -222,7 +222,7 @@
             <Font size="14.0" fx:id="x21" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="250.0" layoutY="57.0" prefHeight="31.0" prefWidth="227.0">
+      <TextField fx:id="manCusAddress" editable="false" layoutX="250.0" layoutY="57.0" prefHeight="31.0" prefWidth="227.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -235,7 +235,7 @@
             <Font size="14.0" fx:id="x213" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="484.0" layoutY="57.0" prefHeight="31.0" prefWidth="78.0">
+      <TextField fx:id="manCusState" editable="false" layoutX="484.0" layoutY="57.0" prefHeight="31.0" prefWidth="78.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -248,7 +248,7 @@
             <Font size="14.0" fx:id="x2131" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="569.0" layoutY="57.0" prefHeight="31.0" prefWidth="113.0">
+      <TextField fx:id="manCusZip" editable="false" layoutX="569.0" layoutY="57.0" prefHeight="31.0" prefWidth="113.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -261,7 +261,7 @@
             <Font size="14.0" fx:id="x2132" />
          </font>
       </Label>
-      <TextField editable="false" layoutX="689.0" layoutY="57.0" prefHeight="31.0" prefWidth="120.0">
+      <TextField fx:id="manCusAtm" editable="false" layoutX="689.0" layoutY="57.0" prefHeight="31.0" prefWidth="120.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -329,7 +329,7 @@
             <Font size="14.0" fx:id="x3211" />
          </font>
       </Label>
-      <Label layoutX="874.0" layoutY="324.0" prefHeight="25.0" prefWidth="140.0" text="Set Interest Rate">
+      <Label layoutX="859.0" layoutY="324.0" prefHeight="25.0" prefWidth="140.0" text="Set Interest Rate">
          <font>
             <Font size="14.0" fx:id="x3212" />
          </font>
@@ -345,7 +345,7 @@
             <Blend mode="MULTIPLY" />
          </effect>
       </Button>
-      <TextField fx:id="setInterestRate" layoutX="873.0" layoutY="349.0" prefHeight="30.0" prefWidth="140.0" promptText="Enter Interest Rate">
+      <TextField fx:id="setInterestRate" layoutX="858.0" layoutY="349.0" prefHeight="30.0" prefWidth="140.0" promptText="Enter Interest Rate">
          <font>
             <Font size="13.0" />
          </font>
@@ -428,5 +428,6 @@
       </TextField>
       <TextField fx:id="datePaymentDue" layoutX="853.0" layoutY="209.0" prefHeight="31.0" prefWidth="149.0" />
       <TextField fx:id="lastPaymentMade" layoutX="853.0" layoutY="277.0" prefHeight="31.0" prefWidth="149.0" />
+      <ComboBox fx:id="manCusSelect" layoutX="676.0" layoutY="145.0" prefWidth="150.0" />
     </children>
 </AnchorPane>

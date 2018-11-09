@@ -11,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -81,12 +78,6 @@ public class ManagerSubController implements Initializable {
     public TextField setInterestRate;
 
     @FXML
-    public Button advanceInterestRate;
-
-    @FXML
-    public TextArea cusAccountStatement;
-
-    @FXML
     public Button advanceMonth;
 
     @FXML
@@ -115,6 +106,24 @@ public class ManagerSubController implements Initializable {
 
     @FXML
     public TextArea cusLoanStatement;
+
+    @FXML
+    public TextField manCusName;
+
+    @FXML
+    public TextField manCusAddress;
+
+    @FXML
+    public TextField manCusState;
+
+    @FXML
+    public TextField manCusZip;
+
+    @FXML
+    public TextField manCusAtm;
+
+    @FXML
+    public ComboBox manCusSelect;
 
 
     private void function(Parent parent, ActionEvent event) {
@@ -154,5 +163,4 @@ public class ManagerSubController implements Initializable {
             }
         }
     }
-
 }
