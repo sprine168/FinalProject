@@ -105,16 +105,16 @@ public class ManagerSubController implements Initializable {
     public DatePicker notifiedOfPayment;
 
     @FXML
-    public DatePicker currentLoanPaymentDue;
-
-    @FXML
     public TextField missedPayment;
 
     @FXML
-    public TextArea cusAccountStatement1;
+    public TextArea cusCheckingStatement;
 
     @FXML
-    public TextArea cusCheckingStatement;
+    public TextField currentLoanPaymentDue;
+
+    @FXML
+    public TextArea cusLoanStatement;
 
 
     private void function(Parent parent, ActionEvent event) {

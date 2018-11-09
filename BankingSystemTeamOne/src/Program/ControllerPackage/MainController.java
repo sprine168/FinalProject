@@ -65,6 +65,9 @@ public class MainController implements Initializable {
 
     public TextField cusIDSearch;
 
+    @FXML
+    public Button telPageBtton;
+
     private void function(Parent parent, ActionEvent event) {
         Scene homePageScene = new Scene(parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

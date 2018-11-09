@@ -85,6 +85,12 @@ public class CreateAccountController implements Initializable {
 	@FXML
 	public ComboBox accountTypeBox;
 
+	@FXML
+    public Label atm;
+
+	@FXML
+	public ComboBox accountTypeBox1;
+
 	ArrayList<Object> accounts = new ArrayList<Object>();
 	
 	Stage dialogStage;

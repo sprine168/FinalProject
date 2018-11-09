@@ -95,7 +95,10 @@ public class CustomerController implements Initializable{
 	@FXML
 	public ComboBox accountType1;
 
-	private void function(Parent parent, ActionEvent event){
+	@FXML
+    public ComboBox cusLoanSelect;
+
+    private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		//app_stage.hide();
