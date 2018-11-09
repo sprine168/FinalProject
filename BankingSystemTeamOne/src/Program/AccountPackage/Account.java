@@ -22,6 +22,10 @@ public abstract class Account {
 		balance += amountToDeposit;
 	}
 
+	public String indicator() {
+		return String.format("%2.2f", balance);
+	}
+
 	public String getCustomerId(){
 		return customerId;
 	}
@@ -30,13 +34,18 @@ public abstract class Account {
 		return balance;
 	}
 	// Method that will allow the closing of an Account
+
 	public double CloseAccount() {
 		double amountToReturn = 0;
 		if (this.getClass() != Loan.class) {
+			if (this.getClass() == SavingsAccount.class && ((SavingsAccount) this).isCD()){
+
+			}
 			amountToReturn = balance;
 			balance = 0;
-		}
+		}else{
 
+		}
 		return amountToReturn;
 	}
 

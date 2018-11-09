@@ -113,20 +113,20 @@ public class CreateAccountController implements Initializable {
 
 	public void createCustomer(ActionEvent event) throws ParseException {
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-		String ssn = (!createCusSSN.getText().isEmpty() && createCusSSN.getText() != "") ? createCusSSN.getText() : "";
-		String fName = (!createCusFName.getText().isEmpty() && createCusFName.getText() != "") ? createCusFName.getText() : "";
-		String lName = (!createCusLName.getText().isEmpty() && createCusLName.getText() != "") ? createCusLName.getText() : "";
-		String address = (!createCusAddress.getText().isEmpty() && createCusAddress.getText() != "") ? createCusAddress.getText() : "";
-		String city = (!createCusCity.getText().isEmpty() && createCusCity.getText() != "") ? createCusCity.getText() : "";
-		String state = (!createCusState.getText().isEmpty() && createCusState.getText() != "") ? createCusState.getText() : "";
-		String zip = (!createCusZip.getText().isEmpty() && createCusZip.getText() != "") ? createCusZip.getText() : "";
-		String accountType = (accountTypeBox.getSelectionModel().getSelectedItem() != null) ?
+		String ssn = (!createCusSSN.getText().isEmpty() && createCusSSN.getText().equals("")) ? createCusSSN.getText() : "";
+		String fName = (!createCusFName.getText().isEmpty() && createCusFName.getText().equals("")) ? createCusFName.getText() : "";
+		String lName = (!createCusLName.getText().isEmpty() && createCusLName.getText().equals("")) ? createCusLName.getText() : "";
+		String address = (!createCusAddress.getText().isEmpty() && createCusAddress.getText().equals("")) ? createCusAddress.getText() : "";
+		String city = (!createCusCity.getText().isEmpty() && createCusCity.getText().equals("")) ? createCusCity.getText() : "";
+		String state = (!createCusState.getText().isEmpty() && createCusState.getText().equals("")) ? createCusState.getText() : "";
+		String zip = (!createCusZip.getText().isEmpty() && createCusZip.getText().equals("")) ? createCusZip.getText() : "";
+		String accountType = (accountTypeBox.getSelectionModel().getSelectedItem().equals(null)) ?
                 accountTypeBox.getSelectionModel().getSelectedItem().toString() : "Checking Account";
-		double initialBalance = (!cusInitBalance.getText().isEmpty() && cusInitBalance.getText() != "")
+		double initialBalance = (!cusInitBalance.getText().isEmpty() && cusInitBalance.getText().equals(""))
 				? Double.parseDouble(cusInitBalance.getText()) : 0.0;
-		int atm = (!atmCard.getText().isEmpty() && atmCard.getText() != "")
+		int atm = (!atmCard.getText().isEmpty() && atmCard.getText().equals(""))
 				? Integer.parseInt(atmCard.getText()) : 0;
-		Date currentDate = (!date.getText().isEmpty() && date.getText().trim() != "") ? df.parse(date.getText().trim()) : new Date();
+		Date currentDate = (!date.getText().isEmpty() && date.getText().trim().equals("")) ? df.parse(date.getText().trim()) : new Date();
 
 		Customer nCustomer = new Customer(ssn, address, city, state, zip, fName, lName, atm);
 		Main.addCustomer(nCustomer);

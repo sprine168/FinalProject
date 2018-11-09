@@ -9,7 +9,7 @@ public class Loan extends Account {
 
 	// Variables for the loan class
 	protected String description;
-	protected static double currentInterestRate;
+	protected double currentInterestRate;
 	protected Date datePaymentDue;
 	protected Date dateNotifiedOfPayment;
 	protected double currentPaymentDue;
@@ -38,8 +38,12 @@ public class Loan extends Account {
 		return currentInterestRate;
 	}
 
-	public static void setCurrentInterestRate(double currentInterest) {
+	public void setCurrentInterestRate(double currentInterest) {
 		currentInterestRate = currentInterest;
+	}
+
+	public void advanceAMonth(){
+
 	}
 	
 	    @Override
