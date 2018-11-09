@@ -334,7 +334,7 @@
             <Font size="14.0" fx:id="x3212" />
          </font>
       </Label>
-      <Button fx:id="advanceMonth" contentDisplay="CENTER" layoutX="678.0" layoutY="418.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" text="Advance Month" textAlignment="CENTER" textFill="#3f03ff">
+      <Button fx:id="advanceMonth" contentDisplay="CENTER" layoutX="678.0" layoutY="418.0" onAction="#advanceAMonth" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" text="Advance Month" textAlignment="CENTER" textFill="#3f03ff">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -360,7 +360,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Label layoutX="854.0" layoutY="184.0" prefHeight="25.0" prefWidth="149.0" text="Date Payment Due">
+      <Label fx:id= "currentLoanDueDate" layoutX="854.0" layoutY="184.0" prefHeight="25.0" prefWidth="149.0" text="Date Payment Due">
          <font>
             <Font size="14.0" fx:id="x321211" />
          </font>

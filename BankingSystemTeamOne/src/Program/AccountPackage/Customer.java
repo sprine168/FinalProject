@@ -27,10 +27,10 @@ public class Customer {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.atmCard = atmCard;
-		//System.out.println(this.atmCard);
 		accounts = new ArrayList();
 	}
 	
+	public int getAtmCard() { return atmCard; }
 
 	public String getAddress() {
 		return address;

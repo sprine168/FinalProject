@@ -12,10 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import Program.AccountPackage.Account;
-import Program.AccountPackage.CheckingAccount;
-import Program.AccountPackage.Customer;
-import Program.AccountPackage.SavingsAccount;
+import Program.AccountPackage.*;
 import Program.Main;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
@@ -42,6 +39,9 @@ import javafx.stage.Stage;
 public class CustomerController implements Initializable {
 
 	private Customer customer;
+	private Account accountToTransferFrom;
+	private Loan currentSelectedLoan;
+	private Account currentSelectedAccount;
 
 	@FXML
 	public Button logoutButton;
@@ -134,7 +134,9 @@ public class CustomerController implements Initializable {
 	void logout(ActionEvent event) throws IOException
 	{
 		function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoginPage.fxml"))), event);
-	} 
+	}
+
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -142,44 +144,58 @@ public class CustomerController implements Initializable {
 		customer = Main.currentCustomer;
 		if (customer != null){
             customerIDText.setText(customer.getCustomerId());
-            customerNameText.setText(customer.getFirstName()+" "+ customer.getLastName());
-			customerAddressText.setText(customer.getAddress()+", "+customer.getCity());
+            customerNameText.setText(customer.getFirstName()+ " " + customer.getLastName());
+			customerAddressText.setText(customer.getAddress()+ ", " + customer.getCity());
 			customerStateText.setText(customer.getState());
 			customerZipText.setText(customer.getZipCode());
+			customerATMText.setText(customer.getAtmCard() == 1 ? "Yes" : "No");
             boolean foundChecking = false;
 			boolean foundSavings = false;
 			int numberOfCheckings = 0;
 			int numberOfSavings = 0;
-			ArrayList<Account> checkingsAndSavingsAccount = new ArrayList<>();
-			ArrayList<Account> checkingsAccount = new ArrayList<>();
-			ArrayList<Account> savingsAccount = new ArrayList<>();
+			ArrayList<Account> nonLoanAccounts = new ArrayList();
+			ArrayList<Account> checkingsAccounts = new ArrayList();
+			ArrayList<Account> savingsAccounts = new ArrayList();
+			ArrayList<Account> loanAccounts = new ArrayList();
 			for(Account account : customer.getAccounts()) {
 				if (account.getClass().equals(CheckingAccount.class)) {
-					checkingsAccount.add(account);
-					checkingsAndSavingsAccount.add(account);
+					checkingsAccounts.add(account);
+					nonLoanAccounts.add(account);
 					foundChecking = true;
 				} else if (account.getClass().equals(SavingsAccount.class)) {
-					savingsAccount.add(account);
-					checkingsAndSavingsAccount.add(account);
+					savingsAccounts.add(account);
+					nonLoanAccounts.add(account);
 					foundSavings = true;
-				}
+				} else {
+				    loanAccounts.add(account);
+                }
 			}
-			CollectionController checkingsCollection = new CollectionController(checkingsAccount);
+			CollectionController checkingsCollection = new CollectionController(checkingsAccounts);
 			cusSelectCheckings.setItems(checkingsCollection.getCollections());
-			CollectionController savingsCollection = new CollectionController(savingsAccount);
+
+			CollectionController savingsCollection = new CollectionController(savingsAccounts);
 			cusSelectSavings.setItems(savingsCollection.getCollections());
+
+			CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
+			accountType1.setItems(nonLoanCollection.getCollections());
+
+            CollectionController loanCollection = new CollectionController(nonLoanAccounts);
+            cusLoanSelect.setItems(loanCollection.getCollections());
+
             cusSelectSavings.valueProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     cusSavingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
                 }
             });
+
             cusSelectCheckings.valueProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
                 }
             });
+
 			if (!foundChecking){
 				cusCheckingBalance.setText("N/A");
 			}

@@ -3,7 +3,10 @@ package Program.ControllerPackage;
 import Program.AccountPackage.Account;
 import Program.AccountPackage.CheckingAccount;
 import Program.AccountPackage.Customer;
+import Program.AccountPackage.Loan;
 import Program.Main;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +19,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ManagerSubController implements Initializable {
+
+    private Loan currentLoanAccount;
+    DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
 
     @FXML
     public Button logoutButton;
@@ -78,6 +87,12 @@ public class ManagerSubController implements Initializable {
     public TextField setInterestRate;
 
     @FXML
+    public Button advanceInterestRate;
+
+    @FXML
+    public TextArea cusAccountStatement;
+
+    @FXML
     public Button advanceMonth;
 
     @FXML
@@ -125,6 +140,14 @@ public class ManagerSubController implements Initializable {
     @FXML
     public ComboBox manCusSelect;
 
+    @FXML
+    void advanceAMonth(){
+        if (!currentLoanAccount.equals(null)){
+            currentLoanAccount.advanceAMonth();
+            datePaymentDue.setText(df.format(currentLoanAccount.getDatePaymentDue()));
+            currentLoanPaymentDue.setText(String.format("%2.2f", currentLoanAccount.getCurrentPaymentDue()));
+        }
+    }
 
     private void function(Parent parent, ActionEvent event) {
         Scene homePageScene = new Scene(parent);
@@ -144,21 +167,39 @@ public class ManagerSubController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
         Customer customer = Main.currentCustomer;
         if (customer != null) {
-            boolean foundChecking = false;
-            int numberOfCheckings = 0;
             customerIDText.setText(customer.getCustomerId());
+            manCusName.setText(String.format("%s %s", customer.getFirstName(), customer.getLastName()));
+            manCusAddress.setText(customer.getAddress());
+            manCusState.setText(customer.getState());
+            manCusAtm.setText(customer.getAtmCard() == 1 ? "Yes" : "No");
+            boolean foundNonLoanAccount = false;
+            ArrayList<Account> nonLoanAccounts = new ArrayList();
+            ArrayList<Account> loanAccounts = new ArrayList();
             for (Account account : customer.getAccounts()) {
-                if (account.getClass() == CheckingAccount.class) {
-                    foundChecking = true;
-                    numberOfCheckings += 1;
-                    checkingBalanceText.setText(String.format("%2.2f", account.getBalance()));
+                if (!account.getClass().equals(Loan.class)) {
+                    foundNonLoanAccount = true;
+                    nonLoanAccounts.add(account);
+                } else {
+                    loanAccounts.add(account);
                 }
             }
-            System.out.println(String.format("Found %d Checking Account(s), for Customer: %s", numberOfCheckings, customer.getFirstName()));
-            if (!foundChecking) {
+            CollectionController loanCollection = new CollectionController(loanAccounts);
+            manCusSelect.setItems(loanCollection.getCollections());
+            manCusSelect.valueProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    Loan newLoan = (Loan) newValue;
+                    currentLoanAccount = newLoan;
+                    currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
+                    String s = "%2.2f\037";
+                    currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 10.0)));
+                    datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
+                    currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
+                }
+            });
+            if (!foundNonLoanAccount) {
                 checkingBalanceText.setText("N/A");
             }
         }

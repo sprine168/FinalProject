@@ -1,8 +1,12 @@
 package Program.AccountPackage;
 
+import sun.util.BuddhistCalendar;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 // The loan class is an extension of accounts, that shows the loan information for customers.
 public class Loan extends Account {
@@ -34,6 +38,14 @@ public class Loan extends Account {
 		this.accountType = accountType;
 	}
 
+	public String getAccountType(){
+		return accountType;
+	}
+
+	public Date getDatePaymentDue(){
+		return datePaymentDue;
+	}
+
 	public double getCurrentInterestRate() {
 		return currentInterestRate;
 	}
@@ -42,11 +54,24 @@ public class Loan extends Account {
 		currentInterestRate = currentInterest;
 	}
 
-	public void advanceAMonth(){
+	public double getCurrentPaymentDue(){
+		return currentPaymentDue;
+	}
 
+	public void advanceAMonth(){
+		Calendar c = new GregorianCalendar();
+		c.setTime(datePaymentDue);
+		c.add(Calendar.DATE, 30);
+		datePaymentDue = c.getTime();
+		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12) / 12;
+	}
+
+	public void updateInterestRate(double currentInterestRate){
+		this.currentInterestRate = currentInterestRate;
+		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12) / 12;
 	}
 	
-	    @Override
+	@Override
     public String toString() {
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
 		return String.format("%s,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, description, balance, currentInterestRate,

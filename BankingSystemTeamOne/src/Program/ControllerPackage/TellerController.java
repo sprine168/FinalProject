@@ -63,7 +63,7 @@ public class TellerController implements Initializable {
     @FXML
     void telSearch(ActionEvent event) throws IOException
     {
-        String ssn = !cusIDSearch.getText().isEmpty() ? cusIDSearch.getText().toString() : "";
+        String ssn = !cusIDSearch.getText().isEmpty() ? cusIDSearch.getText() : "";
         if (Main.findCustomer(ssn)) {
             Main.currentCustomer = Main.getCustomer(ssn);
             function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);

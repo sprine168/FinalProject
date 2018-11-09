@@ -91,14 +91,8 @@ public class MainController implements Initializable {
             Main.currentCustomer = customer;
             function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);
         } else {
-            try {
-                userLoginText.setPromptText("Invalid Username/Password");
-                userLoginText.setText("");
-                userPassText.setText("");
-                Thread.sleep(4000);
-                userLoginText.setPromptText("Please Enter Username");
-            } catch (InterruptedException e) {
-            }
+            userLoginText.setText("");
+            userPassText.setText("");
         }
     }
 
@@ -110,21 +104,6 @@ public class MainController implements Initializable {
     @FXML
     void toTellerPage(ActionEvent event) throws IOException {
         function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml")), event);
-    }
-
-    @FXML
-    void telSearch(ActionEvent event) throws IOException {
-        if (cusIDSearch.getText().equals(null) || cusIDSearch.getText().equals("")) return;
-        String customerToFind = cusIDSearch.getText();
-        if (Main.findCustomer(customerToFind)) {
-            Main.currentCustomer = Main.getCustomer(customerToFind);
-            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);
-        }
-    }
-
-    @FXML
-    void manSearch(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
     }
 
     @FXML
