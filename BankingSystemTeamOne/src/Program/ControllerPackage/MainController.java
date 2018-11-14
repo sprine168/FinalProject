@@ -72,9 +72,7 @@ public class MainController implements Initializable {
     private void function(Parent parent, ActionEvent event) {
         Scene homePageScene = new Scene(parent);
         Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        //app_stage.hide();
         app_stage.setScene(homePageScene);
-        //app_stage.show();
     }
 
     @FXML
@@ -83,10 +81,10 @@ public class MainController implements Initializable {
                 userLoginText.getText().trim().equals("") || userPassText.getText().trim().equals("")) return;
         String user = userLoginText.getText().toLowerCase();
         String pass = userPassText.getText().toLowerCase();
-        if (user.equals("teller") && pass.equals("1234")) {
+        if (user.equals("teller") && pass.equals("1")) {
             Main.currentAuthorization = EnumeratedTypes.TELLER;
             toTellerPage(event);
-        }else if (user.equals("manager") && pass.equals("4321")) {
+        }else if (user.equals("manager") && pass.equals("1")) {
             Main.currentAuthorization = EnumeratedTypes.MANAGER;
             toManagerPage(event);
         }else if (pass.equals("1") && !user.equals(null) && !user.equals("") && Main.findCustomer(user)) {
@@ -129,5 +127,4 @@ public class MainController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub
     }
-
 }

@@ -27,7 +27,6 @@ public class Loan extends Account {
 			String accountType) {
 
 		super(customerId, balance, null);
-
 		this.description = description;
 		this.currentInterestRate = currentInterestRate;
 		this.datePaymentDue = datePaymentDue;
@@ -63,7 +62,7 @@ public class Loan extends Account {
 		c.setTime(datePaymentDue);
 		c.add(Calendar.DATE, 30);
 		datePaymentDue = c.getTime();
-		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12) / 12;
+		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12.0) / 12.0;
 	}
 
 	public void updateInterestRate(double currentInterestRate){

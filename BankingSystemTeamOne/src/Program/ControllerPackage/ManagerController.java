@@ -60,7 +60,7 @@ public class ManagerController implements Initializable {
     @FXML
     void createAccount(ActionEvent event) throws IOException
     {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/CreateAccount.fxml")), event);
+        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/AccountCreation.fxml")), event);
     }
 
     @FXML
