@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!-- Checking Account is used for creating the gui page for the manager to create a checking account. -->
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.addCheckingController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="776.0" layoutX="-2.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
+            <fill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
+                    <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#3374b599" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="413.0" prefHeight="30.0" prefWidth="199.0" text="Add Checking Account" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+            <font>
+                <Font name="Constantia Bold" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+                    <stops>
+                        <Stop color="#184c80" />
+                        <Stop color="#0099ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="797.0" layoutY="68.0" prefHeight="25.0" prefWidth="181.0" text="Account Type">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
+            </font>
+        </Label>
+        <ComboBox fx:id="accountTypeBox" layoutX="794.0" layoutY="90.0" prefHeight="30.0" prefWidth="181.0" promptText="Select Account Type">
+
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Gold/Diamond" />
+                    <String fx:value="TMB" />
+                </FXCollections>
+            </items>
+
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ComboBox>
+        <Label layoutX="796.0" layoutY="135.0" prefHeight="25.0" prefWidth="181.0" text="Account Balance">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x22" />
+            </font>
+        </Label>
+      <TextField fx:id="checkCusInitBalance" layoutX="796.0" layoutY="160.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Starting Balance">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Label layoutX="797.0" layoutY="200.0" prefHeight="25.0" prefWidth="181.0" text="Backup Account">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x221" />
+            </font>
+        </Label>
+        <ComboBox layoutX="796.0" layoutY="225.0" prefHeight="30.0" prefWidth="181.0" promptText="Select Yes or No">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Yes" />
+                    <String fx:value="No" />
+                </FXCollections>
+            </items>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ComboBox>
+      <Label layoutX="797.0" layoutY="287.0" prefHeight="25.0" prefWidth="181.0" text="Date Account Opened">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x321" />
+         </font>
+      </Label>
+      <TextField fx:id="checkDate" layoutX="797.0" layoutY="309.0" prefHeight="30.0" prefWidth="181.0" promptText="mm-dd-yyyy">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Label layoutX="797.0" layoutY="364.0" prefHeight="25.0" prefWidth="181.0" text="ATM Accessible">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x32" />
+            </font>
+        </Label>
+      <TextField fx:id="checkAtmCard" layoutX="797.0" layoutY="386.0" prefHeight="30.0" prefWidth="181.0" promptText="1 for yes 0 for no">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Button fx:id="addCheckingAccount" contentDisplay="CENTER" layoutX="433.0" layoutY="477.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="Add Checking Account" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="466.0" layoutY="648.0" mnemonicParsing="false"  prefHeight="30.0" prefWidth="95.0" text="Main Menu" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Label layoutX="419.0" layoutY="726.0" prefHeight="19.0" prefWidth="189.0" text="Banking System Incorporated by " textAlignment="LEFT" textFill="#184c80" wrapText="false">
+            <font>
+                <Font name="Constantia" size="13.0" fx:id="x1" />
+            </font>
+        </Label>
+        <Label font="$x1" layoutX="480.0" layoutY="745.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
+      <ComboBox layoutX="33.0" layoutY="105.0" prefHeight="25.0" prefWidth="265.0" />
+      <Label layoutX="37.0" layoutY="80.0" prefHeight="25.0" prefWidth="258.0" text="Select Customer to Add Account Type">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21111" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
