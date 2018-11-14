@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!-- Checking Account is used for creating the gui page for the manager to create a checking account. -->
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CreateAccountController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="809.0" layoutX="-39.0" layoutY="-25.0" stroke="BLACK" strokeType="INSIDE" width="1081.0">
+            <fill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
+                    <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#3374b599" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="457.0" layoutY="-1.0" prefHeight="30.0" prefWidth="126.0" text="Accounts Area" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+            <font>
+                <Font name="Constantia Bold" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+                    <stops>
+                        <Stop color="#184c80" />
+                        <Stop color="#0099ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="798.0" layoutY="44.0" prefHeight="25.0" prefWidth="181.0" text="Account Type">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
+            </font>
+        </Label>
+        <ComboBox fx:id="accountTypeBox" layoutX="795.0" layoutY="66.0" prefHeight="30.0" prefWidth="181.0" promptText="Select Account Type">
+
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Gold/Diamond" />
+                    <String fx:value="TMB" />
+                </FXCollections>
+            </items>
+
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ComboBox>
+        <Label layoutX="794.0" layoutY="213.0" prefHeight="25.0" prefWidth="181.0" text="Account Balance" visible="false">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x22" />
+            </font>
+        </Label>
+      <TextField fx:id="checkCusInitBalance" layoutX="794.0" layoutY="238.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Starting Balance" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Label layoutX="795.0" layoutY="278.0" prefHeight="25.0" prefWidth="181.0" text="Backup Account" visible="false">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x221" />
+            </font>
+        </Label>
+        <ComboBox layoutX="794.0" layoutY="303.0" prefHeight="30.0" prefWidth="181.0" promptText="Select Yes or No" visible="false">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Yes" />
+                    <String fx:value="No" />
+                </FXCollections>
+            </items>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ComboBox>
+      <Label layoutX="795.0" layoutY="365.0" prefHeight="25.0" prefWidth="181.0" text="Date Account Opened" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x321" />
+         </font>
+      </Label>
+      <TextField fx:id="checkDate" layoutX="795.0" layoutY="387.0" prefHeight="30.0" prefWidth="181.0" promptText="mm-dd-yyyy" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Label layoutX="795.0" layoutY="442.0" prefHeight="25.0" prefWidth="181.0" text="ATM Accessible" visible="false">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x32" />
+            </font>
+        </Label>
+      <TextField fx:id="checkAtmCard" layoutX="795.0" layoutY="464.0" prefHeight="30.0" prefWidth="181.0" promptText="1 for yes 0 for no" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Button fx:id="addCheckingAccount" contentDisplay="CENTER" layoutX="431.0" layoutY="611.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" text="Create Account Type" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="466.0" layoutY="671.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="93.0" text="Main Menu" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Label layoutX="419.0" layoutY="726.0" prefHeight="19.0" prefWidth="189.0" text="Banking System Incorporated by " textAlignment="LEFT" textFill="#184c80" wrapText="false">
+            <font>
+                <Font name="Constantia" size="13.0" fx:id="x1" />
+            </font>
+        </Label>
+        <Label font="$x1" layoutX="480.0" layoutY="745.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
+      <ComboBox layoutX="33.0" layoutY="70.0" prefHeight="25.0" prefWidth="259.0" />
+      <Label layoutX="59.0" layoutY="45.0" prefHeight="25.0" prefWidth="208.0" text="New or Pre-existing Account">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21111" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountList" layoutX="44.0" layoutY="163.0" prefHeight="25.0" prefWidth="259.0" promptText="Account" visible="false" />
+      <Label layoutX="34.0" layoutY="103.0" prefHeight="25.0" prefWidth="220.0" text="Customer ID" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x2" />
+         </font>
+      </Label>
+      <TextField fx:id="createCusSSN" layoutX="33.0" layoutY="128.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Customers SSN Number" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="34.0" layoutY="178.0" prefHeight="25.0" prefWidth="220.0" text="First Name" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21" />
+         </font>
+      </Label>
+      <TextField fx:id="createCusFName" layoutX="33.0" layoutY="205.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Customer's First Name" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="34.0" layoutY="255.0" prefHeight="25.0" prefWidth="220.0" text="Last Name" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x211" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="328.0" prefHeight="25.0" prefWidth="220.0" text="Street Address" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x2112" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="407.0" prefHeight="25.0" prefWidth="220.0" text="City" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21121" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="483.0" prefHeight="25.0" prefWidth="220.0" text="State" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x211211" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="561.0" prefHeight="25.0" prefWidth="220.0" text="Zip Code" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x2112111" />
+         </font>
+      </Label>
+      <TextField fx:id="createCusLName" layoutX="31.0" layoutY="280.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Customer's Last Name" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusAddress" layoutX="31.0" layoutY="353.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Street Address" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusCity" layoutX="31.0" layoutY="431.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter City" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusState" layoutX="31.0" layoutY="504.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter State" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusZip" layoutX="31.0" layoutY="586.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Zip Code" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="798.0" layoutY="102.0" prefHeight="25.0" prefWidth="181.0" text="Sub Account Type" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21112" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountTypeBox1" layoutX="795.0" layoutY="124.0" prefHeight="30.0" prefWidth="181.0" promptText="Select Sub Account Type" visible="false">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Gold/Diamond" />
+               <String fx:value="TMB" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Label layoutX="798.0" layoutY="165.0" prefHeight="25.0" prefWidth="181.0" text="Account Balance" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x222" />
+         </font>
+      </Label>
+      <TextField fx:id="savingAccountBalance" layoutX="798.0" layoutY="190.0" prefHeight="30.0" prefWidth="181.0" promptText="Enter Starting Balance" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="799.0" layoutY="314.0" prefHeight="25.0" prefWidth="181.0" text="Date Account Opened" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x3211" />
+         </font>
+      </Label>
+      <TextField fx:id="savingAccountOpen" layoutX="799.0" layoutY="339.0" prefHeight="30.0" prefWidth="181.0" promptText="mm-dd-yyyy" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cdInterest" layoutX="798.0" layoutY="264.0" prefHeight="30.0" prefWidth="181.0" promptText="Default Interest Rate Set" visible="false" />
+      <Label layoutX="800.0" layoutY="239.0" prefHeight="25.0" prefWidth="181.0" text="Current Interest Rate" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x211121" />
+         </font>
+      </Label>
+      <Label layoutX="796.0" layoutY="383.0" prefHeight="25.0" prefWidth="181.0" text="CD Add Date" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x3211" />
+         </font>
+      </Label>
+      <TextField fx:id="cdAddDate" layoutX="796.0" layoutY="408.0" prefHeight="30.0" prefWidth="181.0" promptText="mm-dd-yyyy" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="796.0" layoutY="452.0" prefHeight="25.0" prefWidth="181.0" text="CD Due Date" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x32111" />
+         </font>
+      </Label>
+      <TextField fx:id="cdDueDate" layoutX="796.0" layoutY="477.0" prefHeight="30.0" prefWidth="181.0" promptText="mm-dd-yyyy" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="797.0" layoutY="101.0" prefHeight="25.0" prefWidth="181.0" text="Sub Account Type" visible="false">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21113" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountTypeBox2" layoutX="794.0" layoutY="126.0" prefHeight="30.0" prefWidth="181.0" promptText="Select Account Type" visible="false">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Gold/Diamond" />
+               <String fx:value="TMB" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+    </children>
+</AnchorPane>
