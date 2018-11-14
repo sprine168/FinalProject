@@ -47,40 +47,40 @@ public class CreateAccountController implements Initializable {
 	public Button createCus;
 	
 	@FXML
-	public TextArea createCusSSN;
+	public TextField createCusSSN;
 
 	@FXML
-	public TextArea date;
+	public TextField date;
 	
 	@FXML
-	public TextArea createCusFName;
+	public TextField createCusFName;
 	
 	@FXML
-	public TextArea createCusLName;
+	public TextField createCusLName;
 	
 	@FXML
-	public TextArea createCusAddress;
+	public TextField createCusAddress;
 	
 	@FXML
-	public TextArea createCusCity;
+	public TextField createCusCity;
 	
 	@FXML
-	public TextArea createCusState;
+	public TextField createCusState;
 	
 	@FXML
-	public TextArea createCusZip;
+	public TextField createCusZip;
 	
 	@FXML
-	public TextArea createCusInitCBalance;
+	public TextField createCusInitCBalance;
 	
 	@FXML
-	public TextArea createCusInitSBalance;
+	public TextField createCusInitSBalance;
 
 	@FXML
-	public TextArea cusInitBalance;
+	public TextField cusInitBalance;
 
 	@FXML
-	public TextArea atmCard;
+	public TextField atmCard;
 
 	@FXML
 	public ComboBox accountTypeBox;

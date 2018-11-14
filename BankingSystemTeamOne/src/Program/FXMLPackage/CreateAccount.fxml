@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CreateAccountController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CreateAccountController">
     <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-7.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
          <fill>
@@ -55,22 +55,6 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <TextArea fx:id="createCusSSN" layoutX="26.0" layoutY="89.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customers SSN Number">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
-        <TextArea fx:id="cusInitBalance" layoutX="750.0" layoutY="166.0" prefHeight="47.0" prefWidth="243.0" promptText="Enter Starting Account Balance">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="758.0" layoutY="68.0" prefHeight="25.0" prefWidth="235.0" text="Account Type">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
@@ -105,92 +89,36 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x32" />
             </font>
         </Label>
-        <TextArea fx:id="date" layoutX="750.0" layoutY="255.0" prefHeight="47.0" prefWidth="243.0" promptText="mm-dd-yyyy">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="33.0" layoutY="143.0" prefHeight="25.0" prefWidth="220.0" text="First Name">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x21" />
             </font>
         </Label>
-        <TextArea fx:id="createCusFName" layoutX="26.0" layoutY="164.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customer's First Name">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="33.0" layoutY="217.0" prefHeight="25.0" prefWidth="220.0" text="Last Name">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x211" />
             </font>
         </Label>
-        <TextArea fx:id="createCusLName" layoutX="26.0" layoutY="236.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Customer's Last Name">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="33.0" layoutY="290.0" prefHeight="25.0" prefWidth="220.0" text="Street Address">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x2112" />
             </font>
         </Label>
-        <TextArea fx:id="createCusAddress" layoutX="26.0" layoutY="311.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Street Address">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="33.0" layoutY="369.0" prefHeight="25.0" prefWidth="220.0" text="City">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x21121" />
             </font>
         </Label>
-        <TextArea fx:id="createCusCity" layoutX="26.0" layoutY="390.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter City">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="33.0" layoutY="445.0" prefHeight="25.0" prefWidth="220.0" text="State">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x211211" />
             </font>
         </Label>
-        <TextArea fx:id="createCusState" layoutX="26.0" layoutY="466.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter State">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
-        <Label layoutX="35.0" layoutY="528.0" prefHeight="25.0" prefWidth="220.0" text="Zip Code">
+        <Label layoutX="34.0" layoutY="523.0" prefHeight="25.0" prefWidth="220.0" text="Zip Code">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x2112111" />
             </font>
         </Label>
-        <TextArea fx:id="createCusZip" layoutX="28.0" layoutY="549.0" prefHeight="38.0" prefWidth="227.0" promptText="Enter Zip Code">
-            <font>
-                <Font size="14.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="TEXT" />
-            </cursor>
-        </TextArea>
         <Label layoutX="798.0" layoutY="48.0" prefHeight="18.0" prefWidth="146.0" text="Account Information" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
@@ -209,18 +137,60 @@
                 <Font size="14.0" />
             </font>
         </Button>
-      <Label fx:id="atm" layoutX="757.0" layoutY="322.0" prefHeight="25.0" prefWidth="220.0" text="ATM Accessible">
+      <Label fx:id="atm" layoutX="757.0" layoutY="313.0" prefHeight="25.0" prefWidth="220.0" text="ATM Accessible">
          <font>
             <Font name="Bodoni MT" size="16.0" fx:id="x32" />
          </font>
       </Label>
-      <TextArea fx:id="atmCard" layoutX="751.0" layoutY="346.0" prefHeight="47.0" prefWidth="243.0" promptText="1 for yes 0 for no">
+      <TextField fx:id="createCusSSN" layoutX="30.0" layoutY="93.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Customers SSN Number">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="TEXT" />
-         </cursor>
-      </TextArea>
+      </TextField>
+      <TextField fx:id="createCusFName" layoutX="32.0" layoutY="170.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Customer's First Name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusLName" layoutX="30.0" layoutY="242.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Customer's Last Name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusAddress" layoutX="30.0" layoutY="315.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Street Address">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusCity" layoutX="30.0" layoutY="393.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter City">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusState" layoutX="30.0" layoutY="466.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter State">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="createCusZip" layoutX="30.0" layoutY="548.0" prefHeight="40.0" prefWidth="220.0" promptText="Enter Zip Code">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cusInitBalance" layoutX="750.0" layoutY="170.0" prefHeight="40.0" prefWidth="243.0" promptText="Enter Starting Account Balance">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="date" layoutX="750.0" layoutY="252.0" prefHeight="40.0" prefWidth="243.0" promptText="mm-dd-yyyy">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="atmCard" layoutX="751.0" layoutY="339.0" prefHeight="40.0" prefWidth="243.0" promptText="1 for yes 0 for no">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
     </children>
 </AnchorPane>
