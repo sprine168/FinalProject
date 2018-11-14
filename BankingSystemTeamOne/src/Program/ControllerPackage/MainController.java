@@ -10,6 +10,7 @@ package Program.ControllerPackage;
 
 import Program.AccountPackage.Account;
 import Program.AccountPackage.Customer;
+import Program.Data.EnumeratedTypes;
 import Program.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,11 +83,14 @@ public class MainController implements Initializable {
                 userLoginText.getText().trim().equals("") || userPassText.getText().trim().equals("")) return;
         String user = userLoginText.getText().toLowerCase();
         String pass = userPassText.getText().toLowerCase();
-        if (user.equals("teller") && pass.equals("1234"))
+        if (user.equals("teller") && pass.equals("1234")) {
+            Main.currentAuthorization = EnumeratedTypes.TELLER;
             toTellerPage(event);
-        else if (user.equals("manager") && pass.equals("4321"))
+        }else if (user.equals("manager") && pass.equals("4321")) {
+            Main.currentAuthorization = EnumeratedTypes.MANAGER;
             toManagerPage(event);
-        else if (pass.equals("1") && !user.equals(null) && !user.equals("") && Main.findCustomer(user)) {
+        }else if (pass.equals("1") && !user.equals(null) && !user.equals("") && Main.findCustomer(user)) {
+            Main.currentAuthorization = EnumeratedTypes.CUSTOMER;
             Customer customer = Main.getCustomer(user);
             Main.currentCustomer = customer;
             function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);

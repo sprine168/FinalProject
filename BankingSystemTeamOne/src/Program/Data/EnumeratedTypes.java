@@ -1,4 +1,3 @@
 package Program.Data;
 
-enum AuthorizationType {CUSTOMER, TELLER, MANAGER}
-
+public enum EnumeratedTypes {CUSTOMER, TELLER, MANAGER}

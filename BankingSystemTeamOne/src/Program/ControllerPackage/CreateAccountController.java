@@ -1,10 +1,10 @@
-package Program.ControllerPackage;/*
+package Program.ControllerPackage;
+/*
     Banking Project Team One
     CSC-406
     Prof. Pickett
 
     Team Members:
-
 */
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+import Program.Data.*;
 import Program.AccountPackage.Account;
 import Program.AccountPackage.CheckingAccount;
 import Program.AccountPackage.Customer;
@@ -39,7 +39,7 @@ import javafx.stage.Stage;
     // TODO Make sure to give the items in the fxml pages id's for the input fields. Otherwise can't be accessed.
 */
 public class CreateAccountController implements Initializable {
-	
+
 	@FXML
 	public Button returnMenu;
 	
@@ -100,33 +100,36 @@ public class CreateAccountController implements Initializable {
 	private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		//app_stage.hide();
 		app_stage.setScene(homePageScene);
-		//app_stage.show();
 	}
 
 	@FXML
-	void returnTeller(ActionEvent event) throws IOException {
-		function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml"))), event);
+	void returnTo(ActionEvent event) throws IOException {
+		if (Main.currentAuthorization != null){
+			if (Main.currentAuthorization == EnumeratedTypes.TELLER)
+				function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml"))), event);
+			else if(Main.currentAuthorization == EnumeratedTypes.MANAGER)
+				function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml"))), event);
+		}
 	}
 
 
 	public void createCustomer(ActionEvent event) throws ParseException {
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-		String ssn = (!createCusSSN.getText().isEmpty() && createCusSSN.getText().equals("")) ? createCusSSN.getText() : "";
-		String fName = (!createCusFName.getText().isEmpty() && createCusFName.getText().equals("")) ? createCusFName.getText() : "";
-		String lName = (!createCusLName.getText().isEmpty() && createCusLName.getText().equals("")) ? createCusLName.getText() : "";
-		String address = (!createCusAddress.getText().isEmpty() && createCusAddress.getText().equals("")) ? createCusAddress.getText() : "";
-		String city = (!createCusCity.getText().isEmpty() && createCusCity.getText().equals("")) ? createCusCity.getText() : "";
-		String state = (!createCusState.getText().isEmpty() && createCusState.getText().equals("")) ? createCusState.getText() : "";
-		String zip = (!createCusZip.getText().isEmpty() && createCusZip.getText().equals("")) ? createCusZip.getText() : "";
-		String accountType = (accountTypeBox.getSelectionModel().getSelectedItem().equals(null)) ?
+		String ssn = !(createCusSSN.getText().isEmpty() && createCusSSN.getText().equals("")) ? createCusSSN.getText() : "";
+		String fName = !(createCusFName.getText().isEmpty() && createCusFName.getText().equals("")) ? createCusFName.getText() : "";
+		String lName = !(createCusLName.getText().isEmpty() && createCusLName.getText().equals("")) ? createCusLName.getText() : "";
+		String address = !(createCusAddress.getText().isEmpty() && createCusAddress.getText().equals("")) ? createCusAddress.getText() : "";
+		String city = !(createCusCity.getText().isEmpty() && createCusCity.getText().equals("")) ? createCusCity.getText() : "";
+		String state = !(createCusState.getText().isEmpty() && createCusState.getText().equals("")) ? createCusState.getText() : "";
+		String zip = !(createCusZip.getText().isEmpty() && createCusZip.getText().equals("")) ? createCusZip.getText() : "";
+		String accountType = (accountTypeBox.getSelectionModel().getSelectedItem() != null) ?
                 accountTypeBox.getSelectionModel().getSelectedItem().toString() : "Checking Account";
-		double initialBalance = (!cusInitBalance.getText().isEmpty() && cusInitBalance.getText().equals(""))
+		double initialBalance = !(cusInitBalance.getText().isEmpty() && cusInitBalance.getText().equals(""))
 				? Double.parseDouble(cusInitBalance.getText()) : 0.0;
-		int atm = (!atmCard.getText().isEmpty() && atmCard.getText().equals(""))
+		int atm = !(atmCard.getText().isEmpty() && atmCard.getText().equals(""))
 				? Integer.parseInt(atmCard.getText()) : 0;
-		Date currentDate = (!date.getText().isEmpty() && date.getText().trim().equals("")) ? df.parse(date.getText().trim()) : new Date();
+		Date currentDate = !(date.getText().isEmpty() && date.getText().trim().equals("")) ? df.parse(date.getText().trim()) : new Date();
 
 		Customer nCustomer = new Customer(ssn, address, city, state, zip, fName, lName, atm);
 		Main.addCustomer(nCustomer);

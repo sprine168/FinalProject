@@ -12,6 +12,7 @@ package Program;
     Huaji Zhu
 */
 
+import Program.Data.EnumeratedTypes;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -67,6 +68,7 @@ public class Main extends Application {
     public static ArrayList<Customer> customers = new ArrayList();
     public static ArrayList<Account> accounts = new ArrayList();
     public static Customer currentCustomer = null;
+    public static EnumeratedTypes currentAuthorization = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception {

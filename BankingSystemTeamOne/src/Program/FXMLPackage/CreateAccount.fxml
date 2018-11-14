@@ -89,7 +89,7 @@
 		        <Cursor fx:constant="HAND" />
 		    </cursor>
 		</ComboBox>
-        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="461.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnTeller" prefHeight="30.0" prefWidth="95.0" text="Main Menu" textAlignment="CENTER">
+        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="461.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnTo" prefHeight="30.0" prefWidth="95.0" text="Main Menu" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
