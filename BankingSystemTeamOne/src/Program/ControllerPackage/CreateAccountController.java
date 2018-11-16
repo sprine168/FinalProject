@@ -48,7 +48,6 @@ public class CreateAccountController implements Initializable {
     String accountType;
     String accountSubType;
 
-    @FXML
     public Button DoStuff;
     public Button returnMenu;
     public Button createCus;
@@ -133,7 +132,7 @@ public class CreateAccountController implements Initializable {
             Account account = null;
 
             if (accountType.equals("Checkings Account")) {
-                account = new CheckingAccount(currentCustomer.getCustomerId(), initialBalance, accountSubType.toLowerCase(), "", 0, c.getTime());
+                account = new CheckingAccount(currentCustomer.getCustomerId(),0, initialBalance, accountSubType.toLowerCase(), 0, 0, c.getTime());
             } else if (accountType.equals("Savings Account")) {
                 if (cdDue == null) {
                     c.setTime(new Date());
@@ -141,9 +140,9 @@ public class CreateAccountController implements Initializable {
                     cdDue = c.getTime();
                 }
                 if (accountSubType.equals("Non CD"))
-                    account = new SavingsAccount(currentCustomer.getCustomerId(), initialBalance, .125, currentDate, null);
+                    account = new SavingsAccount(currentCustomer.getCustomerId(),0, initialBalance, .125, currentDate, null);
                 else
-                    account = new SavingsAccount(currentCustomer.getCustomerId(), initialBalance, .125, currentDate, cdDue);
+                    account = new SavingsAccount(currentCustomer.getCustomerId(),0, initialBalance, .125, currentDate, cdDue);
             }
             System.out.println(account);
             Main.addAccount(account);

@@ -26,118 +26,45 @@ import java.util.ResourceBundle;
 
 public class ManagerSubController implements Initializable {
 
+    public String tellerChecking;       // This is for the comboBox. Note: For selecting account type.
+    public String tellerSaving;         // This is for the comboBox. Note: For selecting account type.
     private Loan currentLoanAccount;
     DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
 
-    @FXML
     public Button logoutButton;
-
-    @FXML
     public Button returnMenu;
-
-    @FXML
     public Button closeAccountButton;
-
-    @FXML
     public Button withdrawButton;
-
-    @FXML
     public Button depositButton;
-
-    @FXML
     public Button paymentButton;
-
-    @FXML
     public Button transferButton;
 
-    @FXML
-    public TextField deposit;
-
-    @FXML
-    public TextField transfer;
-
-    @FXML
-    public TextField withdraw;
-
-    @FXML
-    public TextField payment;
-
-    @FXML
-    public TextField customerIDText;
-
-    @FXML
-    public TextField checkingBalanceText;
-
-    @FXML
-    public TextField cusAccountStatus;
-
-    @FXML
-    public TextField cusLoanBalance;
-
-    @FXML
-    public Button setInterestRateButton;
-
-    @FXML
-    public String tellerChecking;       // This is for the comboBox. Note: For selecting account type.
-
-    @FXML
-    public String tellerSaving;         // This is for the comboBox. Note: For selecting account type.
-
-    @FXML
-    public TextField setInterestRate;
-
-    @FXML
-    public Button advanceInterestRate;
-
-    @FXML
     public TextArea cusAccountStatement;
-
-    @FXML
-    public Button advanceMonth;
-
-    @FXML
-    public TextField currentLoanRate;
-
-    @FXML
-    public TextField datePaymentDue;
-
-    @FXML
-    public TextField lastPaymentMade;
-
-    @FXML
-    public TextField currentLoanBalance;
-
-    @FXML
-    public TextField notifiedOfPayment;
-
-    @FXML
-    public TextField missedPayment;
-
-    @FXML
     public TextArea cusCheckingStatement;
-
-    @FXML
-    public TextField currentLoanPaymentDue;
-
-    @FXML
     public TextArea cusLoanStatement;
 
-    @FXML
+    public TextField deposit;
+    public TextField transfer;
+    public TextField withdraw;
+    public TextField payment;
+    public TextField customerIDText;
+    public TextField checkingBalanceText;
+    public TextField cusAccountStatus;
+    public TextField cusLoanBalance;
+    public TextField setInterestRate;
+    public TextField currentLoanRate;
+    public TextField datePaymentDue;
+    public TextField lastPaymentMade;
+    public TextField currentLoanBalance;
+    public TextField notifiedOfPayment;
+    public TextField missedPayment;
+    public TextField currentLoanPaymentDue;
     public TextField manCusName;
-
-    @FXML
     public TextField manCusAddress;
-
-    @FXML
     public TextField manCusState;
-
-    @FXML
     public TextField manCusZip;
-
-    @FXML
     public TextField manCusAtm;
 
-    @FXML
     public ComboBox manCusSelect;
 
     @FXML

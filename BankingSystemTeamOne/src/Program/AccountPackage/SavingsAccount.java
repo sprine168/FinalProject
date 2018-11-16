@@ -8,14 +8,20 @@ import java.util.Date;
 public class SavingsAccount extends Account {
 
 	// Variables for SavingsAccount
-	private static double currentInterestRate;
-	private Date CDDue;
+	protected static double currentInterestRate;
+	protected Date CDDue;
+	protected int identifier;
 
 	// Constructor for the SavingsAccount
-	public SavingsAccount(String customerId, double balance, double currentInterestRate, Date dateOpened, Date CDDue) {
+	public SavingsAccount(String customerId, int identifier, double balance, double currentInterestRate, Date dateOpened, Date CDDue) {
 		super(customerId, balance, dateOpened);
 		this.currentInterestRate = currentInterestRate;
 		this.CDDue = CDDue;
+
+		if (identifier == 0)
+			this.identifier = toString().hashCode();
+		else if (identifier != 0)
+			this.identifier = identifier;
 	}
 
 	public double Withdraw(double amountToWithdraw){
@@ -48,6 +54,6 @@ public class SavingsAccount extends Account {
 	@Override
 	public String toString(){
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-		return String.format("%s,%2.2f,%2.2f,%s,%s", customerId, balance, currentInterestRate, dateOpened != null ? df.format(dateOpened) : "",CDDue != null ? df.format(CDDue) : "");
+		return String.format("%s,%d,%2.2f,%2.2f,%s,%s", customerId, identifier, balance, currentInterestRate, dateOpened != null ? df.format(dateOpened) : "",CDDue != null ? df.format(CDDue) : "");
 	}
 }

@@ -26,24 +26,12 @@ import java.util.ResourceBundle;
 
 public class ManagerController implements Initializable {
 
-    @FXML
     public Button logoutButton;
-
-    @FXML
     public Button searchButton;
-
-    @FXML
     public Button createSavingsButton;
-
-    @FXML
-    public Button createCheckingButton;
-
-    @FXML
     public Button createLoanButton;
 
-    @FXML
     public TextField cusIDSearch;
-
 
     private void function(Parent parent, ActionEvent event){
         Scene homePageScene = new Scene(parent);
@@ -77,6 +65,8 @@ public class ManagerController implements Initializable {
         if (Main.findCustomer(ssn)) {
             Main.currentCustomer = Main.getCustomer(ssn);
             function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
+        }else{
+            cusIDSearch.setText("");
         }
 
     }

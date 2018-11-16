@@ -98,14 +98,6 @@
             </font>
         </Label>
         <ComboBox fx:id="accountToTransferFrom" layoutX="397.0" layoutY="231.0" prefHeight="31.0" prefWidth="227.0" promptText="Please Select Account">
-
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Checking Account" />
-                    <String fx:value="Saving Account" />
-                </FXCollections>
-            </items>
-
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -138,7 +130,7 @@
             <font>
                 <Font name="Bodoni MT" size="14.0" />
             </font></TextArea>
-        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="450.0" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Initiate Transfer" textAlignment="CENTER">
+        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="450.0" layoutY="321.0" mnemonicParsing="false" onAction="#transferFunds" prefHeight="30.0" prefWidth="120.0" text="Initiate Transfer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

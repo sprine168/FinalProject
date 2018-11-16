@@ -28,32 +28,18 @@ public class LoanAccountController implements Initializable{
     //Variables for the FXML values
     private Customer currentSelectedCustomer;
 
-    @FXML
     public Button returnMenu;
-
-    @FXML
     public Button createLoan;
 
-    @FXML
     public DatePicker notificationDate;
-
-    @FXML
     public DatePicker dueDate;
 
-    @FXML
     public TextField cusInterestRate;
-
-    @FXML
+    public TextField cusLoanDesc;
     public TextField cusLoanAmount;
 
-    @FXML
     public ComboBox loanType;
-
-    @FXML
     public ComboBox cusID;
-
-    @FXML
-    public TextField cusLoanDesc;
 
     private void function(Parent parent, ActionEvent event){
         //function to traverse pages

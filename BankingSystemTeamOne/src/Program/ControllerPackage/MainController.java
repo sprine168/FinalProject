@@ -37,37 +37,11 @@ import java.util.ResourceBundle;
 */
 public class MainController implements Initializable {
 
-    @FXML
-    public Button cusPageButton;
-
-    @FXML
     public Button logoutButton;
-
-    @FXML
     public Button loginButton;
 
-    @FXML
-    public Button manPageButton;
-
-    @FXML
-    public Button telPageButton;
-
-    @FXML
-    public Button createCheckingButton;
-
-    @FXML
-    public Button searchButton;
-
-    @FXML
     public TextField userLoginText;
-
-    @FXML
     public TextField userPassText;
-
-    public TextField cusIDSearch;
-
-    @FXML
-    public Button telPageBtton;
 
     private void function(Parent parent, ActionEvent event) {
         Scene homePageScene = new Scene(parent);
@@ -83,10 +57,10 @@ public class MainController implements Initializable {
         String pass = userPassText.getText().toLowerCase();
         if (user.equals("teller") && pass.equals("1")) {
             Main.currentAuthorization = EnumeratedTypes.TELLER;
-            toTellerPage(event);
+            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml")), event);
         }else if (user.equals("manager") && pass.equals("1")) {
             Main.currentAuthorization = EnumeratedTypes.MANAGER;
-            toManagerPage(event);
+            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml")), event);
         }else if (pass.equals("1") && !user.equals(null) && !user.equals("") && Main.findCustomer(user)) {
             Main.currentAuthorization = EnumeratedTypes.CUSTOMER;
             Customer customer = Main.getCustomer(user);
@@ -96,31 +70,6 @@ public class MainController implements Initializable {
             userLoginText.setText("");
             userPassText.setText("");
         }
-    }
-
-    @FXML
-    void logout(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoginPage.fxml")), event);
-    }
-
-    @FXML
-    void toTellerPage(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml")), event);
-    }
-
-    @FXML
-    void toManagerPage(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml")), event);
-    }
-
-    @FXML
-    void toCusPage(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml")), event);
-    }
-
-    @FXML
-    void createAccount(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/CreateAccount.fxml")), event);
     }
 
     @Override

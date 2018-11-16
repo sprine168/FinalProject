@@ -39,12 +39,11 @@ import javafx.stage.Stage;
 public class CustomerController implements Initializable {
 
 	private Customer customer;
-	private Account selectedAccount1;
-	private Account selectedAccount2;
+	private Account selectedAccount1 = null;
+	private Account selectedAccount2 = null;
 	private Loan currentSelectedLoan;
 	private Account currentSelectedAccount;
 
-	@FXML
 	public TextArea monthlyChecking;
 	public TextArea monthlyCC;
 
@@ -62,7 +61,6 @@ public class CustomerController implements Initializable {
 	public TextField cusSavingBalance;
 	public TextField cusLoanBalance;
 	public TextField cusAccountStatus;
-
 
 	public Button transferButton1;
 	public Button withdrawButton1;
@@ -90,7 +88,22 @@ public class CustomerController implements Initializable {
 		function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoginPage.fxml"))), event);
 	}
 
-
+	@FXML
+	void transferFunds(ActionEvent event) throws IOException
+	{
+		if (selectedAccount1 != null && selectedAccount2 != null){
+			double amountToTransfer = !(transferAmount.getText().equals(null) || transferAmount.getText().equals("")) ?  Double.parseDouble(transferAmount.getText()) : 0.00;
+			if (amountToTransfer > 0 && selectedAccount1.getBalance() > amountToTransfer){
+				if (selectedAccount1.getClass().equals(SavingsAccount.class)){
+					double amt = ((SavingsAccount) selectedAccount1).Withdraw(amountToTransfer);
+					selectedAccount2.Deposit(amt);
+				} else if (selectedAccount1.getClass().equals(CheckingAccount.class)){
+				    double amt = ((CheckingAccount) selectedAccount1).Withdraw(amountToTransfer);
+				    selectedAccount2.Deposit(amt);
+                }
+			}
+		}
+	}
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -105,8 +118,6 @@ public class CustomerController implements Initializable {
 			customerATMText.setText(customer.getAtmCard() == 1 ? "Yes" : "No");
             boolean foundChecking = false;
 			boolean foundSavings = false;
-			int numberOfCheckings = 0;
-			int numberOfSavings = 0;
 			ArrayList<Account> nonLoanAccounts = new ArrayList();
 			ArrayList<Account> checkingsAccounts = new ArrayList();
 			ArrayList<Account> savingsAccounts = new ArrayList();
@@ -130,20 +141,29 @@ public class CustomerController implements Initializable {
                 }
 			}
 
-			// Handle stuff for displaying selected Checkings account.
+			// Setting up the Collections for the combo boxes
 			CollectionController checkingsCollection = new CollectionController(checkingsAccounts);
 			cusSelectCheckings.setItems(checkingsCollection.getCollections());
 
+			CollectionController allAccountsCollection = new CollectionController(allAccounts);
+			accountToTransferTo.setItems(allAccountsCollection.getCollections());
+
+			CollectionController loanCollection = new CollectionController(loanAccounts);
+			cusLoanSelect.setItems(loanCollection.getCollections());
+
+			CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
+			accountToTransferFrom.setItems(nonLoanCollection.getCollections());
+
+			CollectionController savingsCollection = new CollectionController(savingsAccounts);
+			cusSelectSavings.setItems(savingsCollection.getCollections());
+
+			// Adding Change Listners so when a value is changed it will update information.
 			cusSelectCheckings.valueProperty().addListener(new ChangeListener() {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 					cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
 				}
 			});
-
-			// Handle stuff for displaying selected Savings account
-			CollectionController savingsCollection = new CollectionController(savingsAccounts);
-			cusSelectSavings.setItems(savingsCollection.getCollections());
 
 			cusSelectSavings.valueProperty().addListener(new ChangeListener() {
 				@Override
@@ -152,26 +172,42 @@ public class CustomerController implements Initializable {
 				}
 			});
 
-
-			CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
-			accountToTransferFrom.setItems(nonLoanCollection.getCollections());
-
 			accountToTransferFrom.valueProperty().addListener(new ChangeListener() {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-					if (savingsAccounts.contains((Account) newValue)){
+					if (savingsAccounts.contains(newValue)){
 						selectedAccount1 = (SavingsAccount) newValue;
-					} else if (checkingsAccounts.contains((Account) newValue)){
+					} else if (checkingsAccounts.contains(newValue)){
 						selectedAccount1 = (CheckingAccount) newValue;
+					} else {
+						selectedAccount1 = null;
 					}
 				}
 			});
 
-			CollectionController allAccountsCollection = new CollectionController(nonLoanAccounts);
-			accountToTransferTo.setItems(allAccountsCollection.getCollections());
+			accountToTransferTo.valueProperty().addListener(new ChangeListener() {
+				@Override
+				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+					if (savingsAccounts.contains(newValue)){
+						selectedAccount2 = !(((SavingsAccount) newValue).isCD()) ? (SavingsAccount) newValue : null;
+					}else if (checkingsAccounts.contains(newValue)){
+						selectedAccount2 = (CheckingAccount) newValue;
+					}else if (loanAccounts.contains(newValue)){
+						selectedAccount2 = (Loan) newValue;
+					} else {
+						selectedAccount2 = null;
+					}
+				}
+			});
 
-            CollectionController loanCollection = new CollectionController(nonLoanAccounts);
-            cusLoanSelect.setItems(loanCollection.getCollections());
+            cusLoanSelect.valueProperty().addListener(new ChangeListener() {
+				@Override
+				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+					currentSelectedLoan = (Loan) newValue;
+					cusLoanBalance.setText(String.format("%2.2f", currentSelectedLoan.getBalance()));
+					cusAccountStatus.setText(String.format("Insert Later"));
+				}
+			});
 
 			if (!foundChecking){
 				cusCheckingBalance.setText("N/A");

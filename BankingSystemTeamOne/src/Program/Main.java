@@ -145,12 +145,12 @@ public class Main extends Application {
                                         args[6], Integer.parseInt(args[7])));
                                 break;
                             case "Checking":
-                                accounts.add(new CheckingAccount(args[0], Double.parseDouble(args[1]), args[2],
-                                        args[3], Integer.parseInt(args[4]), getDate(args[5])));
+                                accounts.add(new CheckingAccount(args[0], Integer.parseInt(args[1]), Double.parseDouble(args[2]), args[3],
+                                        Integer.parseInt(args[4]), Integer.parseInt(args[5]), getDate(args[6])));
                                 break;
                             case "Savings":
-                                accounts.add(new SavingsAccount(args[0], Double.parseDouble(args[1]), Double.parseDouble(args[2]),
-                                        getDate(args[3]), getDate(args[4])));
+                                accounts.add(new SavingsAccount(args[0], Integer.parseInt(args[1]), Double.parseDouble(args[2]), Double.parseDouble(args[3]),
+                                        getDate(args[4]), getDate(args[5])));
                                 break;
                             case "Loan":
                                 accounts.add(new Loan(args[0], args[1], Double.parseDouble(args[2]),
