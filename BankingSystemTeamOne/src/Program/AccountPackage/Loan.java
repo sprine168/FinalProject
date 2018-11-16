@@ -59,19 +59,27 @@ public class Loan extends Account {
 		return currentPaymentDue;
 	}
 
+	/** Method to simulate a month passing.  It will look at the current account balance, and interest rate and calculate a new balance.
+     *  It will also give it a new due date
+     **/
 	public void advanceAMonth(){
+	    //Calendar does not work right now
 		Calendar c = new GregorianCalendar();
 		c.setTime(datePaymentDue);
 		c.add(Calendar.DATE, 30);
 		datePaymentDue = c.getTime();
-        if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
-        if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+		//Checks the loan type and updates the balance and calculates the new current Payment Due
+        if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
+        if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
         if (accountType.equals("CC")){balance += currentPaymentDue; currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 
+    /**
+     * Function to update the interest rate.  Takes in a new value for the new interest rate.  0.01 = 1%
+     */
 	public void updateInterestRate(double currentInterestRate){
+	    //Sets the interest rate to a new interest rate.
 		this.currentInterestRate = currentInterestRate;
-		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12) / 12;
 	}
 	
 	@Override

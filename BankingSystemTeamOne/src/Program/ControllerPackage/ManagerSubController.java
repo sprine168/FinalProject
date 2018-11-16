@@ -75,7 +75,7 @@ public class ManagerSubController implements Initializable {
     public TextField cusLoanBalance;
 
     @FXML
-    public Button depositButton1;
+    public Button setInterestRateButton;
 
     @FXML
     public String tellerChecking;       // This is for the comboBox. Note: For selecting account type.
@@ -143,11 +143,33 @@ public class ManagerSubController implements Initializable {
     @FXML
     void advanceAMonth(){
         if (!currentLoanAccount.equals(null)){
+
+            //On button click, advance the loan a month.  This allows us to watch interst rise automatically
             currentLoanAccount.advanceAMonth();
             datePaymentDue.setText(df.format(currentLoanAccount.getDatePaymentDue()));
+            //Set the current amount due
             currentLoanPaymentDue.setText(String.format("%2.2f", currentLoanAccount.getCurrentPaymentDue()));
+            //Set the loan balance to what the customer owes on that loan
             currentLoanBalance.setText(String.format("%2.2f", currentLoanAccount.getBalance()));
             cusLoanBalance.setText(String.format("%2.2f", currentLoanAccount.getBalance()));
+            //Signals that a month has passed and the customer has been notified
+            notifiedOfPayment.setText("Yes");
+        }
+    }
+
+    @FXML
+    void updateInterestRate(){
+        //Checks to see if there is a valid account
+        if(!currentLoanAccount.equals(null))
+        {
+            //on Valid account, grabs the new interest rates and updates it
+            String text = setInterestRate.getText(); // example String
+            double value = Double.parseDouble(text);
+            currentLoanAccount.updateInterestRate(value);
+            double value1 = currentLoanAccount.getCurrentInterestRate()*100;
+            String str = value1 + "";
+            //Returns the updated interest rate
+            currentLoanRate.setText("%"+str);
         }
     }
 
@@ -169,6 +191,7 @@ public class ManagerSubController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        //grabs the customer from the previous drop down menu
         Customer customer = Main.currentCustomer;
         if (customer != null) {
             customerIDText.setText(customer.getCustomerId());

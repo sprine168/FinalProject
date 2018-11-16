@@ -175,7 +175,7 @@
                 </RadialGradient>
             </textFill>
         </Button>
-      <Button fx:id="depositButton1" contentDisplay="CENTER" layoutX="866.0" layoutY="380.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" text="Set Interest Rate" textAlignment="CENTER">
+      <Button fx:id="setInterestRateButton" contentDisplay="CENTER" layoutX="866.0" layoutY="380.0" mnemonicParsing="false" onAction="#updateInterestRate" prefHeight="30.0" prefWidth="127.0" text="Set Interest Rate" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
