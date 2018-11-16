@@ -18,6 +18,29 @@ public class SavingsAccount extends Account {
 		this.CDDue = CDDue;
 	}
 
+	public double Withdraw(double amountToWithdraw){
+		if (balance >= amountToWithdraw){
+			balance = balance - amountToWithdraw;
+		}else {
+			amountToWithdraw = 0.0;
+		}
+		return amountToWithdraw;
+	}
+
+	public double Withdraw(Date dateOfWithdraw, double penaltyPercent){
+		double amountToWithdraw = 0.0;
+		if (isCD()){
+			if (dateOfWithdraw.before(CDDue)){
+				amountToWithdraw = balance - (balance * penaltyPercent);
+				balance = 0;
+			} else {
+				amountToWithdraw = balance;
+				balance = 0;
+			}
+		}
+		return amountToWithdraw;
+	}
+
 	public boolean isCD(){
 		return this.CDDue != null;
 	}

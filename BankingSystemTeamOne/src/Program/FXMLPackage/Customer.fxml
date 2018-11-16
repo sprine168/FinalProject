@@ -92,12 +92,12 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x31" />
             </font>
         </Label>
-        <Label alignment="CENTER" layoutX="388.0" layoutY="211.0" prefHeight="18.0" prefWidth="243.0" text="Account Type">
+        <Label alignment="CENTER" layoutX="388.0" layoutY="210.0" prefHeight="18.0" prefWidth="243.0" text="Account To Transfer From">
             <font>
                 <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
             </font>
         </Label>
-        <ComboBox fx:id="accountType1" layoutX="397.0" layoutY="235.0" prefHeight="31.0" prefWidth="227.0" promptText="Please Select Account">
+        <ComboBox fx:id="accountToTransferFrom" layoutX="397.0" layoutY="231.0" prefHeight="31.0" prefWidth="227.0" promptText="Please Select Account">
 
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -138,7 +138,7 @@
             <font>
                 <Font name="Bodoni MT" size="14.0" />
             </font></TextArea>
-        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="450.0" layoutY="273.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Initiate Transfer" textAlignment="CENTER">
+        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="450.0" layoutY="321.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Initiate Transfer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -329,5 +329,21 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
+      <Label alignment="CENTER" layoutX="388.0" layoutY="263.0" prefHeight="18.0" prefWidth="243.0" text="Account To Transfer To">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21111" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountToTransferTo" layoutX="397.0" layoutY="284.0" prefHeight="31.0" prefWidth="227.0" promptText="Please Select Account">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Checking Account" />
+               <String fx:value="Saving Account" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
     </children>
 </AnchorPane>

@@ -45,6 +45,8 @@ public class CreateAccountController implements Initializable {
     Date currentDate;
     Customer currentCustomer;
     DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+    String accountType;
+    String accountSubType;
 
     @FXML
     public Button DoStuff;
@@ -65,7 +67,6 @@ public class CreateAccountController implements Initializable {
     public TextField createCusCity;
     public TextField createCusState;
     public TextField createCusZip;
-    public TextField atmCard;
     public TextField checkCusInitBalance;
     public TextField savingAccountBalance;
     public TextField savingAccountOpen;
@@ -75,7 +76,6 @@ public class CreateAccountController implements Initializable {
     public TextField checkAtmCard;
     public TextField checkDate;
 
-    public Label atm;
     public Label CDAddDateLabel;
     public Label AccountBalanceLabel;
     public Label AccountBackupLabel;
@@ -115,14 +115,8 @@ public class CreateAccountController implements Initializable {
 
     public void createAccount() throws ParseException {
         if (currentCustomer != null) {
-            String accountType = (accountTypeBox.getSelectionModel().getSelectedItem() != null) ?
-                    accountTypeBox.getSelectionModel().getSelectedItem().toString() : "Checking Account";
-
-            String subAccountType = (accountTypeBox1.getSelectionModel().getSelectedItem() != null) ?
-                    accountTypeBox1.getSelectionModel().getSelectedItem().toString() : "";
-
             double initialBalance = 0.0;
-            if (accountType.equals("Checking Account"))
+            if (accountType.equals("Checkings Account"))
                 initialBalance = !(checkCusInitBalance.getText().isEmpty() && checkCusInitBalance.getText().equals("")) ?
                     Double.parseDouble(checkCusInitBalance.getText()) : 0.0;
             else if(accountType.equals("Savings Account"))
@@ -133,25 +127,25 @@ public class CreateAccountController implements Initializable {
 
             Date cdDue = !(cdDueDate.getText().isEmpty() && cdDueDate.getText().equals("")) ? df.parse(cdDueDate.getText()) : null;
 
-            Account account = null;
-
-            if (accountTypeBox.getSelectionModel().getSelectedItem() == null)
+            if (accountTypeBox.getSelectionModel().getSelectedItem().equals(null))
                 accountTypeBox.setValue(accountType);
 
-            if (accountType.equals("Checking Account")) {
-                account = new CheckingAccount(currentCustomer.getCustomerId(), initialBalance, subAccountType, "", 0, currentDate);
+            Account account = null;
+
+            if (accountType.equals("Checkings Account")) {
+                account = new CheckingAccount(currentCustomer.getCustomerId(), initialBalance, accountSubType, "", 0, c.getTime());
             } else if (accountType.equals("Savings Account")) {
                 if (cdDue == null) {
                     c.setTime(new Date());
                     c.add(Calendar.DATE, 325);
                     cdDue = c.getTime();
                 }
-                if (subAccountType.equals("Non CD"))
+                if (accountSubType.equals("Non CD"))
                     account = new SavingsAccount(currentCustomer.getCustomerId(), initialBalance, .125, currentDate, null);
                 else
                     account = new SavingsAccount(currentCustomer.getCustomerId(), initialBalance, .125, currentDate, cdDue);
             }
-
+            System.out.println(account);
             Main.addAccount(account);
         }
     }
@@ -173,18 +167,18 @@ public class CreateAccountController implements Initializable {
 
             String zip = !(createCusZip.getText().isEmpty() && createCusZip.getText().equals("")) ? createCusZip.getText() : "";
 
-            int atmValue = !(atmCard.getText().isEmpty() && atmCard.getText().equals("")) ?
-                    Integer.parseInt(atmCard.getText()) : 0;
+            int atmValue = !(checkAtmCard.getText().isEmpty() && checkAtmCard.getText().equals("")) ?
+                    Integer.parseInt(checkAtmCard.getText()) : 0;
 
             currentCustomer = new Customer(ssn, address, city, state, zip, fName, lName, atmValue);
 
             Main.addCustomer(currentCustomer);
+            System.out.println(currentCustomer);
         }
-
-        createAccount();
     }
 
     public void functionToDoStuff(ActionEvent event) throws ParseException {
+        System.out.println(currentCustomer);
         if (currentCustomer != null){
             createAccount();
         } else {
@@ -282,13 +276,21 @@ public class CreateAccountController implements Initializable {
         accountTypeBox.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                if (newValue.toString().equals("Checkings Account")) {
+                accountType = newValue.toString();
+                if (accountType.equals("Checkings Account")) {
                     accountTypeBox1.setItems(checkings.getCollections());
                     setAccountTypeVisibilty(true);
-                } else if (newValue.toString().equals("Savings Account")) {
+                } else if (accountType.equals("Savings Account")) {
                     accountTypeBox1.setItems(savings.getCollections());
                     setAccountTypeVisibilty(false);
                 }
+            }
+        });
+
+        accountTypeBox1.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                accountSubType = newValue.toString();
             }
         });
     }

@@ -39,94 +39,48 @@ import javafx.stage.Stage;
 public class CustomerController implements Initializable {
 
 	private Customer customer;
-	private Account accountToTransferFrom;
+	private Account selectedAccount1;
+	private Account selectedAccount2;
 	private Loan currentSelectedLoan;
 	private Account currentSelectedAccount;
 
 	@FXML
-	public Button logoutButton;
-
-	@FXML
-	public TextField customerIDText;
-
-	@FXML
-	public TextField customerNameText;
-
-	@FXML
-	public TextField customerStateText;
-
-	@FXML
-	public TextField customerAddressText;
-
-	@FXML
-	public TextField customerZipText;
-
-	@FXML
-	public TextField customerATMText;
-
-	@FXML
-	public TextField cusCheckingBalance;
-
-	@FXML
-	public TextField cusSavingBalance;
-
-	@FXML
-	public TextField cusLoanBalance;
-
-	@FXML
-	public TextField cusAccountStatus;
-
-	@FXML
 	public TextArea monthlyChecking;
-
-	@FXML
 	public TextArea monthlyCC;
 
-	@FXML
 	public TextField depositAmount;
-
-	@FXML
 	public TextField transferAmount;
-
-	@FXML
 	public TextField paymentAmount;
-
-	@FXML
-	public Button transferButton1;
-
-	@FXML
-	public Button withdrawButton1;
-
-	@FXML
 	public TextField withdrawAmount1;
+	public TextField customerIDText;
+	public TextField customerNameText;
+	public TextField customerStateText;
+	public TextField customerAddressText;
+	public TextField customerZipText;
+	public TextField customerATMText;
+	public TextField cusCheckingBalance;
+	public TextField cusSavingBalance;
+	public TextField cusLoanBalance;
+	public TextField cusAccountStatus;
 
-	@FXML
+
+	public Button transferButton1;
+	public Button withdrawButton1;
 	public Button transferButton;
-
-	@FXML
 	public Button paymentButton;
-
-	@FXML
 	public Button depositButton;
+	public Button logoutButton;
 
-	@FXML
 	public ComboBox cusSelectCheckings;
-
-	@FXML
 	public ComboBox cusSelectSavings;
-
-	@FXML
-	public ComboBox accountType1;
-
-	@FXML
+	public ComboBox accountToTransferTo;
+	public ComboBox accountToTransferFrom;
     public ComboBox cusLoanSelect;
 
     private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		//app_stage.hide();
 		app_stage.setScene(homePageScene);
-		//app_stage.show();
 	}
 
 
@@ -157,44 +111,67 @@ public class CustomerController implements Initializable {
 			ArrayList<Account> checkingsAccounts = new ArrayList();
 			ArrayList<Account> savingsAccounts = new ArrayList();
 			ArrayList<Account> loanAccounts = new ArrayList();
+			ArrayList<Account> allAccounts = new ArrayList();
+
 			for(Account account : customer.getAccounts()) {
 				if (account.getClass().equals(CheckingAccount.class)) {
 					checkingsAccounts.add(account);
 					nonLoanAccounts.add(account);
+					allAccounts.add(account);
 					foundChecking = true;
 				} else if (account.getClass().equals(SavingsAccount.class)) {
 					savingsAccounts.add(account);
 					nonLoanAccounts.add(account);
+					allAccounts.add(account);
 					foundSavings = true;
 				} else {
 				    loanAccounts.add(account);
+					allAccounts.add(account);
                 }
 			}
+
+			// Handle stuff for displaying selected Checkings account.
 			CollectionController checkingsCollection = new CollectionController(checkingsAccounts);
 			cusSelectCheckings.setItems(checkingsCollection.getCollections());
 
+			cusSelectCheckings.valueProperty().addListener(new ChangeListener() {
+				@Override
+				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+					cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
+				}
+			});
+
+			// Handle stuff for displaying selected Savings account
 			CollectionController savingsCollection = new CollectionController(savingsAccounts);
 			cusSelectSavings.setItems(savingsCollection.getCollections());
 
+			cusSelectSavings.valueProperty().addListener(new ChangeListener() {
+				@Override
+				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+					cusSavingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
+				}
+			});
+
+
 			CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
-			accountType1.setItems(nonLoanCollection.getCollections());
+			accountToTransferFrom.setItems(nonLoanCollection.getCollections());
+
+			accountToTransferFrom.valueProperty().addListener(new ChangeListener() {
+				@Override
+				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+					if (savingsAccounts.contains((Account) newValue)){
+						selectedAccount1 = (SavingsAccount) newValue;
+					} else if (checkingsAccounts.contains((Account) newValue)){
+						selectedAccount1 = (CheckingAccount) newValue;
+					}
+				}
+			});
+
+			CollectionController allAccountsCollection = new CollectionController(nonLoanAccounts);
+			accountToTransferTo.setItems(allAccountsCollection.getCollections());
 
             CollectionController loanCollection = new CollectionController(nonLoanAccounts);
             cusLoanSelect.setItems(loanCollection.getCollections());
-
-            cusSelectSavings.valueProperty().addListener(new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    cusSavingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
-                }
-            });
-
-            cusSelectCheckings.valueProperty().addListener(new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
-                }
-            });
 
 			if (!foundChecking){
 				cusCheckingBalance.setText("N/A");
