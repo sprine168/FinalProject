@@ -64,12 +64,9 @@ public class Loan extends Account {
 		c.setTime(datePaymentDue);
 		c.add(Calendar.DATE, 30);
 		datePaymentDue = c.getTime();
-        if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
-        if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
+        if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
+        if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
         if (accountType.equals("CC")){balance += currentPaymentDue; currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
-		//currentPaymentDue = ((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);
-
-		//balance += currentPaymentDue;
 	}
 
 	public void updateInterestRate(double currentInterestRate){

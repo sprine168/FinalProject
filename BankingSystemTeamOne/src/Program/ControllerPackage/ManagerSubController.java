@@ -190,6 +190,7 @@ public class ManagerSubController implements Initializable {
             }
             CollectionController loanCollection = new CollectionController(loanAccounts);
             manCusSelect.setItems(loanCollection.getCollections());
+
             manCusSelect.valueProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -198,7 +199,7 @@ public class ManagerSubController implements Initializable {
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
                     cusLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
                     String s = "%2.2f\037";
-                    currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 10.0)));
+                    currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 100.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
                     currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
                 }

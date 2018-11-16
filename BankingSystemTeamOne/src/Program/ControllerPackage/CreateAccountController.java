@@ -133,7 +133,7 @@ public class CreateAccountController implements Initializable {
             Account account = null;
 
             if (accountType.equals("Checkings Account")) {
-                account = new CheckingAccount(currentCustomer.getCustomerId(), initialBalance, accountSubType, "", 0, c.getTime());
+                account = new CheckingAccount(currentCustomer.getCustomerId(), initialBalance, accountSubType.toLowerCase(), "", 0, c.getTime());
             } else if (accountType.equals("Savings Account")) {
                 if (cdDue == null) {
                     c.setTime(new Date());
@@ -245,8 +245,8 @@ public class CreateAccountController implements Initializable {
         savingsSubAccounts.add("Non CD");
         savingsSubAccounts.add("CD");
 
-        checkingsSubAccounts.add("TMB");
-        checkingsSubAccounts.add("Gold/Diamond");
+        checkingsSubAccounts.add("Regular");
+        checkingsSubAccounts.add("Gold");
 
         CollectionController savings = new CollectionController(savingsSubAccounts);
         CollectionController checkings = new CollectionController(checkingsSubAccounts);
