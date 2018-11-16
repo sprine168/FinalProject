@@ -63,6 +63,7 @@ public class Loan extends Account {
 		c.add(Calendar.DATE, 30);
 		datePaymentDue = c.getTime();
 		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12.0) / 12.0;
+		//balance += currentPaymentDue;
 	}
 
 	public void updateInterestRate(double currentInterestRate){
