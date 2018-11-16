@@ -32,12 +32,10 @@ import java.util.ResourceBundle;
 /*
     The Controller class will access the input boxes and other various items from the fxml pages.
     The pages should contain fx:id to be able to be accessed on this page using event listeners.
-
-    // TODO Make sure to give the items in the fxml pages id's for the input fields. Otherwise can't be accessed.
 */
+
 public class MainController implements Initializable {
 
-    public Button logoutButton;
     public Button loginButton;
 
     public TextField userLoginText;

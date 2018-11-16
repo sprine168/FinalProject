@@ -1,5 +1,7 @@
 package Program.AccountPackage;
 
+import Program.Main;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,12 +39,38 @@ public class CheckingAccount extends Account {
 				balance -= amountToWithdraw;
 				amountToReturn = amountToWithdraw;
 			}else if (balance < amountToWithdraw){
+				double prevBalance = balance;
 				double amt = (amountToReturn - balance);
 				balance = 0;
-
+				Account backupAccount = null;
+				for (Account account : Main.getCustomer(customerId).getAccounts()){
+					if (account.getClass().equals(SavingsAccount.class)){
+						if (((SavingsAccount) account).identifier == backupId){
+							backupAccount = account;
+						}
+					}
+				}
+				if (backupAccount != null){
+					((SavingsAccount) backupAccount).Withdraw(amt);
+				}else{
+					System.out.println("Couldn't find account, cancelling transaction");
+					balance = prevBalance;
+				}
+			}
+		} else {
+			if (balance >= amountToWithdraw){
+				balance -= amountToWithdraw;
+				amountToReturn = amountToWithdraw;
 			}
 		}
 		return amountToReturn;
+	}
+
+	public double closeAccount(){
+		double amt = balance;
+		balance = 0;
+		Main.removeAccount(this);
+		return amt;
 	}
 
 	public String getAccountType(){

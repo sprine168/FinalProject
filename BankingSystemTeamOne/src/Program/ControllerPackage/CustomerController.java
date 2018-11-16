@@ -102,6 +102,7 @@ public class CustomerController implements Initializable {
 				    selectedAccount2.Deposit(amt);
                 }
 			}
+			function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml"))), event);
 		}
 	}
 	

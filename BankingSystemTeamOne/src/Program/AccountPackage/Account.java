@@ -35,11 +35,11 @@ public abstract class Account {
 	}
 	// Method that will allow the closing of an Account
 
-	public double CloseAccount() {
+	public double CloseAccount(Date accountClosed) {
 		double amountToReturn = 0;
 		if (this.getClass() != Loan.class) {
-			if (this.getClass() == SavingsAccount.class && ((SavingsAccount) this).isCD()){
-
+			if (this.getClass() == SavingsAccount.class){
+				this.CloseAccount(accountClosed);
 			}
 			amountToReturn = balance;
 			balance = 0;

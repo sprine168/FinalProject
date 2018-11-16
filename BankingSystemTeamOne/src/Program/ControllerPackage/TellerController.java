@@ -66,7 +66,7 @@ public class TellerController implements Initializable {
         String ssn = !cusIDSearch.getText().isEmpty() ? cusIDSearch.getText() : "";
         if (Main.findCustomer(ssn)) {
             Main.currentCustomer = Main.getCustomer(ssn);
-            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerSubMenu.fxml")), event);
+            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml")), event);
         }
     }
 

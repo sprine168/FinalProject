@@ -4,6 +4,7 @@ import Program.AccountPackage.Account;
 import Program.AccountPackage.CheckingAccount;
 import Program.AccountPackage.Customer;
 import Program.AccountPackage.Loan;
+import Program.Data.EnumeratedTypes;
 import Program.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,35 +24,29 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
-public class ManagerSubController implements Initializable {
+public class SubController implements Initializable {
 
-    public String tellerChecking;       // This is for the comboBox. Note: For selecting account type.
-    public String tellerSaving;         // This is for the comboBox. Note: For selecting account type.
     private Loan currentLoanAccount;
     DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+    private Account selectedAccount;
+    private Account selectedAccount2;
 
     public Button logoutButton;
     public Button returnMenu;
     public Button closeAccountButton;
     public Button withdrawButton;
     public Button depositButton;
-    public Button paymentButton;
     public Button transferButton;
+    public Button closeCustomerButton;
 
-    public TextArea cusAccountStatement;
     public TextArea cusCheckingStatement;
     public TextArea cusLoanStatement;
 
-    public TextField deposit;
-    public TextField transfer;
-    public TextField withdraw;
-    public TextField payment;
     public TextField customerIDText;
-    public TextField checkingBalanceText;
     public TextField cusAccountStatus;
-    public TextField cusLoanBalance;
     public TextField setInterestRate;
     public TextField currentLoanRate;
     public TextField datePaymentDue;
@@ -66,6 +62,12 @@ public class ManagerSubController implements Initializable {
     public TextField manCusAtm;
 
     public ComboBox manCusSelect;
+    public ComboBox accountToTransferTo;
+    public ComboBox accountToTransferFrom;
+    public ComboBox accountToClose;
+
+    public Label accountToCloseLabel;
+    public Pane LoanPane;
 
     @FXML
     void advanceAMonth(){
@@ -78,7 +80,6 @@ public class ManagerSubController implements Initializable {
             currentLoanPaymentDue.setText(String.format("%2.2f", currentLoanAccount.getCurrentPaymentDue()));
             //Set the loan balance to what the customer owes on that loan
             currentLoanBalance.setText(String.format("%2.2f", currentLoanAccount.getBalance()));
-            cusLoanBalance.setText(String.format("%2.2f", currentLoanAccount.getBalance()));
             //Signals that a month has passed and the customer has been notified
             notifiedOfPayment.setText("Yes");
         }
@@ -112,14 +113,42 @@ public class ManagerSubController implements Initializable {
     }
 
     @FXML
-    void returnMan(ActionEvent event) throws IOException {
-        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml")), event);
+    void returnTo(ActionEvent event) throws IOException {
+        if (Main.currentAuthorization != null) {
+            if (Main.currentAuthorization == EnumeratedTypes.TELLER)
+                function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/TellerMainMenu.fxml"))), event);
+            else if (Main.currentAuthorization == EnumeratedTypes.MANAGER)
+                function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerMainMenu.fxml"))), event);
+        }
+    }
+
+    @FXML
+    void closeAccount(ActionEvent event) throws IOException{
+        if (Main.currentAuthorization != EnumeratedTypes.MANAGER) return;
+        if (!accountToClose.getSelectionModel().getSelectedItem().equals(null)){
+            ((Account) accountToClose.getSelectionModel().getSelectedItem()).CloseAccount(new Date());
+        }
+    }
+
+    @FXML
+    void Deposit(ActionEvent event) throws IOException {
+
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         //grabs the customer from the previous drop down menu
         Customer customer = Main.currentCustomer;
+        switch(Main.currentAuthorization){
+            case MANAGER:
+                LoanPane.visibleProperty().setValue(true);
+                break;
+            case TELLER:
+                LoanPane.visibleProperty().setValue(false);
+                break;
+            default:
+                break;
+        }
         if (customer != null) {
             customerIDText.setText(customer.getCustomerId());
             manCusName.setText(String.format("%s %s", customer.getFirstName(), customer.getLastName()));
@@ -127,19 +156,25 @@ public class ManagerSubController implements Initializable {
             manCusState.setText(customer.getState());
             manCusZip.setText(customer.getZipCode());
             manCusAtm.setText(customer.getAtmCard() == 1 ? "Yes" : "No");
-            boolean foundNonLoanAccount = false;
             ArrayList<Account> nonLoanAccounts = new ArrayList();
             ArrayList<Account> loanAccounts = new ArrayList();
+            ArrayList<Account> allAccounts = new ArrayList();
+
             for (Account account : customer.getAccounts()) {
                 if (!account.getClass().equals(Loan.class)) {
-                    foundNonLoanAccount = true;
                     nonLoanAccounts.add(account);
+                    allAccounts.add(account);
                 } else {
                     loanAccounts.add(account);
+                    allAccounts.add(account);
                 }
             }
+
             CollectionController loanCollection = new CollectionController(loanAccounts);
             manCusSelect.setItems(loanCollection.getCollections());
+
+            CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
+            accountToTransferFrom.setItems(nonLoanCollection.getCollections());
 
             manCusSelect.valueProperty().addListener(new ChangeListener() {
                 @Override
@@ -147,16 +182,12 @@ public class ManagerSubController implements Initializable {
                     Loan newLoan = (Loan) newValue;
                     currentLoanAccount = newLoan;
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
-                    cusLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
                     String s = "%2.2f\037";
                     currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 100.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
                     currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
                 }
             });
-            if (!foundNonLoanAccount) {
-                checkingBalanceText.setText("N/A");
-            }
         }
     }
 }

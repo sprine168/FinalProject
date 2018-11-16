@@ -1,5 +1,7 @@
 package Program.AccountPackage;
 
+import Program.Main;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,27 +27,34 @@ public class SavingsAccount extends Account {
 	}
 
 	public double Withdraw(double amountToWithdraw){
+		if (isCD()) return 0.0;
 		if (balance >= amountToWithdraw){
-			balance = balance - amountToWithdraw;
+			balance -= amountToWithdraw;
 		}else {
 			amountToWithdraw = 0.0;
 		}
 		return amountToWithdraw;
 	}
 
-	public double Withdraw(Date dateOfWithdraw, double penaltyPercent){
+	@Override
+	public double CloseAccount(Date dateOfClose){
 		double amountToWithdraw = 0.0;
 		if (isCD()){
-			if (dateOfWithdraw.before(CDDue)){
-				amountToWithdraw = balance - (balance * penaltyPercent);
-				balance = 0;
-			} else {
+			if (dateOfClose.before(CDDue)){
 				amountToWithdraw = balance;
 				balance = 0;
+			} else {
+				amountToWithdraw = balance * currentInterestRate; // insert equation for interest over the set time;
+				balance = 0;
 			}
+		}else{
+			amountToWithdraw = balance * currentInterestRate;
+			balance = 0;
 		}
+		Main.removeAccount(this);
 		return amountToWithdraw;
 	}
+
 
 	public boolean isCD(){
 		return this.CDDue != null;

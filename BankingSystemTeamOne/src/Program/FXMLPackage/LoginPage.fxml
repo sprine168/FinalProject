@@ -74,7 +74,7 @@
                         <Font name="Calisto MT" size="13.0" />
                     </font>
                 </TextField>
-                <PasswordField fx:id="userPassText" blendMode="SRC_OVER" layoutX="114.0" layoutY="52.0" prefHeight="47.0" prefWidth="227.0" promptText="Please Enter Password">
+                <PasswordField fx:id="userPassText" blendMode="SRC_OVER" layoutX="114.0" layoutY="52.0" prefHeight="47.0" onAction="#login" prefWidth="227.0" promptText="Please Enter Password">
                     <cursor>
                         <Cursor fx:constant="TEXT" />
                     </cursor>

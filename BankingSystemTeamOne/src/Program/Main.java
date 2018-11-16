@@ -96,6 +96,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static void removeAccount(Account accountToRemove){
+        accounts.remove(accountToRemove);
+    }
+
     public static void linkAccounts(){
         for (Account account : accounts){
             for (Customer customer : customers){

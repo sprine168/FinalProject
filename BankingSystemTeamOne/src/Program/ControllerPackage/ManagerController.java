@@ -64,7 +64,7 @@ public class ManagerController implements Initializable {
         String ssn = !cusIDSearch.getText().isEmpty() ? cusIDSearch.getText().toString() : "";
         if (Main.findCustomer(ssn)) {
             Main.currentCustomer = Main.getCustomer(ssn);
-            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/ManagerSubMenu.fxml")), event);
+            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml")), event);
         }else{
             cusIDSearch.setText("");
         }
