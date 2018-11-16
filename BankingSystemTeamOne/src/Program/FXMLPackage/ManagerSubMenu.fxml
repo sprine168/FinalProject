@@ -294,7 +294,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="cusLoanBalance" editable="false" layoutX="257.0" layoutY="211.0" prefHeight="30.0" prefWidth="227.0">
+      <TextField fx:id="cusLoanBalance" editable="false" layoutX="257.0" layoutY="211.0" prefHeight="30.0" prefWidth="227.0" >
          <font>
             <Font size="13.0" />
          </font>
@@ -375,7 +375,7 @@
             <Font size="14.0" fx:id="x321212" />
          </font>
       </Label>
-      <TextField fx:id="currentLoanBalance" editable="false" layoutX="516.0" layoutY="209.0" prefHeight="30.0" prefWidth="127.0">
+      <TextField fx:id="currentLoanBalance" editable="false" layoutX="516.0" layoutY="209.0" prefHeight="30.0" prefWidth="127.0" >
          <font>
             <Font size="13.0" />
          </font>

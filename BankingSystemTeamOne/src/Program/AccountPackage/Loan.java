@@ -31,10 +31,12 @@ public class Loan extends Account {
 		this.currentInterestRate = currentInterestRate;
 		this.datePaymentDue = datePaymentDue;
 		this.dateNotifiedOfPayment = dateNotifiedOfPayment;
-		this.currentPaymentDue = currentPaymentDue;
 		this.dateSinceLastPayment = dateSinceLastPayment;
 		this.missedPaymentFlag = missedPaymentFlag;
 		this.accountType = accountType;
+		if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
+		if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+        if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 
 	public String getAccountType(){
@@ -62,7 +64,11 @@ public class Loan extends Account {
 		c.setTime(datePaymentDue);
 		c.add(Calendar.DATE, 30);
 		datePaymentDue = c.getTime();
-		currentPaymentDue = balance * Math.pow(1+(currentInterestRate/12.0), 12.0) / 12.0;
+        if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
+        if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
+        if (accountType.equals("CC")){balance += currentPaymentDue; currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
+		//currentPaymentDue = ((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);
+
 		//balance += currentPaymentDue;
 	}
 

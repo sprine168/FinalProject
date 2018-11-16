@@ -146,6 +146,8 @@ public class ManagerSubController implements Initializable {
             currentLoanAccount.advanceAMonth();
             datePaymentDue.setText(df.format(currentLoanAccount.getDatePaymentDue()));
             currentLoanPaymentDue.setText(String.format("%2.2f", currentLoanAccount.getCurrentPaymentDue()));
+            currentLoanBalance.setText(String.format("%2.2f", currentLoanAccount.getBalance()));
+            cusLoanBalance.setText(String.format("%2.2f", currentLoanAccount.getBalance()));
         }
     }
 
@@ -173,6 +175,7 @@ public class ManagerSubController implements Initializable {
             manCusName.setText(String.format("%s %s", customer.getFirstName(), customer.getLastName()));
             manCusAddress.setText(customer.getAddress());
             manCusState.setText(customer.getState());
+            manCusZip.setText(customer.getZipCode());
             manCusAtm.setText(customer.getAtmCard() == 1 ? "Yes" : "No");
             boolean foundNonLoanAccount = false;
             ArrayList<Account> nonLoanAccounts = new ArrayList();
@@ -193,6 +196,7 @@ public class ManagerSubController implements Initializable {
                     Loan newLoan = (Loan) newValue;
                     currentLoanAccount = newLoan;
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
+                    cusLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
                     String s = "%2.2f\037";
                     currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 10.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
