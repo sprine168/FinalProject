@@ -10,6 +10,7 @@ package Program.ControllerPackage;/*
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
 
 import Program.AccountPackage.*;
@@ -75,12 +76,24 @@ public class CustomerController implements Initializable {
 	public ComboBox accountToTransferFrom;
     public ComboBox cusLoanSelect;
 
+    public ScrollPane CheckingAccountScrollPane;
+    public ScrollPane CreditCardScollPane;
+
+    protected CollectionController checkingsCollection;
+
+    protected CollectionController allAccountsCollection;
+
+    protected CollectionController loanCollection;
+
+    protected CollectionController nonLoanCollection;
+
+    protected CollectionController savingsCollection;
+
     private void function(Parent parent, ActionEvent event){
 		Scene homePageScene = new Scene(parent);
 		Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		app_stage.setScene(homePageScene);
 	}
-
 
 	@FXML 
 	void logout(ActionEvent event) throws IOException
@@ -123,7 +136,7 @@ public class CustomerController implements Initializable {
 			ArrayList<Account> checkingsAccounts = new ArrayList();
 			ArrayList<Account> savingsAccounts = new ArrayList();
 			ArrayList<Account> loanAccounts = new ArrayList();
-			ArrayList<Account> allAccounts = new ArrayList();
+            final ArrayList<Account> allAccounts = new ArrayList();
 
 			for(Account account : customer.getAccounts()) {
 				if (account.getClass().equals(CheckingAccount.class)) {
@@ -143,19 +156,16 @@ public class CustomerController implements Initializable {
 			}
 
 			// Setting up the Collections for the combo boxes
-			CollectionController checkingsCollection = new CollectionController(checkingsAccounts);
+			checkingsCollection = new CollectionController(checkingsAccounts);
 			cusSelectCheckings.setItems(checkingsCollection.getCollections());
 
-			CollectionController allAccountsCollection = new CollectionController(allAccounts);
-			accountToTransferTo.setItems(allAccountsCollection.getCollections());
-
-			CollectionController loanCollection = new CollectionController(loanAccounts);
+			loanCollection = new CollectionController(loanAccounts);
 			cusLoanSelect.setItems(loanCollection.getCollections());
 
-			CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
+			nonLoanCollection = new CollectionController(nonLoanAccounts);
 			accountToTransferFrom.setItems(nonLoanCollection.getCollections());
 
-			CollectionController savingsCollection = new CollectionController(savingsAccounts);
+			savingsCollection = new CollectionController(savingsAccounts);
 			cusSelectSavings.setItems(savingsCollection.getCollections());
 
 			// Adding Change Listners so when a value is changed it will update information.
@@ -163,6 +173,8 @@ public class CustomerController implements Initializable {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 					cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
+					ArrayList<PendingTransaction> checkingTransactions = Main.fetchTransactions(((CheckingAccount) newValue).getAccountId());
+					//CheckingAccountScrollPane.setContent();
 				}
 			});
 
@@ -183,6 +195,11 @@ public class CustomerController implements Initializable {
 					} else {
 						selectedAccount1 = null;
 					}
+
+                    ArrayList<Account> newArray = (ArrayList<Account>) allAccounts.clone();
+					newArray.remove(selectedAccount1);
+                    allAccountsCollection = new CollectionController(newArray);
+                    accountToTransferTo.setItems(allAccountsCollection.getCollections());
 				}
 			});
 
@@ -198,6 +215,7 @@ public class CustomerController implements Initializable {
 					} else {
 						selectedAccount2 = null;
 					}
+
 				}
 			});
 

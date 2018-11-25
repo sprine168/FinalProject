@@ -27,7 +27,10 @@ public class PendingTransaction {
         if (this.transactionID == 0){
             this.transactionID = this.toString().hashCode();
         }
+    }
 
+    public int getAccountID() {
+        return accountID;
     }
 
     @Override

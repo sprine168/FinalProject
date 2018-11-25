@@ -128,6 +128,16 @@ public class Main extends Application {
         }
     }
 
+    public static ArrayList<PendingTransaction> fetchTransactions(int accountId){
+        ArrayList<PendingTransaction> accountTransactions = new ArrayList();
+        for (PendingTransaction pendingTransaction : pendingTransactions){
+            if (accountId == pendingTransaction.getAccountID()){
+                accountTransactions.add(pendingTransaction);
+            }
+        }
+        return accountTransactions;
+    }
+
     public static boolean addCustomer(Customer customer){
         boolean available = true;
         for (Customer customer1: customers){

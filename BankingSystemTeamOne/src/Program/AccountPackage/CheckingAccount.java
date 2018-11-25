@@ -82,4 +82,8 @@ public class CheckingAccount extends Account {
 	public String toString(){
 		return String.format("%s,%d,%2.2f,%s,%d,%d,%s",customerId,identifier,balance,accountType,backupId,numberOfOverdrafts,dateOpened.toString());
 	}
+
+    public int getAccountId() {
+		return identifier;
+    }
 }
