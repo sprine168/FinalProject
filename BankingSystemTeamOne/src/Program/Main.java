@@ -24,6 +24,10 @@ import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 
 /*
@@ -43,6 +47,7 @@ public class Main extends Application {
                 }
                 writer.println();
                 String AccountType = "";
+
                 for (int i = 0; i < 3; i++){
                     if (i == 0)
                         AccountType = "Savings Account";
@@ -50,7 +55,9 @@ public class Main extends Application {
                         AccountType = "Checking Account";
                     if (i == 2)
                         AccountType = "Loan Account";
+
                     writer.println(AccountType);
+
                     for(Account account : accounts){
                         if (account.getClass().getName().contains(AccountType.substring(0, AccountType.indexOf(" ")))){
                             writer.println(account);
@@ -58,6 +65,13 @@ public class Main extends Application {
                     }
                     writer.println();
                 }
+
+                writer.println("Transactions Account");
+                for (PendingTransaction p : pendingTransactions){
+                    writer.println(p);
+                }
+                writer.println();
+                writer.flush();
                 writer.close();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -67,6 +81,8 @@ public class Main extends Application {
 
     public static ArrayList<Customer> customers = new ArrayList();
     public static ArrayList<Account> accounts = new ArrayList();
+    public static ArrayList<PendingTransaction> pendingTransactions = new ArrayList();
+
     public static Customer currentCustomer = null;
     public static EnumeratedTypes currentAuthorization = null;
 
@@ -78,18 +94,18 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static java.util.Date getDate(String arg) {
+    public static ChronoLocalDate getDate(String arg) {
         DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-        java.util.Date date = null;
+        ChronoLocalDate date = null;
         try {
-            date = df.parse(arg);
+            date = Instant.ofEpochMilli(df.parse(arg).getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
         } catch (ParseException e) {
 
         }
         return date;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Runtime.getRuntime().addShutdownHook(new ClosingThread());
         readDatabase();
         linkAccounts();
@@ -97,7 +113,11 @@ public class Main extends Application {
     }
 
     public static void removeAccount(Account accountToRemove){
+        Customer customer = getCustomer(accountToRemove.getCustomerId());
+        if (!customer.equals(null))
+            customer.removeAccount(accountToRemove);
         accounts.remove(accountToRemove);
+        accountToRemove = null;
     }
 
     public static void linkAccounts(){
@@ -130,7 +150,7 @@ public class Main extends Application {
         return getCustomer(string) != null;
     }
 
-    public static void readDatabase(){
+    public static void readDatabase() throws ParseException {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(new FileInputStream("BankingSystemTeamOne/src/Program/Data/BankingDatabase.txt")));
             String accountType = null;
@@ -161,6 +181,8 @@ public class Main extends Application {
                                         Double.parseDouble(args[3]), getDate(args[4]), getDate(args[5]),
                                         Double.parseDouble(args[6]), getDate(args[7]), Boolean.parseBoolean(args[8]), args[9]));
                                 break;
+                            case "Transactions":
+                                pendingTransactions.add(new PendingTransaction(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]), args[3], getDate(args[4])));
                             default:
                                 break;
                         }

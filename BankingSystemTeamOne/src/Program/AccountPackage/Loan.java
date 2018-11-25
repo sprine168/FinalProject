@@ -4,6 +4,9 @@ import sun.util.BuddhistCalendar;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Period;
+import java.time.chrono.ChronoLocalDate;
+import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -14,16 +17,16 @@ public class Loan extends Account {
 	// Variables for the loan class
 	protected String description;
 	protected double currentInterestRate;
-	protected Date datePaymentDue;
-	protected Date dateNotifiedOfPayment;
+	protected ChronoLocalDate datePaymentDue;
+	protected ChronoLocalDate dateNotifiedOfPayment;
 	protected double currentPaymentDue;
-	protected Date dateSinceLastPayment;
+	protected ChronoLocalDate dateSinceLastPayment;
 	protected boolean missedPaymentFlag;
 	protected String accountType;
 
 	// Constructor for the loan class.
-	public Loan(String customerId, String description, double balance, double currentInterestRate, Date datePaymentDue,
-			Date dateNotifiedOfPayment, double currentPaymentDue, Date dateSinceLastPayment, boolean missedPaymentFlag,
+	public Loan(String customerId, String description, double balance, double currentInterestRate, ChronoLocalDate datePaymentDue,
+				ChronoLocalDate dateNotifiedOfPayment, double currentPaymentDue, ChronoLocalDate dateSinceLastPayment, boolean missedPaymentFlag,
 			String accountType) {
 
 		super(customerId, balance, null);
@@ -43,7 +46,7 @@ public class Loan extends Account {
 		return accountType;
 	}
 
-	public Date getDatePaymentDue(){
+	public ChronoLocalDate getDatePaymentDue(){
 		return datePaymentDue;
 	}
 
@@ -64,10 +67,7 @@ public class Loan extends Account {
      **/
 	public void advanceAMonth(){
 	    //Calendar does not work right now
-		Calendar c = new GregorianCalendar();
-		c.setTime(datePaymentDue);
-		c.add(Calendar.DATE, 30);
-		datePaymentDue = c.getTime();
+		datePaymentDue.adjustInto(datePaymentDue.plus(Period.ofDays(30)));
 		//Checks the loan type and updates the balance and calculates the new current Payment Due
         if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
         if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
@@ -86,7 +86,7 @@ public class Loan extends Account {
     public String toString() {
 		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
 		return String.format("%s,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, description, balance, currentInterestRate,
-				df.format(datePaymentDue), df.format(dateNotifiedOfPayment), currentPaymentDue, df.format(dateSinceLastPayment),
+				datePaymentDue.toString(), dateNotifiedOfPayment.toString(), currentPaymentDue, dateSinceLastPayment.toString(),
 				missedPaymentFlag ? "1" : "0", accountType);
     }
 

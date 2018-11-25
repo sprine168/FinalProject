@@ -19,6 +19,7 @@ import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -65,9 +66,9 @@ public class LoanAccountController implements Initializable{
                 c1.set(dueOn1.getYear(),dueOn1.getMonthValue()-1,dueOn1.getDayOfMonth());
                 c2.set(notifyOn1.getYear(),notifyOn1.getMonthValue()-1,notifyOn1.getDayOfMonth());
 
-                Date dueOn = c1.getTime();
-                Date notifyOn = c2.getTime();
-                Date today = Calendar.getInstance().getTime();
+                ChronoLocalDate dueOn = LocalDate.of(c1.get(Calendar.YEAR), c1.get(Calendar.MONTH) + 1, c1.get(Calendar.DAY_OF_MONTH));
+                ChronoLocalDate notifyOn = LocalDate.of(c2.get(Calendar.YEAR), c2.get(Calendar.MONTH) + 1, c2.get(Calendar.DAY_OF_MONTH));
+                ChronoLocalDate today = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH) + 1, Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
 
                 //Sets the loantype to a shorter string for the constructor
@@ -76,7 +77,7 @@ public class LoanAccountController implements Initializable{
                 if (loanTypeShort.equals("Long Term Loan")){loanTypeShort="LT";}
                 if (loanTypeShort.equals("Short Term Loan")){loanTypeShort="ST";}
                 //Creates a new loan using the values grabbed on button click
-                Loan newLoan = new Loan(currentSelectedCustomer.getCustomerId(),desc,balance,interestRate,dueOn,notifyOn,0,dueOn,false,loanTypeShort);
+                Loan newLoan = new Loan(currentSelectedCustomer.getCustomerId(), desc, balance, interestRate, dueOn, notifyOn,0,dueOn,false, loanTypeShort);
                 //adds the new loan to the database
                 Main.addAccount(newLoan);
 

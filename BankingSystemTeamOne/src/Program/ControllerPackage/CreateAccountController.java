@@ -13,6 +13,8 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 import Program.Data.*;
@@ -42,7 +44,7 @@ import javafx.stage.Stage;
 */
 public class CreateAccountController implements Initializable {
 
-    Date currentDate;
+    ChronoLocalDate currentDate;
     Customer currentCustomer;
     DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
     String accountType;
@@ -124,7 +126,7 @@ public class CreateAccountController implements Initializable {
 
             Calendar c = new GregorianCalendar();
 
-            Date cdDue = !(cdDueDate.getText().isEmpty() && cdDueDate.getText().equals("")) ? df.parse(cdDueDate.getText()) : null;
+            ChronoLocalDate cdDue = !(cdDueDate.getText().isEmpty() && cdDueDate.getText().equals("")) ? LocalDate.from(df.parse(cdDueDate.getText()).toInstant()) : null;
 
             if (accountTypeBox.getSelectionModel().getSelectedItem().equals(null))
                 accountTypeBox.setValue(accountType);
@@ -132,13 +134,8 @@ public class CreateAccountController implements Initializable {
             Account account = null;
 
             if (accountType.equals("Checkings Account")) {
-                account = new CheckingAccount(currentCustomer.getCustomerId(),0, initialBalance, accountSubType.toLowerCase(), 0, 0, c.getTime());
+                account = new CheckingAccount(currentCustomer.getCustomerId(),0, initialBalance, accountSubType.toLowerCase(), 0, 0, currentDate);
             } else if (accountType.equals("Savings Account")) {
-                if (cdDue == null) {
-                    c.setTime(new Date());
-                    c.add(Calendar.DATE, 325);
-                    cdDue = c.getTime();
-                }
                 if (accountSubType.equals("Non CD"))
                     account = new SavingsAccount(currentCustomer.getCustomerId(),0, initialBalance, .125, currentDate, null);
                 else
@@ -252,7 +249,7 @@ public class CreateAccountController implements Initializable {
         CollectionController customers = new CollectionController(Main.customers);
         customerList.setItems(customers.getCollections());
 
-        currentDate = new Date();
+        currentDate = LocalDate.now();
 
         newOrPreCustomer.valueProperty().addListener(new ChangeListener() {
             @Override

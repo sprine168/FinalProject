@@ -1,5 +1,6 @@
 package Program.AccountPackage;
 
+import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 
 // Account holds the account information and extends to Loan, CheckingsAccounts, SavingAccounts
@@ -8,10 +9,10 @@ public abstract class Account {
 	// Variables for Account
 	protected String customerId;
 	protected double balance;
-	protected Date dateOpened;
+	protected ChronoLocalDate dateOpened;
 
 	// Constructor for Account
-	public Account(String customerId, double balance, Date dateOpened) {
+	public Account(String customerId, double balance, ChronoLocalDate dateOpened) {
 		this.customerId = customerId;
 		this.balance = balance;
 		this.dateOpened = dateOpened;
@@ -35,7 +36,7 @@ public abstract class Account {
 	}
 	// Method that will allow the closing of an Account
 
-	public double CloseAccount(Date accountClosed) {
+	public double CloseAccount(ChronoLocalDate accountClosed) {
 		double amountToReturn = 0;
 		if (this.getClass() != Loan.class) {
 			if (this.getClass() == SavingsAccount.class){

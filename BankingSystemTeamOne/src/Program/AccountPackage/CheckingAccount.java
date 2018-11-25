@@ -4,6 +4,7 @@ import Program.Main;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.chrono.ChronoLocalDate;
 import java.util.Date;
 
 // CheckingAccount is an extension of Account, and allows for customer to have a Checking Account.
@@ -17,7 +18,7 @@ public class CheckingAccount extends Account {
 
 	// Constructor for CheckingAccount.
 	public CheckingAccount(String customerId,int identifier, double balance, String accountType, int backupId,
-			int numberOfOverdrafts, Date dateOpened) {
+			int numberOfOverdrafts, ChronoLocalDate dateOpened) {
 
 		super(customerId, balance, dateOpened);
 
@@ -79,7 +80,6 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public String toString(){
-		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-		return String.format("%s,%d,%2.2f,%s,%d,%d,%s",customerId,identifier,balance,accountType,backupId,numberOfOverdrafts,df.format(dateOpened));
+		return String.format("%s,%d,%2.2f,%s,%d,%d,%s",customerId,identifier,balance,accountType,backupId,numberOfOverdrafts,dateOpened.toString());
 	}
 }

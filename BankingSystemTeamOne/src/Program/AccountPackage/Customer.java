@@ -93,6 +93,14 @@ public class Customer {
 		}
 	}
 
+	public void removeAccount(Account account) {
+		if (account.customerId.equals(this.customerId) && !accounts.contains(account)) {
+			// Just double check to make sure the account is owned by this person
+			//System.out.println("Adding: " + account.getClass().getName() + " To: " + customerId);
+			accounts.remove(account);
+		}
+	}
+
 	@Override
 	public String toString() {
 		return String.format("%s,%s,%s,%s,%s,%s,%s,%d", customerId, address, city, state, zipCode, firstName, lastName, atmCard);

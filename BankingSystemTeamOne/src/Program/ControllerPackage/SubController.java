@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -31,8 +33,9 @@ public class SubController implements Initializable {
 
     private Loan currentLoanAccount;
     DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-    private Account selectedAccount;
-    private Account selectedAccount2;
+    private Account selectedAccount; // Account to Transfer/Withdraw/Deposit From/To
+    private Account selectedAccount2;// Account to Transfer To
+    private Account selectedAccount3;// Account to Close.
 
     public Button logoutButton;
     public Button returnMenu;
@@ -123,10 +126,12 @@ public class SubController implements Initializable {
     }
 
     @FXML
-    void closeAccount(ActionEvent event) throws IOException{
-        if (Main.currentAuthorization != EnumeratedTypes.MANAGER) return;
-        if (!accountToClose.getSelectionModel().getSelectedItem().equals(null)){
-            ((Account) accountToClose.getSelectionModel().getSelectedItem()).CloseAccount(new Date());
+    void closeAccount(ActionEvent event) throws IOException
+    {
+        if (selectedAccount3 != null){
+            double amountToGive = selectedAccount3.CloseAccount(LocalDate.now());
+            System.out.println(String.format("%2.2f", amountToGive));
+            function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml")), event);
         }
     }
 
@@ -176,6 +181,10 @@ public class SubController implements Initializable {
             CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
             accountToTransferFrom.setItems(nonLoanCollection.getCollections());
 
+            CollectionController collectionOfAll = new CollectionController(allAccounts);
+            accountToTransferTo.setItems(collectionOfAll.getCollections());
+            accountToClose.setItems(nonLoanCollection.getCollections());
+
             manCusSelect.valueProperty().addListener(new ChangeListener() {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -186,6 +195,27 @@ public class SubController implements Initializable {
                     currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 100.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
                     currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
+                }
+            });
+
+            accountToTransferFrom.valueProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    selectedAccount = (Account) newValue;
+                }
+            });
+
+            accountToTransferTo.valueProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    selectedAccount2 = (Account) newValue;
+                }
+            });
+
+            accountToClose.valueProperty().addListener(new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    selectedAccount3 = (Account) newValue;
                 }
             });
         }
