@@ -20,7 +20,10 @@ public abstract class Account {
 
 	// Method that allows deposits for customers
 	public void Deposit(double amountToDeposit) {
-		balance += amountToDeposit;
+		if (this.getClass().equals(Loan.class))
+			balance -= amountToDeposit;
+		else
+			balance += amountToDeposit;
 	}
 
 	public String indicator() {
