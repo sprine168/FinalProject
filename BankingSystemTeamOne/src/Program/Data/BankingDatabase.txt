@@ -14,7 +14,6 @@ Customer Account
 435678787,8902 Matha Ln,Gower,MO,63301,Jerry,Gronius,1
 563432913,1532 Lovers Ln,St. Joseph,MO,64502,Martin ,Williams,1
 345679898,703 Park Ln,St. Joseph,MO,64501,Broderick,Jones,0
-123121234,123 Fake Street,Saint Joseph,MO,64505,Michael,Hunt,1
 
 Savings Account
 423453245,458097515,66073.00,1.90,06-18-2017,04-19-2019
