@@ -1,9 +1,6 @@
 package Program.ControllerPackage;
 
-import Program.AccountPackage.Account;
-import Program.AccountPackage.CheckingAccount;
-import Program.AccountPackage.Customer;
-import Program.AccountPackage.Loan;
+import Program.AccountPackage.*;
 import Program.Data.EnumeratedTypes;
 import Program.Main;
 import javafx.beans.value.ChangeListener;
@@ -25,6 +22,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -32,7 +30,8 @@ import java.util.ResourceBundle;
 public class SubController implements Initializable {
 
     private Loan currentLoanAccount;
-    DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+    DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+
     private Account selectedAccount; // Account to Transfer/Withdraw/Deposit From/To
     private Account selectedAccount2;// Account to Transfer To
     private Account selectedAccount3;// Account to Close.
@@ -71,6 +70,12 @@ public class SubController implements Initializable {
 
     public Label accountToCloseLabel;
     public Pane LoanPane;
+
+    protected CollectionController checkingsCollection;
+    protected CollectionController allAccountsCollection;
+    protected CollectionController loanCollection;
+    protected CollectionController nonLoanCollection;
+    protected CollectionController savingsCollection;
 
     @FXML
     void advanceAMonth(){
@@ -175,14 +180,15 @@ public class SubController implements Initializable {
                 }
             }
 
-            CollectionController loanCollection = new CollectionController(loanAccounts);
+            loanCollection = new CollectionController(loanAccounts);
             manCusSelect.setItems(loanCollection.getCollections());
 
-            CollectionController nonLoanCollection = new CollectionController(nonLoanAccounts);
+            nonLoanCollection = new CollectionController(nonLoanAccounts);
             accountToTransferFrom.setItems(nonLoanCollection.getCollections());
 
-            CollectionController collectionOfAll = new CollectionController(allAccounts);
-            accountToTransferTo.setItems(collectionOfAll.getCollections());
+            allAccountsCollection = new CollectionController(allAccounts);
+            accountToTransferTo.setItems(allAccountsCollection.getCollections());
+
             accountToClose.setItems(nonLoanCollection.getCollections());
 
             manCusSelect.valueProperty().addListener(new ChangeListener() {
@@ -202,6 +208,11 @@ public class SubController implements Initializable {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     selectedAccount = (Account) newValue;
+                    ArrayList<Account> newArray = (ArrayList<Account>) allAccounts.clone();
+                    newArray.remove(selectedAccount);
+
+                    allAccountsCollection = new CollectionController(newArray);
+                    accountToTransferTo.setItems(allAccountsCollection.getCollections());
                 }
             });
 

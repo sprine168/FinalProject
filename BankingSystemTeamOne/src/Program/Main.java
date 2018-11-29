@@ -20,14 +20,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import Program.AccountPackage.*;
 import java.io.*;
-import java.lang.reflect.Array;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /*
@@ -37,6 +33,13 @@ import java.util.ArrayList;
 */
 
 public class Main extends Application {
+
+    public static ArrayList<Customer> customers = new ArrayList();
+    public static ArrayList<Account> accounts = new ArrayList();
+    public static ArrayList<PendingTransaction> pendingTransactions = new ArrayList();
+    public static Customer currentCustomer = null;
+    public static EnumeratedTypes currentAuthorization = null;
+
     static class ClosingThread extends Thread {
         public void run(){
             try {
@@ -70,6 +73,7 @@ public class Main extends Application {
                 for (PendingTransaction p : pendingTransactions){
                     writer.println(p);
                 }
+
                 writer.println();
                 writer.flush();
                 writer.close();
@@ -79,13 +83,6 @@ public class Main extends Application {
         }
     }
 
-    public static ArrayList<Customer> customers = new ArrayList();
-    public static ArrayList<Account> accounts = new ArrayList();
-    public static ArrayList<PendingTransaction> pendingTransactions = new ArrayList();
-
-    public static Customer currentCustomer = null;
-    public static EnumeratedTypes currentAuthorization = null;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/LoginPage.fxml"));
@@ -94,70 +91,11 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static ChronoLocalDate getDate(String arg) {
-        DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
-        ChronoLocalDate date = null;
-        try {
-            date = Instant.ofEpochMilli(df.parse(arg).getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
-        } catch (ParseException e) {
-
-        }
-        return date;
-    }
-
     public static void main(String[] args) throws ParseException {
         Runtime.getRuntime().addShutdownHook(new ClosingThread());
         readDatabase();
         linkAccounts();
         launch(args);
-    }
-
-    public static void removeAccount(Account accountToRemove){
-        Customer customer = getCustomer(accountToRemove.getCustomerId());
-        if (!customer.equals(null))
-            customer.removeAccount(accountToRemove);
-        accounts.remove(accountToRemove);
-        accountToRemove = null;
-    }
-
-    public static void linkAccounts(){
-        for (Account account : accounts){
-            for (Customer customer : customers){
-                customer.addAccount(account);
-            }
-        }
-    }
-
-    public static ArrayList<PendingTransaction> fetchTransactions(int accountId){
-        ArrayList<PendingTransaction> accountTransactions = new ArrayList();
-        for (PendingTransaction pendingTransaction : pendingTransactions){
-            if (accountId == pendingTransaction.getAccountID()){
-                accountTransactions.add(pendingTransaction);
-            }
-        }
-        return accountTransactions;
-    }
-
-    public static boolean addCustomer(Customer customer){
-        boolean available = true;
-        for (Customer customer1: customers){
-            if (customer1.getCustomerId().equals(customer.getCustomerId()))
-                available = false;
-        }
-        if (available && !customers.contains(customer))
-            customers.add(customer);
-        return available;
-    }
-
-    public static void addAccount(Account account){
-        if (account != null && !accounts.contains(account)) {
-            accounts.add(account);
-            linkAccounts();
-        }
-    }
-
-    public static Boolean findCustomer(String string){
-        return getCustomer(string) != null;
     }
 
     public static void readDatabase() throws ParseException {
@@ -209,6 +147,31 @@ public class Main extends Application {
         }
     }
 
+    public static void removeAccount(Account accountToRemove){
+        Customer customer = getCustomer(accountToRemove.getCustomerId());
+        if (!customer.equals(null))
+            customer.removeAccount(accountToRemove);
+        accounts.remove(accountToRemove);
+    }
+
+    public static void linkAccounts(){
+        for (Account account : accounts){
+            for (Customer customer : customers){
+                customer.addAccount(account);
+            }
+        }
+    }
+
+    public static ArrayList<PendingTransaction> fetchTransactions(int accountId){
+        ArrayList<PendingTransaction> accountTransactions = new ArrayList();
+        for (PendingTransaction pendingTransaction : pendingTransactions){
+            if (accountId == pendingTransaction.getAccountID()){
+                accountTransactions.add(pendingTransaction);
+            }
+        }
+        return accountTransactions;
+    }
+
     public static Customer getCustomer(String SSN){
         Customer customer = null;
         for (Customer cus : customers){
@@ -217,5 +180,35 @@ public class Main extends Application {
             }
         }
         return customer;
+    }
+
+    public static boolean addCustomer(Customer customer){
+        boolean available = true;
+        for (Customer customer1: customers){
+            if (customer1.getCustomerId().equals(customer.getCustomerId()))
+                available = false;
+        }
+        if (available && !customers.contains(customer))
+            customers.add(customer);
+        return available;
+    }
+
+    public static void addAccount(Account account){
+        if (account != null && !accounts.contains(account)) {
+            accounts.add(account);
+            linkAccounts();
+        }
+    }
+
+    public static Boolean findCustomer(String string){
+        return getCustomer(string) != null;
+    }
+
+    public static ChronoLocalDate getDate(String arg) {
+        if (arg.length() > 0) {
+            DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("MM-dd-uuuu");
+            return LocalDate.parse(arg, newFormatter);
+        }
+        return null;
     }
 }

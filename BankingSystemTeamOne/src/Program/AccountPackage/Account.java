@@ -20,14 +20,7 @@ public abstract class Account {
 
 	// Method that allows deposits for customers
 	public void Deposit(double amountToDeposit) {
-		if (this.getClass().equals(Loan.class))
-			balance -= amountToDeposit;
-		else
-			balance += amountToDeposit;
-	}
-
-	public String indicator() {
-		return String.format("%2.2f", balance);
+		balance += amountToDeposit;
 	}
 
 	public String getCustomerId(){
@@ -39,18 +32,9 @@ public abstract class Account {
 	}
 	// Method that will allow the closing of an Account
 
-	public double CloseAccount(ChronoLocalDate accountClosed) {
-		double amountToReturn = 0;
-		if (this.getClass() != Loan.class) {
-			if (this.getClass() == SavingsAccount.class){
-				this.CloseAccount(accountClosed);
-			}
-			amountToReturn = balance;
-			balance = 0;
-		}else{
+	public abstract double CloseAccount(ChronoLocalDate accountClosed);
 
-		}
-		return amountToReturn;
+	public double Withdraw(double amountToWithdraw){
+		return 0.0;
 	}
-
 }

@@ -5,6 +5,7 @@ import Program.Main;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 // CheckingAccount is an extension of Account, and allows for customer to have a Checking Account.
@@ -33,6 +34,7 @@ public class CheckingAccount extends Account {
 	}
 
 	//Withdraw from Checking account, check to see if it has a backupAccount;
+	@Override
 	public double Withdraw(double amountToWithdraw){
 		double amountToReturn = 0.0;
 		if (backupId != 0){
@@ -52,7 +54,7 @@ public class CheckingAccount extends Account {
 					}
 				}
 				if (backupAccount != null){
-					((SavingsAccount) backupAccount).Withdraw(amt);
+					backupAccount.Withdraw(amt);
 				}else{
 					System.out.println("Couldn't find account, cancelling transaction");
 					balance = prevBalance;
@@ -67,7 +69,8 @@ public class CheckingAccount extends Account {
 		return amountToReturn;
 	}
 
-	public double closeAccount(){
+	@Override
+	public double CloseAccount(ChronoLocalDate date){
 		double amt = balance;
 		balance = 0;
 		Main.removeAccount(this);
@@ -80,7 +83,8 @@ public class CheckingAccount extends Account {
 
 	@Override
 	public String toString(){
-		return String.format("%s,%d,%2.2f,%s,%d,%d,%s",customerId,identifier,balance,accountType,backupId,numberOfOverdrafts,dateOpened.toString());
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+		return String.format("%s,%d,%2.2f,%s,%d,%d,%s",customerId,identifier,balance,accountType,backupId,numberOfOverdrafts,df.format(dateOpened));
 	}
 
     public int getAccountId() {

@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class PendingTransaction {
@@ -15,7 +16,7 @@ public class PendingTransaction {
     protected double amount;
     protected String payToOrderOf;
     protected ChronoLocalDate dateOfTransaction;
-    private SimpleDateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+    protected DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 
     public PendingTransaction(int transactionID, int accountID, double amount, String payToOrderOf, ChronoLocalDate dateOfTransaction) throws ParseException {
         this.transactionID = transactionID;
@@ -35,6 +36,6 @@ public class PendingTransaction {
 
     @Override
     public String toString() {
-        return String.format("%d,%d,%2.2f,%s,%s",transactionID, accountID, amount, payToOrderOf, dateOfTransaction);
+        return String.format("%d,%d,%2.2f,%s,%s",transactionID, accountID, amount, payToOrderOf, df.format(dateOfTransaction));
     }
 }

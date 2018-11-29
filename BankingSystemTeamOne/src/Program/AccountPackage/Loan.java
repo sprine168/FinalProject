@@ -1,11 +1,15 @@
 package Program.AccountPackage;
 
+import Program.Main;
 import sun.util.BuddhistCalendar;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.MonthDay;
 import java.time.Period;
 import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAmount;
 import java.util.Calendar;
 import java.util.Date;
@@ -42,6 +46,22 @@ public class Loan extends Account {
         if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 
+	@Override
+	public void Deposit(double amountToDeposit){
+		if (LocalDate.now().isBefore(datePaymentDue)){
+			balance -= amountToDeposit;
+			advanceAMonth();
+		}
+		if (balance == 0.0){
+			Main.removeAccount(this);
+		}
+	}
+
+	@Override
+	public double CloseAccount(ChronoLocalDate accountClosed) {
+		return 0.0;
+	}
+
 	public String getAccountType(){
 		return accountType;
 	}
@@ -67,7 +87,7 @@ public class Loan extends Account {
      **/
 	public void advanceAMonth(){
 	    //Calendar does not work right now
-		datePaymentDue.adjustInto(datePaymentDue.plus(Period.ofDays(30)));
+		datePaymentDue = datePaymentDue.plus(Period.ofDays(30));
 		//Checks the loan type and updates the balance and calculates the new current Payment Due
         if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
         if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
@@ -81,12 +101,13 @@ public class Loan extends Account {
 	    //Sets the interest rate to a new interest rate.
 		this.currentInterestRate = currentInterestRate;
 	}
-	
+
 	@Override
     public String toString() {
-		DateFormat df = new SimpleDateFormat("mm-dd-yyyy");
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+
 		return String.format("%s,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, description, balance, currentInterestRate,
-				datePaymentDue.toString(), dateNotifiedOfPayment.toString(), currentPaymentDue, dateSinceLastPayment.toString(),
+				df.format(datePaymentDue), df.format(dateNotifiedOfPayment), currentPaymentDue, df.format(dateSinceLastPayment),
 				missedPaymentFlag ? "1" : "0", accountType);
     }
 

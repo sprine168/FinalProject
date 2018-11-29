@@ -5,6 +5,8 @@ import Program.Main;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /* SavingsAccount is an extension of accounts and holds the saving account information for customers */
@@ -63,6 +65,7 @@ public class SavingsAccount extends Account {
 
 	@Override
 	public String toString(){
-		return String.format("%s,%d,%2.2f,%2.2f,%s,%s", customerId, identifier, balance, currentInterestRate, dateOpened != null ? dateOpened.toString() : "",CDDue != null ? CDDue.toString() : "");
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+		return String.format("%s,%d,%2.2f,%2.2f,%s,%s", customerId, identifier, balance, currentInterestRate, dateOpened == null ? "" : df.format(dateOpened), isCD() ? df.format(CDDue) : "");
 	}
 }

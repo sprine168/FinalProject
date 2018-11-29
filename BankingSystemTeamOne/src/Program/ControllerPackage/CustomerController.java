@@ -80,13 +80,9 @@ public class CustomerController implements Initializable {
     public ScrollPane CreditCardScollPane;
 
     protected CollectionController checkingsCollection;
-
     protected CollectionController allAccountsCollection;
-
     protected CollectionController loanCollection;
-
     protected CollectionController nonLoanCollection;
-
     protected CollectionController savingsCollection;
 
     private void function(Parent parent, ActionEvent event){
@@ -107,13 +103,8 @@ public class CustomerController implements Initializable {
 		if (selectedAccount1 != null && selectedAccount2 != null){
 			double amountToTransfer = !(transferAmount.getText().equals(null) || transferAmount.getText().equals("")) ?  Double.parseDouble(transferAmount.getText()) : 0.00;
 			if (amountToTransfer > 0 && selectedAccount1.getBalance() > amountToTransfer){
-				if (selectedAccount1.getClass().equals(SavingsAccount.class)){
-					double amt = ((SavingsAccount) selectedAccount1).Withdraw(amountToTransfer);
-					selectedAccount2.Deposit(amt);
-				} else if (selectedAccount1.getClass().equals(CheckingAccount.class)){
-				    double amt = ((CheckingAccount) selectedAccount1).Withdraw(amountToTransfer);
-				    selectedAccount2.Deposit(amt);
-                }
+				double amt = selectedAccount1.Withdraw(amountToTransfer);
+				selectedAccount2.Deposit(amt);
 			}
 			function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml"))), event);
 		}
