@@ -102,7 +102,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="56.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" text="Submit Deposit" textAlignment="CENTER">
+        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="56.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" onAction="#Deposit" text="Submit Deposit" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

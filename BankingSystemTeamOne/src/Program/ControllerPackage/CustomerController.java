@@ -179,14 +179,7 @@ public class CustomerController implements Initializable {
 			accountToTransferFrom.valueProperty().addListener(new ChangeListener() {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-					if (savingsAccounts.contains(newValue)){
-						selectedAccount1 = (SavingsAccount) newValue;
-					} else if (checkingsAccounts.contains(newValue)){
-						selectedAccount1 = (CheckingAccount) newValue;
-					} else {
-						selectedAccount1 = null;
-					}
-
+					selectedAccount1 = (Account) newValue;
                     ArrayList<Account> newArray = (ArrayList<Account>) allAccounts.clone();
 					newArray.remove(selectedAccount1);
                     allAccountsCollection = new CollectionController(newArray);
@@ -197,16 +190,7 @@ public class CustomerController implements Initializable {
 			accountToTransferTo.valueProperty().addListener(new ChangeListener() {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-					if (savingsAccounts.contains(newValue)){
-						selectedAccount2 = !(((SavingsAccount) newValue).isCD()) ? (SavingsAccount) newValue : null;
-					}else if (checkingsAccounts.contains(newValue)){
-						selectedAccount2 = (CheckingAccount) newValue;
-					}else if (loanAccounts.contains(newValue)){
-						selectedAccount2 = (Loan) newValue;
-					} else {
-						selectedAccount2 = null;
-					}
-
+					selectedAccount2 = (Account) newValue;
 				}
 			});
 

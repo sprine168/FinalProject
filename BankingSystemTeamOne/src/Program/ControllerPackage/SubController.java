@@ -49,6 +49,7 @@ public class SubController implements Initializable {
 
     public TextField customerIDText;
     public TextField cusAccountStatus;
+    public TextField selectedAccountBalance;
     public TextField setInterestRate;
     public TextField currentLoanRate;
     public TextField datePaymentDue;
@@ -62,6 +63,7 @@ public class SubController implements Initializable {
     public TextField manCusState;
     public TextField manCusZip;
     public TextField manCusAtm;
+    public TextField amountToTransfer;
 
     public ComboBox manCusSelect;
     public ComboBox accountToTransferTo;
@@ -142,7 +144,13 @@ public class SubController implements Initializable {
 
     @FXML
     void Deposit(ActionEvent event) throws IOException {
-
+        if (selectedAccount != null){
+            double amountToDeposit = Double.parseDouble(amountToTransfer.getText());
+            if (amountToDeposit > 0){
+                selectedAccount.Deposit(amountToDeposit);
+            }
+            selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+        }
     }
 
     @Override
@@ -210,9 +218,9 @@ public class SubController implements Initializable {
                     selectedAccount = (Account) newValue;
                     ArrayList<Account> newArray = (ArrayList<Account>) allAccounts.clone();
                     newArray.remove(selectedAccount);
-
                     allAccountsCollection = new CollectionController(newArray);
                     accountToTransferTo.setItems(allAccountsCollection.getCollections());
+                    selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
                 }
             });
 
