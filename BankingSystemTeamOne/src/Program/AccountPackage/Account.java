@@ -19,9 +19,7 @@ public abstract class Account {
 	}
 
 	// Method that allows deposits for customers
-	public void Deposit(double amountToDeposit) {
-		balance += amountToDeposit;
-	}
+	public abstract void Deposit(double amountToDeposit);
 
 	public String getCustomerId(){
 		return customerId;
@@ -34,7 +32,5 @@ public abstract class Account {
 
 	public abstract double CloseAccount(ChronoLocalDate accountClosed);
 
-	public double Withdraw(double amountToWithdraw){
-		return 0.0;
-	}
+	public abstract double Withdraw(double amountToWithdraw);
 }

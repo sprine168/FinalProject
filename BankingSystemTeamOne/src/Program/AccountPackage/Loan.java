@@ -80,7 +80,12 @@ public class Loan extends Account {
 		return 0.0;
 	}
 
-	public String getAccountType(){
+    @Override
+    public double Withdraw(double amountToWithdraw) {
+        return 0;
+    }
+
+    public String getAccountType(){
 		return accountType;
 	}
 

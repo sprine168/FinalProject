@@ -102,15 +102,9 @@ public class CustomerController implements Initializable {
 	{
 		if (selectedAccount1 != null && selectedAccount2 != null){
 			double amountToTransfer = !(transferAmount.getText().equals(null) || transferAmount.getText().equals("")) ?  Double.parseDouble(transferAmount.getText()) : 0.00;
-			if (amountToTransfer > 0 && selectedAccount1.getBalance() > amountToTransfer){
-				if (selectedAccount2.getClass().equals(Loan.class)) {
-					Loan acc = (Loan) selectedAccount2;
-					double amt = selectedAccount1.Withdraw(amountToTransfer);
-					acc.Deposit(amt);
-				} else {
-					double amt = selectedAccount1.Withdraw(amountToTransfer);
-					selectedAccount2.Deposit(amt);
-				}
+			if (amountToTransfer > 0){
+			    double amt = selectedAccount1.Withdraw(amountToTransfer);
+			    selectedAccount2.Deposit(amt);
 			}
 			function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml"))), event);
 		}

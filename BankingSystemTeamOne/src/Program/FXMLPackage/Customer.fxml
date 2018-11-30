@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CustomerController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CustomerController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
@@ -66,16 +66,6 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Label layoutX="118.0" layoutY="443.0" prefHeight="25.0" prefWidth="235.0" text="Monthly Statement for Checking">
-            <font>
-                <Font name="Bodoni MT" size="16.0" fx:id="x22" />
-            </font>
-        </Label>
-        <Label layoutX="654.0" layoutY="442.0" prefHeight="25.0" prefWidth="251.0" text="Monthly Statement for Credit Card">
-            <font>
-                <Font name="Bodoni MT" size="16.0" fx:id="x221" />
-            </font>
-        </Label>
         <Label layoutX="461.0" layoutY="128.0" prefHeight="18.0" prefWidth="103.0" text="Transfer Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />

@@ -39,12 +39,13 @@ public class CheckingAccount extends Account {
 	public double Withdraw(double amountToWithdraw){
 		double amountToReturn = 0.0;
 		if (backupId != 0){
+			System.out.println(amountToWithdraw);
 			if (balance >= amountToWithdraw){
 				balance -= amountToWithdraw;
 				amountToReturn = amountToWithdraw;
 			}else if (balance < amountToWithdraw){
 				double prevBalance = balance;
-				double amt = (amountToReturn - balance);
+				double amt = Math.abs(amountToReturn - balance);
 				balance = 0;
 				Account backupAccount = null;
 				for (Account account : Main.getCustomer(customerId).getAccounts()){
@@ -68,6 +69,11 @@ public class CheckingAccount extends Account {
 			}
 		}
 		return amountToReturn;
+	}
+
+	@Override
+	public void Deposit(double amountToDeposit) {
+		balance += amountToDeposit;
 	}
 
 	@Override

@@ -40,6 +40,11 @@ public class SavingsAccount extends Account {
 	}
 
 	@Override
+	public void Deposit(double amountToDeposit) {
+		balance += amountToDeposit;
+	}
+
+	@Override
 	public double CloseAccount(ChronoLocalDate dateOfClose){
 		double amountToWithdraw = 0.0;
 		if (isCD()){
