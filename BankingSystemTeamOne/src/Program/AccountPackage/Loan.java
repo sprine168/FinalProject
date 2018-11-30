@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
 public class Loan extends Account {
 
 	// Variables for the loan class
+	protected double lastPayment;
 	protected String description;
 	protected double currentInterestRate;
 	protected ChronoLocalDate datePaymentDue;
@@ -31,7 +32,7 @@ public class Loan extends Account {
 	// Constructor for the loan class.
 	public Loan(String customerId, String description, double balance, double currentInterestRate, ChronoLocalDate datePaymentDue,
 				ChronoLocalDate dateNotifiedOfPayment, double currentPaymentDue, ChronoLocalDate dateSinceLastPayment, boolean missedPaymentFlag,
-			String accountType) {
+				String accountType) {
 
 		super(customerId, balance, null);
 		this.description = description;
@@ -43,14 +44,31 @@ public class Loan extends Account {
 		this.accountType = accountType;
 		if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
 		if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
-        if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
+		if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 
 	@Override
 	public void Deposit(double amountToDeposit){
 		if (LocalDate.now().isBefore(datePaymentDue)){
+			if(amountToDeposit>=currentPaymentDue){
+				missedPaymentFlag = false;
+			}
+			lastPayment = amountToDeposit;
 			balance -= amountToDeposit;
-			advanceAMonth();
+			if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
+			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+			if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
+			dateSinceLastPayment = LocalDate.now();
+			//advanceAMonth();
+		}else
+		{
+			missedPaymentFlag = true;
+			lastPayment = amountToDeposit;
+			balance -= amountToDeposit;
+			if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
+			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+			if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
+			dateSinceLastPayment = LocalDate.now();
 		}
 		if (balance == 0.0){
 			Main.removeAccount(this);
@@ -82,33 +100,37 @@ public class Loan extends Account {
 		return currentPaymentDue;
 	}
 
+	public double getLastPayment() {return lastPayment;}
+
+	public boolean getMissedPaymentFlag() {return missedPaymentFlag;}
+
 	/** Method to simulate a month passing.  It will look at the current account balance, and interest rate and calculate a new balance.
-     *  It will also give it a new due date
-     **/
+	 *  It will also give it a new due date
+	 **/
 	public void advanceAMonth(){
-	    //Calendar does not work right now
+		missedPaymentFlag=true;
 		datePaymentDue = datePaymentDue.plus(Period.ofDays(30));
 		//Checks the loan type and updates the balance and calculates the new current Payment Due
-        if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
-        if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
-        if (accountType.equals("CC")){balance += currentPaymentDue; currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
+		if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
+		if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
+		if (accountType.equals("CC")){balance += currentPaymentDue; currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 
-    /**
-     * Function to update the interest rate.  Takes in a new value for the new interest rate.  0.01 = 1%
-     */
+	/**
+	 * Function to update the interest rate.  Takes in a new value for the new interest rate.  0.01 = 1%
+	 */
 	public void updateInterestRate(double currentInterestRate){
-	    //Sets the interest rate to a new interest rate.
+		//Sets the interest rate to a new interest rate.
 		this.currentInterestRate = currentInterestRate;
 	}
 
 	@Override
-    public String toString() {
+	public String toString() {
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 
 		return String.format("%s,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, description, balance, currentInterestRate,
 				df.format(datePaymentDue), df.format(dateNotifiedOfPayment), currentPaymentDue, df.format(dateSinceLastPayment),
 				missedPaymentFlag ? "1" : "0", accountType);
-    }
+	}
 
 }

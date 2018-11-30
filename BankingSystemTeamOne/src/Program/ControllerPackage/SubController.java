@@ -80,7 +80,7 @@ public class SubController implements Initializable {
     protected CollectionController savingsCollection;
 
     @FXML
-    void advanceAMonth(){
+    void advanceAMonth(ActionEvent event) throws IOException {
         if (!currentLoanAccount.equals(null)){
 
             //On button click, advance the loan a month.  This allows us to watch interst rise automatically
@@ -93,6 +93,8 @@ public class SubController implements Initializable {
             //Signals that a month has passed and the customer has been notified
             notifiedOfPayment.setText("Yes");
         }
+        function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
+
     }
 
     @FXML
@@ -150,6 +152,27 @@ public class SubController implements Initializable {
                 selectedAccount.Deposit(amountToDeposit);
             }
             selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+            System.out.println("Deposit made");
+        }
+    }
+
+    @FXML
+    void transferFunds(ActionEvent event) throws IOException
+    {
+        if (selectedAccount != null && selectedAccount2 != null){
+            double amountToTransfer1 = !(amountToTransfer.getText().equals(null) || amountToTransfer.getText().equals("")) ?  Double.parseDouble(amountToTransfer.getText()) : 0.00;
+            if (amountToTransfer1 > 0 && selectedAccount.getBalance() > amountToTransfer1) {
+                if (selectedAccount2.getClass().equals(Loan.class)) {
+                    Loan acc = (Loan) selectedAccount2;
+                    double amt = selectedAccount.Withdraw(amountToTransfer1);
+                    acc.Deposit(amt);
+                } else {
+                    double amt = selectedAccount.Withdraw(amountToTransfer1);
+                    selectedAccount2.Deposit(amt);
+                }
+            }
+            function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
+            System.out.println("Initiating");
         }
     }
 
@@ -203,12 +226,20 @@ public class SubController implements Initializable {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     Loan newLoan = (Loan) newValue;
+                    if (newLoan.getMissedPaymentFlag()){
+                        missedPayment.setText("Yes");
+                        cusAccountStatus.setText("Late");
+                    }else{
+                        missedPayment.setText("No");
+                        cusAccountStatus.setText("Current");
+                    }
                     currentLoanAccount = newLoan;
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
                     String s = "%2.2f\037";
                     currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 100.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
                     currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
+                    lastPaymentMade.setText(String.format("%2.2f", newLoan.getLastPayment()));
                 }
             });
 
