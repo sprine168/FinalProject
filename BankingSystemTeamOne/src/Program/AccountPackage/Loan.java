@@ -43,7 +43,7 @@ public class Loan extends Account {
 		this.missedPaymentFlag = missedPaymentFlag;
 		this.accountType = accountType;
 		if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
-		if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+		if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate);}
 		if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 
@@ -56,7 +56,7 @@ public class Loan extends Account {
 			lastPayment = amountToDeposit;
 			balance -= amountToDeposit;
 			if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
-			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate);}
 			if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 			dateSinceLastPayment = LocalDate.now();
 			//advanceAMonth();
@@ -66,7 +66,7 @@ public class Loan extends Account {
 			lastPayment = amountToDeposit;
 			balance -= amountToDeposit;
 			if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
-			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate);}
+			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate);}
 			if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 			dateSinceLastPayment = LocalDate.now();
 		}
@@ -104,6 +104,8 @@ public class Loan extends Account {
 
 	public boolean getMissedPaymentFlag() {return missedPaymentFlag;}
 
+	public void setMissedPaymentFlag(boolean flag) {missedPaymentFlag = flag;}
+
 	/** Method to simulate a month passing.  It will look at the current account balance, and interest rate and calculate a new balance.
 	 *  It will also give it a new due date
 	 **/
@@ -112,7 +114,7 @@ public class Loan extends Account {
 		datePaymentDue = datePaymentDue.plus(Period.ofDays(30));
 		//Checks the loan type and updates the balance and calculates the new current Payment Due
 		if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
-		if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))+(balance/2)*30*this.currentInterestRate); }
+		if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate); }
 		if (accountType.equals("CC")){balance += currentPaymentDue; currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
 	}
 

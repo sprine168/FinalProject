@@ -159,6 +159,9 @@ public class SubController implements Initializable {
     @FXML
     void transferFunds(ActionEvent event) throws IOException
     {
+        //Function checks to see if there are two selected accounts.  After both are true, it makes sure there is a valid amount to transfer.
+        //After that, it checks to see if the account being transfered to is a loan and if so, goes through the loan deposit.
+        //Else, it goes through the normal account withdrawal and deposit
         if (selectedAccount != null && selectedAccount2 != null){
             double amountToTransfer1 = !(amountToTransfer.getText().equals(null) || amountToTransfer.getText().equals("")) ?  Double.parseDouble(amountToTransfer.getText()) : 0.00;
             if (amountToTransfer1 > 0 && selectedAccount.getBalance() > amountToTransfer1) {
@@ -171,8 +174,8 @@ public class SubController implements Initializable {
                     selectedAccount2.Deposit(amt);
                 }
             }
+            //Reloads the page on valid button press
             function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
-            System.out.println("Initiating");
         }
     }
 
@@ -235,11 +238,12 @@ public class SubController implements Initializable {
                     }
                     currentLoanAccount = newLoan;
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
-                    String s = "%2.2f\037";
+                    String s = "%%%2.2f\037";
                     currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 100.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
                     currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
                     lastPaymentMade.setText(String.format("%2.2f", newLoan.getLastPayment()));
+                    notifiedOfPayment.setText("Yes");
                 }
             });
 
