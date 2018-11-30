@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 
 // CheckingAccount is an extension of Account, and allows for customer to have a Checking Account.
@@ -73,6 +74,10 @@ public class CheckingAccount extends Account {
 	public double CloseAccount(ChronoLocalDate date){
 		double amt = balance;
 		balance = 0;
+        ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(getAccountId());
+        for (PendingTransaction pendingTransaction : pendingTransactions){
+            Main.pendingTransactions.remove(pendingTransaction);
+        }
 		Main.removeAccount(this);
 		return amt;
 	}

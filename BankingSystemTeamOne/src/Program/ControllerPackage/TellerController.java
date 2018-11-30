@@ -29,23 +29,8 @@ public class TellerController implements Initializable {
 
     @FXML
     public Button logoutButton;
-
-    @FXML
     public Button searchButton;
-
-    @FXML
-    public Button createSavingsButton;
-
-    @FXML
     public Button createCheckingButton;
-
-    @FXML
-    public Button createLoanButton;
-
-    @FXML
-    public Button returnMenu;
-
-    @FXML
     public TextField cusIDSearch;
 
     private void function(Parent parent, ActionEvent event){

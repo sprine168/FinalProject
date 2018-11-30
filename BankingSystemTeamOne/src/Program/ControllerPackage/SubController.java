@@ -5,6 +5,7 @@ import Program.Data.EnumeratedTypes;
 import Program.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +14,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sun.nio.cs.HistoricallyNamedCharset;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
@@ -77,7 +83,9 @@ public class SubController implements Initializable {
     protected CollectionController allAccountsCollection;
     protected CollectionController loanCollection;
     protected CollectionController nonLoanCollection;
-    protected CollectionController savingsCollection;
+
+    @FXML
+    protected ListView checkingAccountTransactions;
 
     @FXML
     void advanceAMonth(ActionEvent event) throws IOException {
@@ -157,11 +165,19 @@ public class SubController implements Initializable {
     }
 
     @FXML
+    void Withdraw(ActionEvent event) throws IOException {
+        if (selectedAccount != null && !amountToTransfer.getText().equals(null)){
+            double amountToWithdraw = Double.parseDouble(amountToTransfer.getText());
+            if (amountToWithdraw > 0){
+                selectedAccount.Withdraw(amountToWithdraw);
+            }
+            selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+        }
+    }
+
+    @FXML
     void transferFunds(ActionEvent event) throws IOException
     {
-        //Function checks to see if there are two selected accounts.  After both are true, it makes sure there is a valid amount to transfer.
-        //After that, it checks to see if the account being transfered to is a loan and if so, goes through the loan deposit.
-        //Else, it goes through the normal account withdrawal and deposit
         if (selectedAccount != null && selectedAccount2 != null){
             double amountToTransfer1 = !(amountToTransfer.getText().equals(null) || amountToTransfer.getText().equals("")) ?  Double.parseDouble(amountToTransfer.getText()) : 0.00;
             if (amountToTransfer1 > 0 && selectedAccount.getBalance() > amountToTransfer1) {
@@ -174,8 +190,8 @@ public class SubController implements Initializable {
                     selectedAccount2.Deposit(amt);
                 }
             }
-            //Reloads the page on valid button press
             function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
+            System.out.println("Initiating");
         }
     }
 
@@ -238,12 +254,11 @@ public class SubController implements Initializable {
                     }
                     currentLoanAccount = newLoan;
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
-                    String s = "%%%2.2f\037";
+                    String s = "%2.2f\037";
                     currentLoanRate.setText(String.format(s,(newLoan.getCurrentInterestRate() * 100.0)));
                     datePaymentDue.setText(df.format(newLoan.getDatePaymentDue()));
                     currentLoanPaymentDue.setText(String.format("%2.2f", newLoan.getCurrentPaymentDue()));
                     lastPaymentMade.setText(String.format("%2.2f", newLoan.getLastPayment()));
-                    notifiedOfPayment.setText("Yes");
                 }
             });
 
@@ -256,6 +271,39 @@ public class SubController implements Initializable {
                     allAccountsCollection = new CollectionController(newArray);
                     accountToTransferTo.setItems(allAccountsCollection.getCollections());
                     selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+                    if (selectedAccount.getClass() == CheckingAccount.class){
+                        ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(((CheckingAccount) selectedAccount).getAccountId());
+                        CollectionController newController = new CollectionController(pendingTransactions);
+
+                        checkingAccountTransactions.setItems(newController.getCollections());
+
+                        checkingAccountTransactions.setCellFactory(lv -> new ListCell<PendingTransaction>()
+                        {
+                            @Override
+                            public void updateItem(PendingTransaction item, boolean empty)
+                            {
+                                super.updateItem(item, empty);
+                                if (!empty) {
+                                    setText(item.toString());
+                                    setOnMouseClicked(mouseClickedEvent -> {
+                                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                                            if (item.getDateOfTransaction().equals(null) || item.getDateOfTransaction().isAfter(LocalDate.now())) {
+                                                Main.pendingTransactions.remove(item);
+                                                newController.getCollections().remove(item);
+                                                checkingAccountTransactions.setItems(newController.getCollections());
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    setText(null);
+                                    setGraphic(null);
+                                }
+                            }
+                        });
+                    } else {
+                        checkingAccountTransactions.setItems(null);
+                        checkingAccountTransactions.setCellFactory(null);
+                    }
                 }
             });
 

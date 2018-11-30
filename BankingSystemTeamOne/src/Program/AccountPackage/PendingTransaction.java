@@ -16,7 +16,7 @@ public class PendingTransaction {
     protected double amount;
     protected String payToOrderOf;
     protected ChronoLocalDate dateOfTransaction;
-    protected DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+    protected DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-uuuu");
 
     public PendingTransaction(int transactionID, int accountID, double amount, String payToOrderOf, ChronoLocalDate dateOfTransaction) throws ParseException {
         this.transactionID = transactionID;
@@ -32,6 +32,22 @@ public class PendingTransaction {
 
     public int getAccountID() {
         return accountID;
+    }
+
+    public int getTransactionID() {
+        return transactionID;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getPayToOrderOf() {
+        return payToOrderOf;
+    }
+
+    public ChronoLocalDate getDateOfTransaction() {
+        return dateOfTransaction;
     }
 
     @Override

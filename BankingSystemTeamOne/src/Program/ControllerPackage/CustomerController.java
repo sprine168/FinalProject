@@ -204,13 +204,8 @@ public class CustomerController implements Initializable {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 					currentSelectedLoan = (Loan) newValue;
-					if(currentSelectedLoan.getMissedPaymentFlag()){
-						cusAccountStatus.setText("Late");
-					}else{
-						cusAccountStatus.setText("Current");
-					}
-
 					cusLoanBalance.setText(String.format("%2.2f", currentSelectedLoan.getBalance()));
+					cusAccountStatus.setText(String.format("Insert Later"));
 				}
 			});
 
