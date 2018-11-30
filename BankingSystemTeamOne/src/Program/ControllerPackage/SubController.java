@@ -35,7 +35,7 @@ import java.util.ResourceBundle;
 public class SubController implements Initializable {
 
     private Loan currentLoanAccount;
-    DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+    DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-uuuu");
 
     private Account selectedAccount; // Account to Transfer/Withdraw/Deposit From/To
     private Account selectedAccount2;// Account to Transfer To
