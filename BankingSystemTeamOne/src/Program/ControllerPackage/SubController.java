@@ -252,6 +252,11 @@ public class SubController implements Initializable {
                         missedPayment.setText("No");
                         cusAccountStatus.setText("Current");
                     }
+                    if (LocalDate.now().isBefore(newLoan.getDatePaymentDue())){
+                        notifiedOfPayment.setText("No");
+                    }else{
+                        notifiedOfPayment.setText("Yes");
+                    }
                     currentLoanAccount = newLoan;
                     currentLoanBalance.setText(String.format("%2.2f", newLoan.getBalance()));
                     String s = "%2.2f\037";
