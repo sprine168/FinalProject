@@ -1,0 +1,17 @@
+<ComboBox layoutX="718.0" layoutY="192.0" prefHeight="47.0" prefWidth="243.0"
+          promptText="Please Select Account Type">
+
+    <items>
+        <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Checking Account"/>
+            <String fx:value="Saving Account"/>
+        </FXCollections>
+    </items>
+
+    <cursor>
+        <Cursor fx:constant="HAND"/>
+    </cursor>
+    <effect>
+        <InnerShadow blurType="ONE_PASS_BOX"/>
+    </effect>
+</ComboBox>

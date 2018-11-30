@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.LoanAccountController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="774.0" layoutX="-3.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
+            <fill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
+                    <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#3374b599" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="377.0" layoutY="-6.0" prefHeight="40.0" prefWidth="263.0" text="Create New Loan Type Acccunt" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+            <font>
+                <Font name="Constantia Bold" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+                    <stops>
+                        <Stop color="#184c80" />
+                        <Stop color="#0099ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="418.0" layoutY="726.0" prefHeight="19.0" prefWidth="189.0" text="Banking System Incorporated by " textAlignment="LEFT" textFill="#184c80" wrapText="false">
+            <font>
+                <Font name="Constantia" size="13.0" fx:id="x1" />
+            </font>
+        </Label>
+        <Label layoutX="47.0" layoutY="81.0" prefHeight="25.0" prefWidth="220.0" text="Customer ID">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x2" />
+            </font>
+        </Label>
+        <Label font="$x1" layoutX="479.0" layoutY="745.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
+        <Label layoutX="746.0" layoutY="81.0" prefHeight="25.0" prefWidth="235.0" text="Account Type">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
+            </font>
+        </Label>
+        <Label layoutX="737.0" layoutY="395.0" prefHeight="25.0" prefWidth="227.0" text="Payment Due Date">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x32" />
+            </font>
+        </Label>
+        <Label layoutX="437.0" layoutY="51.0" prefHeight="18.0" prefWidth="144.0" text="Account Information" textFill="#184c80" underline="true">
+            <font>
+                <Font name="Constantia Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="738.0" layoutY="236.0" prefHeight="25.0" prefWidth="227.0" text="Initial Loan Balance">
+            <font>
+                <Font name="Bodoni MT" size="16.0" fx:id="x22" />
+            </font>
+        </Label>
+      <Label layoutX="737.0" layoutY="313.0" prefHeight="25.0" prefWidth="227.0" text="Interest Rate">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x221" />
+         </font>
+      </Label>
+      <Label layoutX="736.0" layoutY="472.0" prefHeight="25.0" prefWidth="227.0" text="Date to Notify of Payment">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x321" />
+         </font>
+      </Label>
+        <ComboBox fx:id="loanType" layoutX="731.0" layoutY="106.0" prefHeight="46.0" prefWidth="235.0" promptText="Select Account Type">
+
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Long Term Loan" />
+                    <String fx:value="Short Term Loan" />
+                    <String fx:value="Credit Card" />
+                </FXCollections>
+            </items>
+
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ComboBox>
+      <TextField fx:id="cusLoanAmount" layoutX="729.0" layoutY="261.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Starting Loan Amount" />
+      <TextField fx:id="cusInterestRate" layoutX="729.0" layoutY="338.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Starting Interest Rate" />
+        <DatePicker fx:id="dueDate" layoutX="729.0" layoutY="420.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Payment Due Date">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></DatePicker>
+      <DatePicker fx:id="notificationDate" layoutX="729.0" layoutY="495.0" prefHeight="40.0" prefWidth="235.0" promptText="Enter Notify Payment Date">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </DatePicker>
+        <Button fx:id="createLoan" contentDisplay="CENTER" layoutX="780.0" layoutY="572.0" mnemonicParsing="false" onAction="#createLoan" prefHeight="40.0" prefWidth="134.0" text="Create New Loan" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="461.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnMan" prefHeight="30.0" prefWidth="95.0" text="Main Menu" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+      <Label layoutX="32.0" layoutY="158.0" prefHeight="137.0" prefWidth="235.0" text="Note: Would this be better as a dropdown box with CustomerID and First Last Name selectable from the box, so it won't mess up" wrapText="true">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x21111" />
+         </font>
+      </Label>
+      <Label layoutX="740.0" layoutY="158.0" prefHeight="25.0" prefWidth="227.0" text="Description of Loan">
+         <font>
+            <Font name="Bodoni MT" size="16.0" fx:id="x222" />
+         </font>
+      </Label>
+      <TextField fx:id="cusLoanDesc" layoutX="732.0" layoutY="183.0" prefHeight="40.0" prefWidth="235.0" promptText="What is the loan used for." />
+      <ComboBox fx:id="cusID" layoutX="32.0" layoutY="106.0" prefHeight="46.0" prefWidth="227.0" promptText="Select Customer ID" />
+    </children>
+</AnchorPane>

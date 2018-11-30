@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.SubController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="801.0" layoutX="-14.0" layoutY="-21.0" stroke="BLACK" strokeType="INSIDE" width="1059.0">
+            <fill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
+                    <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#3374b598" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label alignment="CENTER" layoutX="441.0" layoutY="1.0" prefHeight="25.0" prefWidth="154.0" text="Sub Menu" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+            <font>
+                <Font name="Constantia Bold" size="18.0" />
+            </font>
+            <textFill>
+                <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+                    <stops>
+                        <Stop color="#184c80" />
+                        <Stop color="#0099ff" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="426.0" layoutY="730.0" prefHeight="19.0" prefWidth="189.0" text="Banking System Incorporated by " textAlignment="LEFT" textFill="#184c80" wrapText="false">
+            <font>
+                <Font name="Constantia" size="13.0" fx:id="x1" />
+            </font>
+        </Label>
+        <Label layoutX="18.0" layoutY="69.0" prefHeight="25.0" prefWidth="219.0" text="Customer ID">
+            <font>
+                <Font size="14.0" fx:id="x2" />
+            </font>
+        </Label>
+        <Label font="$x1" layoutX="487.0" layoutY="745.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
+        <Label layoutX="815.0" layoutY="21.0" prefHeight="25.0" prefWidth="189.0" text="Account Status">
+            <font>
+                <Font size="14.0" fx:id="x3" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="247.0" layoutY="183.0" prefHeight="25.0" prefWidth="247.0" text="Amount to Transfer/Deposit/Withdraw">
+            <font>
+                <Font size="14.0" fx:id="x211" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="257.0" layoutY="128.0" prefHeight="25.0" prefWidth="227.0" text="Account Balance">
+            <font>
+                <Font size="14.0" fx:id="x31" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="18.0" layoutY="184.0" prefHeight="25.0" prefWidth="219.0" text="Transfer To">
+            <font>
+                <Font size="14.0" fx:id="x2111" />
+            </font>
+        </Label>
+        <ComboBox fx:id="accountToTransferTo" layoutX="16.0" layoutY="207.0" prefHeight="30.0" prefWidth="219.0" promptText="Please Select Account Type">
+
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:id="tellerChecking" fx:value="Checking Account" />
+                    <String fx:id="tellerSaving" fx:value="Saving Account" />
+                </FXCollections>
+            </items>
+
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </ComboBox>
+        <TextArea fx:id="cusLoanStatement" editable="false" focusTraversable="false" layoutX="522.0" layoutY="491.0" prefHeight="190.0" prefWidth="498.0" promptText="Description area for loans and credit cards.">
+            <font>
+                <Font name="Bodoni MT" size="14.0" />
+            </font>
+        </TextArea>
+        <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="56.0" layoutY="250.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="Initiate Transfer" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="56.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" onAction="#Deposit" text="Submit Deposit" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="withdrawButton" contentDisplay="CENTER" layoutX="56.0" layoutY="287.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="Submit Withdraw" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="returnMenu" contentDisplay="CENTER" layoutX="19.0" layoutY="711.0" mnemonicParsing="false" onAction="#returnTo" prefHeight="30.0" prefWidth="161.0" text="Manager Main Menu" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="closeCustomerButton" contentDisplay="CENTER" layoutX="855.0" layoutY="711.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" text="Close Customer" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="14.0" />
+            </font>
+            <textFill>
+                <RadialGradient centerX="0.4166666666666667" centerY="0.5761904761904761" radius="0.5">
+                    <stops>
+                        <Stop color="RED" />
+                        <Stop color="#971010" offset="1.0" />
+                    </stops>
+                </RadialGradient>
+            </textFill>
+        </Button>
+        <Button fx:id="logoutButton" contentDisplay="CENTER" layoutX="457.0" layoutY="682.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="127.0" text="Logout" textAlignment="CENTER">
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+            <effect>
+                <Reflection />
+            </effect>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+      <TextField fx:id="manCusName" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="31.0" prefWidth="227.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="11.0" layoutY="21.0" prefHeight="25.0" prefWidth="219.0" text="Name">
+         <font>
+            <Font size="14.0" fx:id="x21" />
+         </font>
+      </Label>
+      <TextField fx:id="manCusAddress" editable="false" layoutX="250.0" layoutY="42.0" prefHeight="31.0" prefWidth="227.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="251.0" layoutY="21.0" prefHeight="25.0" prefWidth="219.0" text="Address">
+         <font>
+            <Font size="14.0" fx:id="x213" />
+         </font>
+      </Label>
+      <TextField fx:id="manCusState" editable="false" layoutX="484.0" layoutY="42.0" prefHeight="31.0" prefWidth="78.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="485.0" layoutY="21.0" prefHeight="25.0" prefWidth="78.0" text="State">
+         <font>
+            <Font size="14.0" fx:id="x2131" />
+         </font>
+      </Label>
+      <TextField fx:id="manCusZip" editable="false" layoutX="569.0" layoutY="42.0" prefHeight="31.0" prefWidth="113.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="570.0" layoutY="21.0" prefHeight="25.0" prefWidth="113.0" text="Zip Code">
+         <font>
+            <Font size="14.0" fx:id="x2132" />
+         </font>
+      </Label>
+      <TextField fx:id="manCusAtm" editable="false" layoutX="689.0" layoutY="42.0" prefHeight="31.0" prefWidth="120.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Label layoutX="690.0" layoutY="21.0" prefHeight="25.0" prefWidth="120.0" text="ATM Access">
+         <font>
+            <Font size="14.0" fx:id="x21321" />
+         </font>
+      </Label>
+      <TextField fx:id="customerIDText" editable="false" layoutX="10.0" layoutY="88.0" prefHeight="30.0" prefWidth="227.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="selectedAccountBalance" editable="false" layoutX="256.0" layoutY="153.0" prefHeight="30.0" prefWidth="227.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cusAccountStatus" editable="false" layoutX="814.0" layoutY="42.0" prefHeight="30.0" prefWidth="189.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+        <Label layoutX="631.0" layoutY="463.0" prefHeight="25.0" prefWidth="256.0" text="Customer Loan/Credit Card Reports">
+            <font>
+                <Font size="14.0" fx:id="x22" />
+            </font>
+        </Label>
+      <TextField fx:id="amountToTransfer" layoutX="256.0" layoutY="207.0" prefHeight="30.0" prefWidth="227.0" promptText="Enter Amount of Funds To Transfer">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Separator layoutX="500.0" layoutY="129.0" orientation="VERTICAL" prefHeight="340.0" prefWidth="7.0">
+         <effect>
+            <ColorAdjust brightness="0.05" contrast="-0.19" hue="-0.78" saturation="1.0" />
+         </effect>
+      </Separator>
+      <TextArea fx:id="cusCheckingStatement" editable="false" focusTraversable="false" layoutX="7.0" layoutY="491.0" prefHeight="190.0" prefWidth="515.0" promptText="Description Area for Checking Account">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font>
+      </TextArea>
+      <Label layoutX="131.0" layoutY="469.0" prefHeight="25.0" prefWidth="238.0" text="Customer Checking Account Reports">
+         <font>
+            <Font size="14.0" fx:id="x221" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="16.0" layoutY="135.0" prefHeight="19.0" prefWidth="219.0" text="Deposit/Withdraw/Transfer From">
+         <font>
+            <Font size="14.0" fx:id="x2111112" />
+         </font>
+      </Label>
+      <ComboBox fx:id="accountToTransferFrom" layoutX="16.0" layoutY="153.0" prefHeight="30.0" prefWidth="219.0" promptText="Please Select Account Type">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="tellerChecking112" fx:value="Checking Account" />
+               <String fx:id="tellerSaving112" fx:value="Saving Account" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <ComboBox fx:id="accountToClose" layoutX="17.0" layoutY="395.0" prefHeight="30.0" prefWidth="219.0" promptText="Select an Account">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:id="tellerChecking1121" fx:value="Checking Account" />
+               <String fx:id="tellerSaving1121" fx:value="Saving Account" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Label fx:id="accountToCloseLabel" alignment="CENTER" layoutX="18.0" layoutY="374.0" prefHeight="19.0" prefWidth="219.0" text="Account To Close">
+         <font>
+            <Font size="14.0" fx:id="x21111121" />
+         </font>
+      </Label>
+      <Button fx:id="closeAccountButton" contentDisplay="CENTER" layoutX="52.0" layoutY="429.0" mnemonicParsing="false" onAction="#closeAccount" prefHeight="30.0" prefWidth="145.0" text="Close This Account" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <Reflection />
+         </effect>
+         <font>
+            <Font size="14.0" />
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.4166666666666667" centerY="0.5761904761904761" radius="0.5">
+               <stops>
+                  <Stop color="RED" />
+                  <Stop color="#971010" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <Pane fx:id="LoanPane" layoutX="502.0" layoutY="114.0" prefHeight="347.0" prefWidth="515.0">
+         <children>
+            <Label layoutX="234.0" layoutY="8.0" prefHeight="18.0" prefWidth="67.0" text="Loan Area" textFill="#184c80" underline="true">
+               <font>
+                  <Font name="Constantia Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="setInterestRateButton" contentDisplay="CENTER" layoutX="376.0" layoutY="282.0" mnemonicParsing="false" onAction="#updateInterestRate" prefHeight="20.0" prefWidth="127.0" text="Set Interest Rate" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="370.0" layoutY="222.0" prefHeight="25.0" prefWidth="140.0" text="Set Interest Rate">
+               <font>
+                  <Font size="14.0" fx:id="x3212" />
+               </font>
+            </Label>
+            <Button fx:id="advanceMonth" contentDisplay="CENTER" layoutX="189.0" layoutY="316.0" mnemonicParsing="false" onAction="#advanceAMonth" prefHeight="30.0" prefWidth="145.0" text="Advance Month" textAlignment="CENTER" textFill="#3f03ff">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <Blend mode="MULTIPLY" />
+               </effect>
+            </Button>
+            <TextField fx:id="setInterestRate" layoutX="369.0" layoutY="247.0" prefHeight="30.0" prefWidth="140.0" promptText="Enter Interest Rate">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="197.0" layoutY="82.0" prefHeight="25.0" prefWidth="140.0" text="Current Rate">
+               <font>
+                  <Font size="14.0" fx:id="x32121" />
+               </font>
+            </Label>
+            <TextField fx:id="currentLoanRate" editable="false" layoutX="195.0" layoutY="107.0" prefHeight="30.0" prefWidth="140.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label fx:id="currentLoanDueDate" alignment="CENTER" layoutX="365.0" layoutY="82.0" prefHeight="25.0" prefWidth="149.0" text="Date Payment Due">
+               <font>
+                  <Font size="14.0" fx:id="x321211" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="365.0" layoutY="151.0" prefHeight="25.0" prefWidth="149.0" text="Last Payment Made">
+               <font>
+                  <Font size="14.0" fx:id="x3212111" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="28.0" layoutY="82.0" prefHeight="25.0" prefWidth="127.0" text="Current Balance">
+               <font>
+                  <Font size="14.0" fx:id="x321212" />
+               </font>
+            </Label>
+            <TextField fx:id="currentLoanBalance" editable="false" layoutX="27.0" layoutY="107.0" prefHeight="30.0" prefWidth="127.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="26.0" layoutY="150.0" prefHeight="25.0" prefWidth="127.0" text="Notified of Payment">
+               <font>
+                  <Font size="14.0" fx:id="x3212112" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="195.0" layoutY="151.0" prefHeight="25.0" prefWidth="140.0" text="Current Payment Due">
+               <font>
+                  <Font size="14.0" fx:id="x32121121" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="27.0" layoutY="224.0" prefHeight="25.0" prefWidth="127.0" text="Missed Payment">
+               <font>
+                  <Font size="14.0" fx:id="x321213" />
+               </font>
+            </Label>
+            <TextField fx:id="missedPayment" editable="false" layoutX="26.0" layoutY="249.0" prefHeight="30.0" prefWidth="127.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="currentLoanPaymentDue" layoutX="193.0" layoutY="176.0" prefHeight="31.0" prefWidth="140.0" />
+            <TextField fx:id="notifiedOfPayment" editable="false" layoutX="27.0" layoutY="175.0" prefHeight="30.0" prefWidth="127.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="datePaymentDue" layoutX="364.0" layoutY="107.0" prefHeight="31.0" prefWidth="149.0" />
+            <TextField fx:id="lastPaymentMade" layoutX="364.0" layoutY="175.0" prefHeight="31.0" prefWidth="149.0" />
+            <ComboBox fx:id="manCusSelect" layoutX="187.0" layoutY="43.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
