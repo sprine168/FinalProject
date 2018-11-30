@@ -5,6 +5,7 @@ import Program.Data.EnumeratedTypes;
 import Program.Main;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +14,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import sun.nio.cs.HistoricallyNamedCharset;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,9 +49,6 @@ public class SubController implements Initializable {
     public Button transferButton;
     public Button closeCustomerButton;
 
-    public TextArea cusCheckingStatement;
-    public TextArea cusLoanStatement;
-
     public TextField customerIDText;
     public TextField cusAccountStatus;
     public TextField selectedAccountBalance;
@@ -73,11 +75,12 @@ public class SubController implements Initializable {
     public Label accountToCloseLabel;
     public Pane LoanPane;
 
-    protected CollectionController checkingsCollection;
     protected CollectionController allAccountsCollection;
     protected CollectionController loanCollection;
     protected CollectionController nonLoanCollection;
-    protected CollectionController savingsCollection;
+
+    @FXML
+    protected ListView checkingAccountTransactions;
 
     @FXML
     void advanceAMonth(){
@@ -144,10 +147,21 @@ public class SubController implements Initializable {
 
     @FXML
     void Deposit(ActionEvent event) throws IOException {
-        if (selectedAccount != null){
+        if (selectedAccount != null && !amountToTransfer.getText().equals(null)){
             double amountToDeposit = Double.parseDouble(amountToTransfer.getText());
             if (amountToDeposit > 0){
                 selectedAccount.Deposit(amountToDeposit);
+            }
+            selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+        }
+    }
+
+    @FXML
+    void Withdraw(ActionEvent event) throws IOException {
+        if (selectedAccount != null && !amountToTransfer.getText().equals(null)){
+            double amountToWithdraw = Double.parseDouble(amountToTransfer.getText());
+            if (amountToWithdraw > 0){
+                selectedAccount.Withdraw(amountToWithdraw);
             }
             selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
         }
@@ -221,6 +235,39 @@ public class SubController implements Initializable {
                     allAccountsCollection = new CollectionController(newArray);
                     accountToTransferTo.setItems(allAccountsCollection.getCollections());
                     selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+                    if (selectedAccount.getClass() == CheckingAccount.class){
+                        ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(((CheckingAccount) selectedAccount).getAccountId());
+                        CollectionController newController = new CollectionController(pendingTransactions);
+
+                        checkingAccountTransactions.setItems(newController.getCollections());
+
+                        checkingAccountTransactions.setCellFactory(lv -> new ListCell<PendingTransaction>()
+                        {
+                            @Override
+                            public void updateItem(PendingTransaction item, boolean empty)
+                            {
+                                super.updateItem(item, empty);
+                                if (!empty) {
+                                    setText(item.toString());
+                                    setOnMouseClicked(mouseClickedEvent -> {
+                                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                                            if (item.getDateOfTransaction().equals(null) || item.getDateOfTransaction().isAfter(LocalDate.now())) {
+                                                Main.pendingTransactions.remove(item);
+                                                newController.getCollections().remove(item);
+                                                checkingAccountTransactions.setItems(newController.getCollections());
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    setText(null);
+                                    setGraphic(null);
+                                }
+                            }
+                        });
+                    } else {
+                        checkingAccountTransactions.setItems(null);
+                        checkingAccountTransactions.setCellFactory(null);
+                    }
                 }
             });
 

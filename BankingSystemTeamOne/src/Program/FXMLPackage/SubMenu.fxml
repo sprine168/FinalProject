@@ -6,8 +6,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -22,7 +23,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.SubController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="801.0" layoutX="-14.0" layoutY="-21.0" stroke="BLACK" strokeType="INSIDE" width="1059.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="2.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1024.0">
             <fill>
                 <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
                     <stops>
@@ -89,11 +90,6 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-        <TextArea fx:id="cusLoanStatement" editable="false" focusTraversable="false" layoutX="522.0" layoutY="491.0" prefHeight="190.0" prefWidth="498.0" promptText="Description area for loans and credit cards.">
-            <font>
-                <Font name="Bodoni MT" size="14.0" />
-            </font>
-        </TextArea>
         <Button fx:id="transferButton" contentDisplay="CENTER" layoutX="56.0" layoutY="250.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="Initiate Transfer" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
@@ -102,7 +98,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="56.0" layoutY="324.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="140.0" onAction="#Deposit" text="Submit Deposit" textAlignment="CENTER">
+        <Button fx:id="depositButton" contentDisplay="CENTER" layoutX="56.0" layoutY="324.0" mnemonicParsing="false" onAction="#Deposit" prefHeight="31.0" prefWidth="140.0" text="Submit Deposit" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -110,7 +106,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button fx:id="withdrawButton" contentDisplay="CENTER" layoutX="56.0" layoutY="287.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="Submit Withdraw" textAlignment="CENTER">
+        <Button fx:id="withdrawButton" contentDisplay="CENTER" layoutX="56.0" layoutY="287.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="Submit Withdraw" onAction="#Withdraw" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -239,7 +235,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-        <Label layoutX="631.0" layoutY="463.0" prefHeight="25.0" prefWidth="256.0" text="Customer Loan/Credit Card Reports">
+        <Label layoutX="631.0" layoutY="463.0" prefHeight="25.0" prefWidth="256.0" text="Pending Credit Card Transactions">
             <font>
                 <Font size="14.0" fx:id="x22" />
             </font>
@@ -254,12 +250,7 @@
             <ColorAdjust brightness="0.05" contrast="-0.19" hue="-0.78" saturation="1.0" />
          </effect>
       </Separator>
-      <TextArea fx:id="cusCheckingStatement" editable="false" focusTraversable="false" layoutX="7.0" layoutY="491.0" prefHeight="190.0" prefWidth="515.0" promptText="Description Area for Checking Account">
-         <font>
-            <Font name="Bodoni MT" size="14.0" />
-         </font>
-      </TextArea>
-      <Label layoutX="131.0" layoutY="469.0" prefHeight="25.0" prefWidth="238.0" text="Customer Checking Account Reports">
+      <Label layoutX="137.0" layoutY="464.0" prefHeight="25.0" prefWidth="238.0" text="Pending Checking Transactions">
          <font>
             <Font size="14.0" fx:id="x221" />
          </font>
@@ -412,5 +403,14 @@
             <ComboBox fx:id="manCusSelect" layoutX="187.0" layoutY="43.0" prefWidth="150.0" />
          </children>
       </Pane>
+      <ScrollPane layoutX="7.0" layoutY="482.0" prefHeight="190.0" prefWidth="515.0">
+         <content>
+            <ListView fx:id="checkingAccountTransactions" prefHeight="191.0" prefWidth="497.0" />
+         </content></ScrollPane>
+      <ScrollPane fx:id="checkingAccountTransactions1" layoutX="524.0" layoutY="482.0" prefHeight="190.0" prefWidth="497.0">
+         <content>
+            <ListView fx:id="creditCardTransactions" prefHeight="191.0" prefWidth="497.0" />
+         </content>
+      </ScrollPane>
     </children>
 </AnchorPane>
