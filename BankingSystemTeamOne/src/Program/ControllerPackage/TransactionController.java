@@ -27,9 +27,6 @@ public class TransactionController {
     public TextField checkAmount;
     public Button submitCheck;
 
-    // Checking variables
-
-
 
 
     // returnCreditTransaction is used to submit the credit card transaction.
