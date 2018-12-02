@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.TransactionController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-5.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
+            <fill>
+                <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
+                    <stops>
+                        <Stop color="WHITE" />
+                        <Stop color="#3374b598" offset="1.0" />
+                    </stops>
+                </LinearGradient>
+            </fill>
+        </Rectangle>
+        <Label layoutX="419.0" layoutY="639.0" prefHeight="19.0" prefWidth="189.0" text="Banking System Incorporated by " textAlignment="LEFT" textFill="#184c80" wrapText="false">
+            <font>
+                <Font name="Constantia" size="13.0" fx:id="x1" />
+            </font>
+        </Label>
+        <Label font="$x1" layoutX="479.0" layoutY="670.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
+      <Label layoutX="423.0" layoutY="14.0" prefHeight="23.0" prefWidth="174.0" text="Create Transactions" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false">
+         <font>
+            <Font name="Constantia Bold" size="18.0" />
+         </font>
+         <textFill>
+            <LinearGradient cycleMethod="REPEAT" endX="1.0" endY="1.0" startX="1.0" startY="0.9523809523809523">
+               <stops>
+                  <Stop color="#184c80" />
+                  <Stop color="#0099ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ComboBox fx:id="selectAccountType" layoutX="69.0" layoutY="107.0" prefHeight="34.0" prefWidth="298.0" promptText="Select Checking or Credit">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Checking Account" />
+               <String fx:value="Saving Account" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <ComboBox fx:id="selectCustomer" layoutX="69.0" layoutY="168.0" prefHeight="34.0" prefWidth="298.0" promptText="Select Customer Account to Make a Transaction">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Checking Account" />
+               <String fx:value="Saving Account" />
+            </FXCollections>
+         </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
+      <Pane layoutX="694.0" layoutY="54.0" prefHeight="296.0" prefWidth="330.0">
+         <children>
+            <TextField fx:id="creditName" editable="false" layoutX="54.0" layoutY="53.0" prefHeight="31.0" prefWidth="243.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Label layoutX="99.0" layoutY="28.0" prefHeight="25.0" prefWidth="153.0" text="Transaction Name">
+               <font>
+                  <Font name="Bodoni MT" size="16.0" fx:id="x21" />
+               </font>
+            </Label>
+            <Label layoutX="89.0" layoutY="103.0" prefHeight="25.0" prefWidth="153.0" text="Transaction Amount">
+               <font>
+                  <Font name="Bodoni MT" size="16.0" fx:id="x211" />
+               </font>
+            </Label>
+            <TextField fx:id="creditAmount" editable="false" layoutX="54.0" layoutY="128.0" prefHeight="31.0" prefWidth="243.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Button fx:id="submitCredit" contentDisplay="CENTER" layoutX="99.0" layoutY="227.0" mnemonicParsing="false" onAction="#returnCreditTransaction" prefHeight="30.0" prefWidth="153.0" text="Submit Transaction" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Pane layoutY="1.0" prefHeight="296.0" prefWidth="330.0">
+               <children>
+                  <TextField fx:id="checkName" editable="false" layoutX="54.0" layoutY="53.0" prefHeight="31.0" prefWidth="243.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Label layoutX="99.0" layoutY="28.0" prefHeight="25.0" prefWidth="153.0" text="Transaction Name">
+                     <font>
+                        <Font name="Bodoni MT" size="16.0" fx:id="x211" />
+                     </font>
+                  </Label>
+                  <Label layoutX="89.0" layoutY="103.0" prefHeight="25.0" prefWidth="153.0" text="Transaction Amount">
+                     <font>
+                        <Font name="Bodoni MT" size="16.0" fx:id="x2111" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="checkAmount" editable="false" layoutX="54.0" layoutY="128.0" prefHeight="31.0" prefWidth="243.0">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                  </TextField>
+                  <Button fx:id="submitCheck" contentDisplay="CENTER" layoutX="99.0" layoutY="227.0" mnemonicParsing="false" onAction="#returnCheckTransaction" prefHeight="30.0" prefWidth="153.0" text="Submit Transaction" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <Reflection />
+                     </effect>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
