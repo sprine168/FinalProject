@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.TransactionController">
+<AnchorPane id="AnchorPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.TransactionController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-5.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
@@ -50,7 +50,7 @@
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Checking Account" />
-               <String fx:value="Saving Account" />
+               <String fx:value="Credit Card" />
             </FXCollections>
          </items>
          <cursor>
@@ -60,8 +60,7 @@
       <ComboBox fx:id="selectCustomer" layoutX="69.0" layoutY="168.0" prefHeight="34.0" prefWidth="298.0" promptText="Select Customer Account to Make a Transaction">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Checking Account" />
-               <String fx:value="Saving Account" />
+
             </FXCollections>
          </items>
          <cursor>
@@ -138,5 +137,6 @@
             </Pane>
          </children>
       </Pane>
+      <Button layoutX="459.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToCus" text="Customer Menu" />
     </children>
 </AnchorPane>

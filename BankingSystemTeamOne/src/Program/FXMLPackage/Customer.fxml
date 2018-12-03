@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CustomerController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.CustomerController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-3.0" stroke="BLACK" strokeType="INSIDE" width="1031.0">
             <fill>
@@ -192,7 +192,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2131111" />
             </font>
         </Label>
-        <Button fx:id="transferButton1" contentDisplay="CENTER" layoutX="877.0" layoutY="63.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Go To ATM" textAlignment="CENTER">
+        <Button fx:id="cusCreateTransaction" onAction="#createTransaction" contentDisplay="CENTER" layoutX="859.0" layoutY="62.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Create Transaction" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

@@ -76,7 +76,10 @@ public class CustomerController implements Initializable {
 	public ComboBox accountToTransferFrom;
     public ComboBox cusLoanSelect;
 
-    public ScrollPane CheckingAccountScrollPane;
+	public Button cusCreateTransaction;
+
+
+	public ScrollPane CheckingAccountScrollPane;
     public ScrollPane CreditCardScollPane;
 
     protected CollectionController checkingsCollection;
@@ -216,4 +219,9 @@ public class CustomerController implements Initializable {
 		}
 	}
 
+	@FXML
+	public void createTransaction(ActionEvent event) throws Exception{
+		function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/CreateTransactions.fxml"))), event);
+
+	}
 }
