@@ -39,7 +39,7 @@ import javafx.stage.Stage;
 */
 public class CustomerController implements Initializable {
 
-	private Customer customer;
+    private Customer customer;
 	private Account selectedAccount1 = null;
 	private Account selectedAccount2 = null;
 	private Loan currentSelectedLoan;
@@ -71,8 +71,9 @@ public class CustomerController implements Initializable {
 	public Button logoutButton;
 
 	public ComboBox cusSelectCheckings;
-	public ComboBox cusSelectSavings;
-	public ComboBox accountToTransferTo;
+    public ComboBox cusSelectSavings;
+    public ComboBox cusSelectSavings2;
+    public ComboBox accountToTransferTo;
 	public ComboBox accountToTransferFrom;
     public ComboBox cusLoanSelect;
 
@@ -161,6 +162,9 @@ public class CustomerController implements Initializable {
 
 			savingsCollection = new CollectionController(savingsAccounts);
 			cusSelectSavings.setItems(savingsCollection.getCollections());
+
+            savingsCollection = new CollectionController(savingsAccounts);
+            cusSelectSavings2.setItems(savingsCollection.getCollections());
 
 			// Adding Change Listners so when a value is changed it will update information.
 			cusSelectCheckings.valueProperty().addListener(new ChangeListener() {

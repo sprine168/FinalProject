@@ -91,7 +91,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </ComboBox>
-        <Label layoutX="848.0" layoutY="128.0" prefHeight="18.0" prefWidth="86.0" text="Pay On Loan" textFill="#184c80" underline="true">
+        <Label layoutX="834.0" layoutY="128.0" prefHeight="18.0" prefWidth="120.0" text="Loan Information" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
@@ -114,12 +114,12 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x31" />
             </font>
         </Label>
-        <Label layoutX="455.0" layoutY="353.0" prefHeight="18.0" prefWidth="112.0" text="Withdraw Funds" textFill="#184c80" underline="true">
+        <Label layoutX="455.0" layoutY="363.0" prefHeight="18.0" prefWidth="112.0" text="Withdraw Funds" textFill="#184c80" underline="true">
             <font>
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="447.0" layoutY="417.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
+        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="447.0" layoutY="465.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -192,7 +192,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x2131111" />
             </font>
         </Label>
-        <Button fx:id="cusCreateTransaction" onAction="#createTransaction" contentDisplay="CENTER" layoutX="859.0" layoutY="62.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Create Transaction" textAlignment="CENTER">
+        <Button fx:id="cusCreateTransaction" contentDisplay="CENTER" layoutX="859.0" layoutY="62.0" mnemonicParsing="false" onAction="#createTransaction" prefHeight="30.0" prefWidth="150.0" text="Create Transaction" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -232,7 +232,7 @@
                 <Font name="Bodoni MT" size="16.0" fx:id="x3111" />
             </font>
         </Label>
-        <TextField fx:id="withdrawAmount1" layoutX="424.0" layoutY="381.0" prefHeight="31.0" prefWidth="172.0" promptText="Enter Amount to Withdraw">
+        <TextField fx:id="withdrawAmount1" layoutX="424.0" layoutY="427.0" prefHeight="31.0" prefWidth="172.0" promptText="Enter Amount to Withdraw">
             <font>
                 <Font size="13.0" />
             </font>
@@ -279,5 +279,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ComboBox>
+      <ComboBox fx:id="cusSelectSavings2" layoutX="400.0" layoutY="393.0" prefHeight="25.0" prefWidth="227.0" />
     </children>
 </AnchorPane>
