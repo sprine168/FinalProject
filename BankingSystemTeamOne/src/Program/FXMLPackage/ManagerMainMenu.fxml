@@ -24,7 +24,7 @@
                 </LinearGradient>
             </fill>
         </Rectangle>
-        <Label layoutX="410.0" prefHeight="40.0" prefWidth="300.0" text="Manager Program Main Page" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
+        <Label layoutX="410.0" prefHeight="40.0" prefWidth="300.0" text="Manager Main Menu" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false" wrapText="false">
             <font>
                 <Font name="Constantia Bold" size="18.0" />
             </font>
