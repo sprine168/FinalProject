@@ -163,8 +163,6 @@ public class CustomerController implements Initializable {
 			savingsCollection = new CollectionController(savingsAccounts);
 			cusSelectSavings.setItems(savingsCollection.getCollections());
 
-            savingsCollection = new CollectionController(savingsAccounts);
-            cusSelectSavings2.setItems(savingsCollection.getCollections());
 
 			// Adding Change Listners so when a value is changed it will update information.
 			cusSelectCheckings.valueProperty().addListener(new ChangeListener() {
