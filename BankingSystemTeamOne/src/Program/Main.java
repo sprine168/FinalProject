@@ -125,9 +125,9 @@ public class Main extends Application {
                                         getDate(args[4]), getDate(args[5])));
                                 break;
                             case "Loan":
-                                accounts.add(new Loan(args[0], args[1], Double.parseDouble(args[2]),
-                                        Double.parseDouble(args[3]), getDate(args[4]), getDate(args[5]),
-                                        Double.parseDouble(args[6]), getDate(args[7]), Boolean.parseBoolean(args[8]), args[9]));
+                                accounts.add(new Loan(args[0], Integer.parseInt(args[1]), args[2], Double.parseDouble(args[3]),
+                                        Double.parseDouble(args[4]), getDate(args[5]), getDate(args[6]),
+                                        Double.parseDouble(args[7]), getDate(args[8]), args[9].equals("1") ? true : false, args[10]));
                                 break;
                             case "Transactions":
                                 pendingTransactions.add(new PendingTransaction(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]), args[3], getDate(args[4])));

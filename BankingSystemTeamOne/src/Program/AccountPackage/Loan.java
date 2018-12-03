@@ -28,9 +28,10 @@ public class Loan extends Account {
 	protected ChronoLocalDate dateSinceLastPayment;
 	protected boolean missedPaymentFlag;
 	protected String accountType;
+	protected int identifier;
 
 	// Constructor for the loan class.
-	public Loan(String customerId, String description, double balance, double currentInterestRate, ChronoLocalDate datePaymentDue,
+	public Loan(String customerId, int identifier, String description, double balance, double currentInterestRate, ChronoLocalDate datePaymentDue,
 				ChronoLocalDate dateNotifiedOfPayment, double currentPaymentDue, ChronoLocalDate dateSinceLastPayment, boolean missedPaymentFlag,
 				String accountType) {
 
@@ -45,6 +46,10 @@ public class Loan extends Account {
 		if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
 		if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate);}
 		if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
+		if (identifier == 0)
+			this.identifier = toString().hashCode();
+		else if (identifier != 0)
+			this.identifier = identifier;
 	}
 
 	@Override
@@ -135,7 +140,7 @@ public class Loan extends Account {
 	public String toString() {
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("MM-dd-yyyy");
 
-		return String.format("%s,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, description, balance, currentInterestRate,
+		return String.format("%s,%d,%s,%2.2f,%2.3f,%s,%s,%2.2f,%s,%s,%s",customerId, identifier, description, balance, currentInterestRate,
 				df.format(datePaymentDue), df.format(dateNotifiedOfPayment), currentPaymentDue, df.format(dateSinceLastPayment),
 				missedPaymentFlag ? "1" : "0", accountType);
 	}

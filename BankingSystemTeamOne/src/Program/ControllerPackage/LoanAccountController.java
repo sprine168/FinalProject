@@ -77,7 +77,7 @@ public class LoanAccountController implements Initializable{
                 if (loanTypeShort.equals("Long Term Loan")){loanTypeShort="LT";}
                 if (loanTypeShort.equals("Short Term Loan")){loanTypeShort="ST";}
                 //Creates a new loan using the values grabbed on button click
-                Loan newLoan = new Loan(currentSelectedCustomer.getCustomerId(), desc, balance, interestRate, dueOn, notifyOn,0,dueOn,false, loanTypeShort);
+                Loan newLoan = new Loan(currentSelectedCustomer.getCustomerId(),0, desc, balance, interestRate, dueOn, notifyOn,0,dueOn,false, loanTypeShort);
                 //adds the new loan to the database
                 Main.addAccount(newLoan);
 
