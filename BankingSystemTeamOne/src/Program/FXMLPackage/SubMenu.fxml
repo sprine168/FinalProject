@@ -23,7 +23,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Program.ControllerPackage.SubController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="2.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1024.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" layoutX="-2.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="1045.0">
             <fill>
                 <LinearGradient cycleMethod="REFLECT" endX="0.2523809523809524" endY="1.0" startY="0.21904761904761905">
                     <stops>
@@ -235,7 +235,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-        <Label layoutX="631.0" layoutY="463.0" prefHeight="25.0" prefWidth="256.0" text="Pending Credit Card Transactions">
+        <Label layoutX="642.0" layoutY="463.0" prefHeight="25.0" prefWidth="256.0" text="Pending Credit Card Transactions">
             <font>
                 <Font size="14.0" fx:id="x22" />
             </font>
@@ -250,7 +250,7 @@
             <ColorAdjust brightness="0.05" contrast="-0.19" hue="-0.78" saturation="1.0" />
          </effect>
       </Separator>
-      <Label layoutX="137.0" layoutY="464.0" prefHeight="25.0" prefWidth="238.0" text="Pending Checking Transactions">
+      <Label layoutX="139.0" layoutY="464.0" prefHeight="25.0" prefWidth="238.0" text="Pending Checking Transactions">
          <font>
             <Font size="14.0" fx:id="x221" />
          </font>
@@ -287,7 +287,7 @@
             <Font size="14.0" fx:id="x21111121" />
          </font>
       </Label>
-      <Button fx:id="closeAccountButton" contentDisplay="CENTER" layoutX="52.0" layoutY="429.0" mnemonicParsing="false" onAction="#closeAccount" prefHeight="30.0" prefWidth="145.0" text="Close This Account" textAlignment="CENTER">
+      <Button fx:id="closeAccountButton" contentDisplay="CENTER" layoutX="52.0" layoutY="439.0" mnemonicParsing="false" onAction="#closeAccount" prefHeight="30.0" prefWidth="145.0" text="Close This Account" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

@@ -88,6 +88,9 @@ public class SubController implements Initializable {
     protected ListView checkingAccountTransactions;
 
     @FXML
+    protected ListView creditCardTransactions;
+
+    @FXML
     void advanceAMonth(ActionEvent event) throws IOException {
         if (!currentLoanAccount.equals(null)){
 
@@ -148,6 +151,7 @@ public class SubController implements Initializable {
         if (selectedAccount3 != null){
             double amountToGive = selectedAccount3.CloseAccount(LocalDate.now());
             System.out.println(String.format("%2.2f", amountToGive));
+            manCusSelect.getItems().remove(selectedAccount3);
             function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml")), event);
         }
     }
@@ -252,6 +256,40 @@ public class SubController implements Initializable {
                         missedPayment.setText("No");
                         cusAccountStatus.setText("Current");
                     }
+                    if (newLoan.getAccountType().equals("CC")){
+                        ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(newLoan.getIdentifier());
+                        CollectionController newController = new CollectionController(pendingTransactions);
+
+                        creditCardTransactions.setItems(newController.getCollections());
+
+                        creditCardTransactions.setCellFactory(lv -> new ListCell<PendingTransaction>()
+                        {
+                            @Override
+                            public void updateItem(PendingTransaction item, boolean empty)
+                            {
+                                super.updateItem(item, empty);
+                                if (!empty) {
+                                    setText(item.toString());
+                                    setOnMouseClicked(mouseClickedEvent -> {
+                                        if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
+                                            if (item.getIsStopped() != 1 && (item.getDateOfTransaction().equals(null) || item.getDateOfTransaction().isAfter(LocalDate.now()))) {
+                                                item.setIsStopped(1);
+                                                setText(item.toString());
+                                                super.updateItem(item, empty);
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    setText(null);
+                                    setGraphic(null);
+                                }
+                            }
+                        });
+                    } else {
+                        checkingAccountTransactions.setItems(null);
+                        checkingAccountTransactions.setCellFactory(null);
+
+                    }
                     if (LocalDate.now().isBefore(newLoan.getDatePaymentDue())){
                         notifiedOfPayment.setText("No");
                     }else{
@@ -292,10 +330,10 @@ public class SubController implements Initializable {
                                     setText(item.toString());
                                     setOnMouseClicked(mouseClickedEvent -> {
                                         if (mouseClickedEvent.getButton().equals(MouseButton.PRIMARY) && mouseClickedEvent.getClickCount() == 2) {
-                                            if (item.getDateOfTransaction().equals(null) || item.getDateOfTransaction().isAfter(LocalDate.now())) {
-                                                Main.pendingTransactions.remove(item);
-                                                newController.getCollections().remove(item);
-                                                checkingAccountTransactions.setItems(newController.getCollections());
+                                            if (item.getIsStopped() != 1 && (item.getDateOfTransaction().equals(null) || item.getDateOfTransaction().isAfter(LocalDate.now()))) {
+                                                item.setIsStopped(1);
+                                                setText(item.toString());
+                                                super.updateItem(item, empty);
                                             }
                                         }
                                     });

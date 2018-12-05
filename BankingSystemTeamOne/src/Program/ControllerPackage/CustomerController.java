@@ -39,7 +39,7 @@ import javafx.stage.Stage;
 */
 public class CustomerController implements Initializable {
 
-    private Customer customer;
+	private Customer customer;
 	private Account selectedAccount1 = null;
 	private Account selectedAccount2 = null;
 	private Loan currentSelectedLoan;
@@ -48,7 +48,9 @@ public class CustomerController implements Initializable {
 	public TextArea monthlyChecking;
 	public TextArea monthlyCC;
 
-	public TextField depositAmount;
+	public ListView checkingAccountTransactions;
+	public ListView creditCardTransactions;
+
 	public TextField transferAmount;
 	public TextField paymentAmount;
 	public TextField withdrawAmount1;
@@ -70,18 +72,12 @@ public class CustomerController implements Initializable {
 	public Button depositButton;
 	public Button logoutButton;
 
-	public ComboBox cusSelectCheckings;
-    public ComboBox cusSelectSavings;
-    public ComboBox cusSelectSavings2;
+	public ComboBox cusSelectAccount;
     public ComboBox accountToTransferTo;
 	public ComboBox accountToTransferFrom;
     public ComboBox cusLoanSelect;
 
 	public Button cusCreateTransaction;
-
-
-	public ScrollPane CheckingAccountScrollPane;
-    public ScrollPane CreditCardScollPane;
 
     protected CollectionController checkingsCollection;
     protected CollectionController allAccountsCollection;
@@ -111,6 +107,17 @@ public class CustomerController implements Initializable {
 			    selectedAccount2.Deposit(amt);
 			}
 			function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/Customer.fxml"))), event);
+		}
+	}
+
+	@FXML
+	void Withdraw(ActionEvent event) throws IOException {
+		if (selectedAccount1 != null && !withdrawAmount1.getText().equals(null)){
+			double amountToWithdraw = Double.parseDouble(withdrawAmount1.getText());
+			if (amountToWithdraw > 0){
+				selectedAccount1.Withdraw(amountToWithdraw);
+			}
+			cusCheckingBalance.setText(String.format("$%2.2f", selectedAccount1.getBalance()));
 		}
 	}
 	
@@ -151,33 +158,26 @@ public class CustomerController implements Initializable {
 			}
 
 			// Setting up the Collections for the combo boxes
-			checkingsCollection = new CollectionController(checkingsAccounts);
-			cusSelectCheckings.setItems(checkingsCollection.getCollections());
-
 			loanCollection = new CollectionController(loanAccounts);
 			cusLoanSelect.setItems(loanCollection.getCollections());
 
 			nonLoanCollection = new CollectionController(nonLoanAccounts);
 			accountToTransferFrom.setItems(nonLoanCollection.getCollections());
-
-			savingsCollection = new CollectionController(savingsAccounts);
-			cusSelectSavings.setItems(savingsCollection.getCollections());
+			cusSelectAccount.setItems(nonLoanCollection.getCollections());
 
 
 			// Adding Change Listners so when a value is changed it will update information.
-			cusSelectCheckings.valueProperty().addListener(new ChangeListener() {
+			cusSelectAccount.valueProperty().addListener(new ChangeListener() {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
 					cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
-					ArrayList<PendingTransaction> checkingTransactions = Main.fetchTransactions(((CheckingAccount) newValue).getAccountId());
-					//CheckingAccountScrollPane.setContent();
-				}
-			});
-
-			cusSelectSavings.valueProperty().addListener(new ChangeListener() {
-				@Override
-				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-					cusSavingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
+					if (((Account) newValue).getClass() == CheckingAccount.class) {
+						ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(((CheckingAccount) newValue).getAccountId());
+						CollectionController newController = new CollectionController(pendingTransactions);
+						checkingAccountTransactions.setItems(newController.getCollections());
+					} else {
+						checkingAccountTransactions.setItems(null);
+					}
 				}
 			});
 
@@ -208,6 +208,13 @@ public class CustomerController implements Initializable {
 						cusAccountStatus.setText("Late");
 					}else{
 						cusAccountStatus.setText("Current");
+					}
+					if (currentSelectedLoan.getAccountType().equals("CC")){
+						ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(currentSelectedLoan.getIdentifier());
+						CollectionController newController = new CollectionController(pendingTransactions);
+						creditCardTransactions.setItems(newController.getCollections());
+					}else{
+						creditCardTransactions.setItems(null);
 					}
 				}
 			});

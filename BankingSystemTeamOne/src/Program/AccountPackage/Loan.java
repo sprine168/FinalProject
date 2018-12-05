@@ -116,6 +116,10 @@ public class Loan extends Account {
 
 	public void setMissedPaymentFlag(boolean flag) {missedPaymentFlag = flag;}
 
+	public int getIdentifier(){
+		return identifier;
+	}
+
 	/** Method to simulate a month passing.  It will look at the current account balance, and interest rate and calculate a new balance.
 	 *  It will also give it a new due date
 	 **/

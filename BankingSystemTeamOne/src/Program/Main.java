@@ -130,7 +130,7 @@ public class Main extends Application {
                                         Double.parseDouble(args[7]), getDate(args[8]), args[9].equals("1") ? true : false, args[10]));
                                 break;
                             case "Transactions":
-                                pendingTransactions.add(new PendingTransaction(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]), args[3], getDate(args[4])));
+                                pendingTransactions.add(new PendingTransaction(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Double.parseDouble(args[2]), args[3], getDate(args[4]), Integer.parseInt(args[5])));
                             default:
                                 break;
                         }
