@@ -33,7 +33,7 @@
             </font>
         </Label>
         <Label font="$x1" layoutX="479.0" layoutY="670.0" prefHeight="19.0" prefWidth="66.00009999999747" text="Team One" textFill="#184c80" />
-      <Label layoutX="423.0" layoutY="14.0" prefHeight="23.0" prefWidth="174.0" text="Create Transactions" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false">
+      <Label layoutX="427.0" layoutY="14.0" prefHeight="23.0" prefWidth="173.0" text="Create Transactions" textAlignment="CENTER" textOverrun="ELLIPSIS" underline="false">
          <font>
             <Font name="Constantia Bold" size="18.0" />
          </font>
@@ -137,6 +137,6 @@
             </Pane>
          </children>
       </Pane>
-      <Button layoutX="459.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToCus" text="Go Back" />
+      <Button layoutX="480.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToCus" text="Go Back" />
     </children>
 </AnchorPane>
