@@ -137,6 +137,6 @@
             </Pane>
          </children>
       </Pane>
-      <Button layoutX="459.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToCus" text="Customer Menu" />
+      <Button layoutX="459.0" layoutY="507.0" mnemonicParsing="false" onAction="#returnToCus" text="Go Back" />
     </children>
 </AnchorPane>
