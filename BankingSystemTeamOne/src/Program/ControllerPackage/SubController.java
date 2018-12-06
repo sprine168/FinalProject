@@ -365,4 +365,10 @@ public class SubController implements Initializable {
             });
         }
     }
+
+    // navigation button to go to the create transaction page.
+    public void createTransaction(ActionEvent event) throws Exception {
+        function(FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/CreateTransactions.fxml")), event);
+    }
+
 }
