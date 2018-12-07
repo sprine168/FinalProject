@@ -34,9 +34,9 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 
-    public static ArrayList<Customer> customers = new ArrayList<>();
-    public static ArrayList<Account> accounts = new ArrayList<>();
-    public static ArrayList<PendingTransaction> pendingTransactions = new ArrayList<>();
+    public static ArrayList<Customer> customers = new ArrayList();
+    public static ArrayList<Account> accounts = new ArrayList();
+    public static ArrayList<PendingTransaction> pendingTransactions = new ArrayList();
     public static Customer currentCustomer = null;
     public static EnumeratedTypes currentAuthorization = null;
 

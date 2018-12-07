@@ -90,7 +90,7 @@ public class TransactionController implements Initializable {
         if (Main.currentCustomer != null){
             ArrayList<Account> transactableAccounts = new ArrayList();
             for (Account account : Main.currentCustomer.getAccounts()){
-                if (account.getClass() == CheckingAccount.class || (account.getClass() == Loan.class && ((Loan) account).getAccountType() == "cc")){
+                if (account.getClass() == CheckingAccount.class || (account.getClass() == Loan.class && ((Loan) account).getAccountType().equals("CC"))){
                     transactableAccounts.add(account);
                 }
             }
