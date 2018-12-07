@@ -70,6 +70,13 @@ public class CheckingAccount extends Account {
 			if (balance >= amountToWithdraw){
 				balance -= amountToWithdraw;
 				amountToReturn = amountToWithdraw;
+			}else if (balance > 0){
+				balance -= amountToWithdraw;
+				balance -= 25;
+				amountToReturn = amountToWithdraw;
+			}else {
+				balance -= 25;
+				amountToReturn = 0;
 			}
 		}
 		return amountToReturn;

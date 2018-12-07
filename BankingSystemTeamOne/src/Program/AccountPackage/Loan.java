@@ -129,8 +129,13 @@ public class Loan extends Account {
 	 *  It will also give it a new due date
 	 **/
 	public void advanceAMonth(){
-		missedPaymentFlag=true;
 		datePaymentDue = datePaymentDue.plus(Period.ofDays(30));
+		if (dateSinceLastPayment.until(datePaymentDue) == Period.ofDays(30)){
+			missedPaymentFlag = true;
+			balance += 75;
+		}else{
+			missedPaymentFlag = false;
+		}
 		//Checks the loan type and updates the balance and calculates the new current Payment Due
 		if (accountType.equals("ST")){balance += currentPaymentDue; currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate); }
 		if (accountType.equals("LT")){balance += currentPaymentDue; currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate); }
