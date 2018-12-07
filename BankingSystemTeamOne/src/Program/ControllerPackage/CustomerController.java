@@ -132,8 +132,7 @@ public class CustomerController implements Initializable {
 			customerStateText.setText(customer.getState());
 			customerZipText.setText(customer.getZipCode());
 			customerATMText.setText(customer.getAtmCard() == 1 ? "Yes" : "No");
-            boolean foundChecking = false;
-			boolean foundSavings = false;
+            boolean foundAnAccount = false;
 			ArrayList<Account> nonLoanAccounts = new ArrayList();
 			ArrayList<Account> checkingsAccounts = new ArrayList();
 			ArrayList<Account> savingsAccounts = new ArrayList();
@@ -145,12 +144,11 @@ public class CustomerController implements Initializable {
 					checkingsAccounts.add(account);
 					nonLoanAccounts.add(account);
 					allAccounts.add(account);
-					foundChecking = true;
+					foundAnAccount = true;
 				} else if (account.getClass().equals(SavingsAccount.class)) {
 					savingsAccounts.add(account);
 					nonLoanAccounts.add(account);
 					allAccounts.add(account);
-					foundSavings = true;
 				} else {
 				    loanAccounts.add(account);
 					allAccounts.add(account);
@@ -219,7 +217,7 @@ public class CustomerController implements Initializable {
 				}
 			});
 
-			if (!foundChecking){
+			if (!foundAnAccount){
 				cusCheckingBalance.setText("N/A");
 			}
 		}
