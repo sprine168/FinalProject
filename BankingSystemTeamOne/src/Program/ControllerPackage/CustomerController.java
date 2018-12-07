@@ -208,7 +208,7 @@ public class CustomerController implements Initializable {
 						cusAccountStatus.setText("Current");
 					}
 					if (currentSelectedLoan.getAccountType().equals("CC")){
-						ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(currentSelectedLoan.getIdentifier());
+						ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(currentSelectedLoan.getAccountId());
 						CollectionController newController = new CollectionController(pendingTransactions);
 						creditCardTransactions.setItems(newController.getCollections());
 					}else{

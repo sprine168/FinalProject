@@ -260,7 +260,7 @@ public class SubController implements Initializable {
                         cusAccountStatus.setText("Current");
                     }
                     if (newLoan.getAccountType().equals("CC")){
-                        ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(newLoan.getIdentifier());
+                        ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(newLoan.getAccountId());
                         CollectionController newController = new CollectionController(pendingTransactions);
 
                         creditCardTransactions.setItems(newController.getCollections());

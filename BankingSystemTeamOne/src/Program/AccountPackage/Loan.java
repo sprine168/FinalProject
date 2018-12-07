@@ -121,7 +121,7 @@ public class Loan extends Account {
 
 	public void setMissedPaymentFlag(boolean flag) {missedPaymentFlag = flag;}
 
-	public int getIdentifier(){
+	public int getAccountId(){
 		return identifier;
 	}
 
