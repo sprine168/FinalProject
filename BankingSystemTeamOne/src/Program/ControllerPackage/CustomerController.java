@@ -112,12 +112,12 @@ public class CustomerController implements Initializable {
 
 	@FXML
 	void Withdraw(ActionEvent event) throws IOException {
-		if (selectedAccount1 != null && !withdrawAmount1.getText().equals(null)){
+		if (currentSelectedAccount != null && !withdrawAmount1.getText().equals(null)){
 			double amountToWithdraw = Double.parseDouble(withdrawAmount1.getText());
 			if (amountToWithdraw > 0){
-				selectedAccount1.Withdraw(amountToWithdraw);
+				double amt = currentSelectedAccount.Withdraw(amountToWithdraw);
 			}
-			cusCheckingBalance.setText(String.format("$%2.2f", selectedAccount1.getBalance()));
+			cusCheckingBalance.setText(String.format("$%2.2f", currentSelectedAccount.getBalance()));
 		}
 	}
 	
@@ -168,9 +168,10 @@ public class CustomerController implements Initializable {
 			cusSelectAccount.valueProperty().addListener(new ChangeListener() {
 				@Override
 				public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-					cusCheckingBalance.setText(String.format("$%2.2f", ((Account) newValue).getBalance()));
+					currentSelectedAccount = (Account) newValue;
+					cusCheckingBalance.setText(String.format("$%2.2f", currentSelectedAccount.getBalance()));
 					if (((Account) newValue).getClass() == CheckingAccount.class) {
-						ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(((CheckingAccount) newValue).getAccountId());
+						ArrayList<PendingTransaction> pendingTransactions = Main.fetchTransactions(((CheckingAccount) currentSelectedAccount).getAccountId());
 						CollectionController newController = new CollectionController(pendingTransactions);
 						checkingAccountTransactions.setItems(newController.getCollections());
 					} else {

@@ -74,9 +74,9 @@ public class CheckingAccount extends Account {
 				balance -= amountToWithdraw;
 				balance -= 25;
 				amountToReturn = amountToWithdraw;
-			}else {
+			} else {
 				balance -= 25;
-				amountToReturn = 0;
+				amountToReturn = 0.0;
 			}
 		}
 		return amountToReturn;
