@@ -222,9 +222,6 @@ public class CustomerController implements Initializable {
 			if (!foundChecking){
 				cusCheckingBalance.setText("N/A");
 			}
-			if (!foundSavings){
-				cusSavingBalance.setText("N/A");
-			}
 		}
 	}
 

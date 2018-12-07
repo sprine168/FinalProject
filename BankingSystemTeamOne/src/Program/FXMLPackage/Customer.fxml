@@ -116,7 +116,7 @@
                 <Font name="Constantia Bold" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="63.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" textAlignment="CENTER">
+        <Button fx:id="withdrawButton1" contentDisplay="CENTER" layoutX="63.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="127.0" text="Withdraw Funds" onAction = "#Withdraw" textAlignment="CENTER">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
