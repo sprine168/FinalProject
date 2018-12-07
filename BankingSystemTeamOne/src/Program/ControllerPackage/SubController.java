@@ -165,37 +165,40 @@ public class SubController implements Initializable {
             }
             selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
             System.out.println("Deposit made");
+            //Resets the page so new info can be displayed
+            function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
+
         }
     }
 
     @FXML
     void Withdraw(ActionEvent event) throws IOException {
+        //checks to see if there is an account to withdraw from
         if (selectedAccount != null && !amountToTransfer.getText().equals(null)){
+            //Grabs the amount from the textfield
             double amountToWithdraw = Double.parseDouble(amountToTransfer.getText());
             if (amountToWithdraw > 0){
+                //perfroms the appropriate withdraw
                 selectedAccount.Withdraw(amountToWithdraw);
             }
             selectedAccountBalance.setText(String.format("$%2.2f", selectedAccount.getBalance()));
+            //Resets the page so new info can be displayed
+            function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
         }
     }
 
     @FXML
     void transferFunds(ActionEvent event) throws IOException
     {
+        //Checks to make sure both accounts are selected
         if (selectedAccount != null && selectedAccount2 != null){
+            //Grabs the amount to transfer from the textfield
             double amountToTransfer1 = !(amountToTransfer.getText().equals(null) || amountToTransfer.getText().equals("")) ?  Double.parseDouble(amountToTransfer.getText()) : 0.00;
-            if (amountToTransfer1 > 0 && selectedAccount.getBalance() > amountToTransfer1) {
-                if (selectedAccount2.getClass().equals(Loan.class)) {
-                    Loan acc = (Loan) selectedAccount2;
-                    double amt = selectedAccount.Withdraw(amountToTransfer1);
-                    acc.Deposit(amt);
-                } else {
+            if (amountToTransfer1 > 0 ) {
                     double amt = selectedAccount.Withdraw(amountToTransfer1);
                     selectedAccount2.Deposit(amt);
-                }
             }
             function((FXMLLoader.load(getClass().getResource("/Program/FXMLPackage/SubMenu.fxml"))), event);
-            System.out.println("Initiating");
         }
     }
 

@@ -54,12 +54,16 @@ public class Loan extends Account {
 
 	@Override
 	public void Deposit(double amountToDeposit){
+		//Checks the date and if it is currently before the payment date, dont flag account
 		if (LocalDate.now().isBefore(datePaymentDue)){
+			//If correct payment is made, they are current on the account and there is no flag
 			if(amountToDeposit>=currentPaymentDue){
 				missedPaymentFlag = false;
 			}
 			lastPayment = amountToDeposit;
 			balance -= amountToDeposit;
+			//These are what is used to calculate the interest rate.  Each loan type has a different amount of time its due.
+			//Therefore there will be different totals for each.
 			if (this.accountType.equals("ST")){this.currentPaymentDue=((balance/(5*12.0))+(balance/2)*5*this.currentInterestRate);}
 			if (this.accountType.equals("LT")){this.currentPaymentDue=((balance/(30*12.0))*30*this.currentInterestRate);}
 			if (this.accountType.equals("CC")){this.currentPaymentDue=((balance/(1*12.0))+(balance/2)*1*this.currentInterestRate);}
@@ -67,6 +71,7 @@ public class Loan extends Account {
 			//advanceAMonth();
 		}else
 		{
+			//This is what happens if the payment is late
 			missedPaymentFlag = true;
 			lastPayment = amountToDeposit;
 			balance -= amountToDeposit;

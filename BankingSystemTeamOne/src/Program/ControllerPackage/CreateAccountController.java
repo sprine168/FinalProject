@@ -114,6 +114,7 @@ public class CreateAccountController implements Initializable {
         }
     }
 
+    //Checks to make sure that there is a customer to create an account for.
     public void createAccount() throws ParseException {
         if (currentCustomer != null) {
             double initialBalance = 0.0;

@@ -24,7 +24,9 @@ public class CheckingAccount extends Account {
 
 		super(customerId, balance, dateOpened);
 
-		this.accountType = accountType;
+		//If the balance is above $1000, automatically set the type to gold
+		this.accountType = balance >= 1000 ? "gold" : "regular";
+//		this.accountType = accountType;
 		this.backupId = backupId;
 		this.numberOfOverdrafts = numberOfOverdrafts;
 
@@ -32,6 +34,8 @@ public class CheckingAccount extends Account {
 			this.identifier = toString().hashCode();
 		else if (identifier != 0)
 			this.identifier = identifier;
+
+
 	}
 
 	//Withdraw from Checking account, check to see if it has a backupAccount;
@@ -45,7 +49,7 @@ public class CheckingAccount extends Account {
 				amountToReturn = amountToWithdraw;
 			}else if (balance < amountToWithdraw){
 				double prevBalance = balance;
-				double amt = Math.abs(amountToReturn - balance);
+				double amt = Math.abs(amountToWithdraw - balance);
 				balance = 0;
 				Account backupAccount = null;
 				for (Account account : Main.getCustomer(customerId).getAccounts()){
@@ -74,6 +78,7 @@ public class CheckingAccount extends Account {
 	@Override
 	public void Deposit(double amountToDeposit) {
 		balance += amountToDeposit;
+		setAccountType();
 	}
 
 	@Override
@@ -86,6 +91,12 @@ public class CheckingAccount extends Account {
         }
 		Main.removeAccount(this);
 		return amt;
+	}
+
+
+	//Checks the balance and sets the account type accordingly
+	public void setAccountType(){
+		accountType = balance >= 1000 ? "gold" : "regular";
 	}
 
 	public String getAccountType(){
